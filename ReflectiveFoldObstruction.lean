@@ -15,6 +15,7 @@ import ReflectiveFoldObstruction.Invariants.Transport
 import ReflectiveFoldObstruction.Invariants.BoundaryType
 import ReflectiveFoldObstruction.Invariants.ConnectedBoundary
 import ReflectiveFoldObstruction.Invariants.OrientabilityLike
+import ReflectiveFoldObstruction.Invariants.HomeomorphTransport
 import ReflectiveFoldObstruction.Topology.Models
 import ReflectiveFoldObstruction.Topology.Hausdorff
 import ReflectiveFoldObstruction.Topology.LocalModels1D

@@ -21,6 +21,7 @@
 | `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | `LocalModelKind`; `transportTyping` / `pullbackTyping`; preservation under `Equiv`; interior/boundary incompatibility |
 | `ReflectiveFoldObstruction/Invariants/ConnectedBoundary.lean` | `RelBoundarySep`, `HasRelBoundarySep`, `IsRelBoundaryConnected`; `iff` under `Set.image` of `Equiv` |
 | `ReflectiveFoldObstruction/Invariants/OrientabilityLike.lean` | Parity gauges `α → Bool`, transport, const vs twist witness |
+| `ReflectiveFoldObstruction/Invariants/HomeomorphTransport.lean` | Re-export `BoundaryType` / `OrientabilityLike` / `ConnectedBoundary` lemmas via `Homeomorph.toEquiv` |
 | `ReflectiveFoldObstruction/Topology/Models.lean` | `closedUnitInterval`, `openUnitInterval`, `closedUnitSquare` |
 | `ReflectiveFoldObstruction/Topology/Hausdorff.lean` | Product inherits `T2Space` |
 | `ReflectiveFoldObstruction/Topology/LocalModels1D.lean` | `halfLine` (`Ici 0`), `fullLine`; half-line ≠ univ |
@@ -34,7 +35,7 @@
 | `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
-| `ReflectiveFoldObstruction/Examples/RepresentationalRegress.lean` | Future bridge to `representational-regress-lean` (SPEC_002) |
+| `ReflectiveFoldObstruction/Examples/RepresentationalRegress.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, certificates; no `lake require` (SPEC_002) |
 | `ReflectiveFoldObstruction/Examples/CylinderMobius.lean` | `parityOfHolonomy`, link to `OrientabilityLike` |
 | `ReflectiveFoldObstruction/Examples/NoCollapse.lean` | `represent_mor_ne_obj_A` |
 | `ReflectiveFoldObstruction/Main.lean` | Assembly imports + `assemblySurface` |

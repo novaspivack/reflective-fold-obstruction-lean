@@ -47,14 +47,15 @@
 - **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, union-preserving).
 - **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
-- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity.
+- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalRegress` defines `PackagedReflectiveHost` + unboundedness lemmas without RR import.
+- **Invariants.HomeomorphTransport:** chart transport lemmas specializing `Equiv` invariants through `X ≃ₜ Y`.
 
 ---
 
 ## Honest limits
 
 1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as `RepresentationalRegress`).
-2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency.
+2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency. *(As of early work on that repo, its `lake build` is still being stabilized; this library stays Mathlib-only until integration is ready.)*
 3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) so `A` and `Nat` share the universe required by `MonoidalClosed (Type u)` for `lawvereBinary`. For arbitrary `A : Type u`, use the **function** corollaries in `LawvereType` (`lawvere_no_universal_unary_into_nat`) or `ULift`/`LawvereClosed` extensions (not packaged here).
 
 ---

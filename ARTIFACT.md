@@ -10,7 +10,7 @@
 
 ## What this artifact is
 
-A **scaffolded** general framework for reflective fold obstruction theory, layered per `PROJECT_VISION.md` / `SPEC_003_RFO`. It is **not** a replacement for `representational-regress-lean`; that repo remains the concrete flagship corpus (SPEC_002).
+A **Mathlib-grounded** library for reflective fold obstruction theory: full `ReflectiveFoldObstruction/` tree per `SPEC_003_RFO` (definitions + lemmas, **0** `sorry`), independent of `representational-regress-lean` import (SPEC_002). The RR repo remains the **concrete flagship** for promoted geometry (SPEC_004 Phase 3).
 
 ---
 

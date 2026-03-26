@@ -35,6 +35,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 |--------|--------|
 | `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
 | `Examples.NoCollapse` | `represent_mor_ne_obj_A` (alias of `SortSeparation.represent_slot_disjoint_from_obj_A`) |
+| `Examples.RepresentationalRegress` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `rrLakeRequireBlockedNote` |
 
 ---
 
@@ -50,6 +51,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 | `Reachability.InternalOps` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `ReflTransGen.backward_closed_of_symm` |
 | `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_mono`, `reachableFrom_union`, `reachableFrom_idem` |
 | `Reachability.Invariants` | `ForwardClosed.mem_reachableFrom`, `reachableFrom_eq_of_seed_univ` |
+| `Invariants.HomeomorphTransport` | `transportTyping_homeomorph_apply`; `BoundaryType.*.iff_homeomorph`; `OrientabilityLike.*.iff_homeomorph`; `ConnectedBoundary.*.iff_image_homeomorph` |
 
 ---
 
