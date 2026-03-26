@@ -15,7 +15,7 @@
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
 | `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | `MonoidalClosed (Type u)`: `lawvereBinary`, curry surjectivity ↔ universality, `lawvere_fixed_point_MonoidalClosedType` |
-| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Diagonal pressure schema |
+| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | `not_surjective_curry_*`, `not_universal_binary_of_fixed_point_free` (compose `LawvereClosed` + `LawvereType`) |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | Sort-separation interfaces |
 | `ReflectiveFoldObstruction/Invariants/Transport.lean` | Invariant transport |
 | `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | Boundary typing |

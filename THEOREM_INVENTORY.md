@@ -25,6 +25,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 |--------|--------|
 | `Diagonal.LawvereType` | `lawvere_fixed_point_Type` (`A : Type u`, `B : Type v`), `lawvere_fixed_point_corollary_no_universal`, `lawvere_no_universal_unary_into_nat` |
 | `Diagonal.LawvereClosed` | `lawvereBinary`, `lawvereBinary_apply`, `uncurry_eq_lawvereBinary`, `curry_lawvereBinary`, `lawvere_universal_iff_surjective_curry`, `lawvere_fixed_point_MonoidalClosedType` |
+| `Diagonal.Pressure` | `not_surjective_curry_of_fixed_point_free`, `not_surjective_curry_into_nat`, `not_universal_binary_of_fixed_point_free` |
 
 ---
 

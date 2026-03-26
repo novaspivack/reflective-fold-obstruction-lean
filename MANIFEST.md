@@ -26,7 +26,7 @@
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Master assembly (future) |
 
-**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, `Diagonal/LawvereType.lean`, and `Diagonal/LawvereClosed.lean` are proof-complete (no `sorry`). `Diagonal/Pressure.lean` and below remain scaffolds until next slice.
+**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, and **`Diagonal/`** (`LawvereType`, `LawvereClosed`, `Pressure`) are proof-complete (no `sorry`). `Invariants/` onward remain scaffolds until the next slice.
 
 ---
 
@@ -38,6 +38,7 @@
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
 - **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.
 - **Diagonal.LawvereClosed:** `lawvereBinary`, curry/`uncurry` alignment with `LawvereType`, `lawvere_universal_iff_surjective_curry`, fixed point with surjective `MonoidalClosed.curry`.
+- **Diagonal.Pressure:** packaged “no surjective `curry (lawvereBinary s)`” under fixed-point-free codomain; `not_surjective_curry_into_nat` at `A : Type` (see honest limits).
 
 ---
 
@@ -45,6 +46,7 @@
 
 1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as `RepresentationalRegress`).
 2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency.
+3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) so `A` and `Nat` share the universe required by `MonoidalClosed (Type u)` for `lawvereBinary`. For arbitrary `A : Type u`, use the **function** corollaries in `LawvereType` (`lawvere_no_universal_unary_into_nat`) or `ULLift`/`LawvereClosed` extensions (not packaged here).
 
 ---
 
