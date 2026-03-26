@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree; **0** `sorry`).  
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + `ULift Nat` pressure; **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -25,7 +25,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 |--------|--------|
 | `Diagonal.LawvereType` | `lawvere_fixed_point_Type` (`A : Type u`, `B : Type v`), `lawvere_fixed_point_corollary_no_universal`, `lawvere_no_universal_unary_into_nat` |
 | `Diagonal.LawvereClosed` | `lawvereBinary`, `lawvereBinary_apply`, `uncurry_eq_lawvereBinary`, `curry_lawvereBinary`, `lawvere_universal_iff_surjective_curry`, `lawvere_fixed_point_MonoidalClosedType` |
-| `Diagonal.Pressure` | `not_surjective_curry_of_fixed_point_free`, `not_surjective_curry_into_nat`, `not_universal_binary_of_fixed_point_free` |
+| `Diagonal.Pressure` | `uliftNatSucc`, `uliftNat_succ_ne_self`, `not_surjective_curry_of_fixed_point_free`, `not_surjective_curry_into_nat`, `not_surjective_curry_into_uliftNat`, `not_universal_binary_of_fixed_point_free`, `not_universal_binary_into_uliftNat` |
 
 ---
 
@@ -49,7 +49,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 | `Invariants.ConnectedBoundary` | `RelBoundarySep`, `HasRelBoundarySep`, `IsRelBoundaryConnected`, `RelBoundarySep.boundary_nonempty`, `RelBoundarySep.image_equiv`, `HasRelBoundarySep.iff_image_equiv`, `IsRelBoundaryConnected.iff_image_equiv`, `not_HasRelBoundarySep_of_AllInterior`, `ExistsBoundaryPoint.of_boundaryFiber_HasRelBoundarySep` |
 | `Invariants.OrientabilityLike` | `ParityGauge`, `transportGauge`, `IsLocallyConstant`, `HasTwistWitness`, `IsLocallyConstant_iff_not_hasTwistWitness`, transport + const/twist `iff` lemmas |
 | `Reachability.InternalOps` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `ReflTransGen.backward_closed_of_symm` |
-| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_mono`, `reachableFrom_union`, `reachableFrom_idem` |
+| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_mono`, `reachableFrom_union`, `reachableFrom_idem`, `mem_reachableFrom_singleton` |
 | `Reachability.Invariants` | `ForwardClosed.mem_reachableFrom`, `reachableFrom_eq_of_seed_univ` |
 | `Invariants.HomeomorphTransport` | `transportTyping_homeomorph_apply`; `BoundaryType.*.iff_homeomorph`; `OrientabilityLike.*.iff_homeomorph`; `ConnectedBoundary.*.iff_image_homeomorph` |
 

@@ -8,6 +8,7 @@
 -/
 
 import Mathlib.Data.Set.Basic
+import Mathlib.Data.Set.Insert
 import Mathlib.Logic.Relation
 
 universe u
@@ -58,5 +59,17 @@ theorem reachableFrom_idem (S : Set α) :
     rcases h with ⟨x, hx, hxy⟩
     refine ⟨x, ?_, hxy⟩
     exact subset_reachableFrom r S hx
+
+/-- Reachability from a singleton seed is exactly `ReflTransGen` from that point. -/
+theorem mem_reachableFrom_singleton {a y : α} :
+    y ∈ reachableFrom r ({a} : Set α) ↔ ReflTransGen r a y := by
+  simp only [mem_reachableFrom]
+  constructor
+  · rintro ⟨x, hx, hxy⟩
+    rw [mem_singleton_iff] at hx
+    subst hx
+    exact hxy
+  · intro hxy
+    exact ⟨a, mem_singleton a, hxy⟩
 
 end ReflectiveFoldObstruction.Reachability.ClosureHull
