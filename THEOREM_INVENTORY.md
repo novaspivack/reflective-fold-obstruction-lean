@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + `ULift Nat` pressure; **0** `sorry`).  
+**Last updated:** 2026-03-25 — `lake build ReflectiveFoldObstruction` (full tree + `ULift Nat` pressure + Core iterate recurrence; **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -11,7 +11,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 
 | Module | Names |
 |--------|--------|
-| `Core.Basic` | `ReflectiveSystem`, `IterInjective`, `representIter`, `metaRegressArrow`, `metaOver`, `metaRepresent`, `Over_mk_inj_parallel`, `representIter_injective`, `metaRegressArrow_injective`, `metaOver_injective`, `metaRepresent_injective`, `metaRegressArrow_zero`, `representIter_zero` |
+| `Core.Basic` | `ReflectiveSystem`, `IterInjective`, `representIter`, `metaRegressArrow`, `metaOver`, `metaRepresent`, `Over_mk_inj_parallel`, `representIter_injective`, `metaRegressArrow_injective`, `metaOver_injective`, `metaRepresent_injective`, `representIter_zero`, `representIter_succ`, `metaRegressArrow_zero`, `metaRegressArrow_succ`, `metaOver_succ` |
 | `Reflection.Towers` | `regress_no_termination`, `regress_iterates_unbounded`, `regress_is_infinite`, `meta_range_infinite` |
 | `Reflection.Slices` | `regress_over_injective` |
 

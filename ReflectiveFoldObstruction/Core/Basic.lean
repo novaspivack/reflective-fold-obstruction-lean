@@ -52,8 +52,20 @@ alias metaRepresent := metaRegressArrow
 @[simp] theorem representIter_zero (R : ReflectiveSystem) : representIter R 0 = 1 :=
   rfl
 
+theorem representIter_succ (R : ReflectiveSystem) (n : ℕ) :
+    representIter R (n + 1) = representIter R n * End.of R.represent := by
+  simp [representIter, pow_succ]
+
 theorem metaRegressArrow_zero (R : ReflectiveSystem) : metaRegressArrow R 0 = 𝟙 R.A := by
   simp [metaRegressArrow, representIter, End.one_def]
+
+theorem metaRegressArrow_succ (R : ReflectiveSystem) (n : ℕ) :
+    metaRegressArrow R (n + 1) = R.represent ≫ metaRegressArrow R n := by
+  simp [metaRegressArrow, representIter_succ, End.mul_def]
+
+theorem metaOver_succ (R : ReflectiveSystem) (n : ℕ) :
+    metaOver R (n + 1) = Over.mk (R.represent ≫ metaRegressArrow R n) := by
+  simp [metaOver, metaRegressArrow_succ]
 
 theorem Over_mk_inj_parallel (R : ReflectiveSystem) {f g : R.A ⟶ R.A}
     (h : Over.mk f = Over.mk g) : f = g := by

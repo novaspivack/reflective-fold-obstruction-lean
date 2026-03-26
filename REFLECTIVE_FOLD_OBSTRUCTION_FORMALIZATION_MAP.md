@@ -9,13 +9,13 @@
 
 | Path | Role |
 |------|------|
-| `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates, `Over` packaging, injective lemmas (explicit `hij`) |
+| `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates + monoid recurrence on `End A`, `Over` packaging, injective lemmas (explicit `hij`) |
 | `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
 | `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | `MonoidalClosed (Type u)`: `lawvereBinary`, curry surjectivity ↔ universality, `lawvere_fixed_point_MonoidalClosedType` |
-| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | `not_surjective_curry_*`, `not_universal_binary_of_fixed_point_free` (compose `LawvereClosed` + `LawvereType`) |
+| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Fixed-point-free → non-surjective curry / non-universal binary; `Nat` and **`ULift.{u} Nat`** targets (same-universe monoidal closed line) |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | `mapSlot`, `mapSlot_injective`, branch disjointness; reflective `tower_slots_injective`, `represent_*` |
 | `ReflectiveFoldObstruction/Invariants/Transport.lean` | Predicate pullback/transport along `Equiv`; `slotEquiv` for `OntologicalSlot`; `mapSlot_comp` / `slotEquiv_trans` |
 | `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | `LocalModelKind`; `transportTyping` / `pullbackTyping`; preservation under `Equiv`; interior/boundary incompatibility |
@@ -30,7 +30,7 @@
 | `ReflectiveFoldObstruction/Topology/Boundary.lean` | `corneredUnitSquare` (= product model) |
 | `ReflectiveFoldObstruction/Topology/MobiusCylinder.lean` | `HolonomyTag`, `tagEquiv` |
 | `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed` |
-| `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, idempotence, `∪` |
+| `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, idempotence, `∪`, `mem_reachableFrom_singleton` |
 | `ReflectiveFoldObstruction/Reachability/Invariants.lean` | `ForwardClosed.mem_reachableFrom`, total reachability lemma |
 | `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
