@@ -1,8 +1,37 @@
 /-
-  Reflective Fold Obstruction — root import (scaffold; see `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`).
+  Reflective Fold Obstruction — root import graph.
+  Module roles: `specs/NOTES/PROJECT_VISION.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`.
 -/
 
-import ReflectiveFoldObstruction.Basic
+import ReflectiveFoldObstruction.Core.Basic
+import ReflectiveFoldObstruction.Core.Slots
+import ReflectiveFoldObstruction.Reflection.Towers
+import ReflectiveFoldObstruction.Reflection.Slices
+import ReflectiveFoldObstruction.Diagonal.LawvereType
+import ReflectiveFoldObstruction.Diagonal.LawvereClosed
+import ReflectiveFoldObstruction.Diagonal.Pressure
+import ReflectiveFoldObstruction.Invariants.SortSeparation
+import ReflectiveFoldObstruction.Invariants.Transport
+import ReflectiveFoldObstruction.Invariants.BoundaryType
+import ReflectiveFoldObstruction.Invariants.ConnectedBoundary
+import ReflectiveFoldObstruction.Invariants.OrientabilityLike
+import ReflectiveFoldObstruction.Topology.Models
+import ReflectiveFoldObstruction.Topology.Hausdorff
+import ReflectiveFoldObstruction.Topology.LocalModels1D
+import ReflectiveFoldObstruction.Topology.LocalModels2D
+import ReflectiveFoldObstruction.Topology.PuncturedNeighborhoods
+import ReflectiveFoldObstruction.Topology.Boundary
+import ReflectiveFoldObstruction.Topology.MobiusCylinder
+import ReflectiveFoldObstruction.Reachability.InternalOps
+import ReflectiveFoldObstruction.Reachability.ClosureHull
+import ReflectiveFoldObstruction.Reachability.Invariants
+import ReflectiveFoldObstruction.Obstruction.Fold
+import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
+import ReflectiveFoldObstruction.Obstruction.OpenCompact
+import ReflectiveFoldObstruction.Examples.RepresentationalRegress
+import ReflectiveFoldObstruction.Examples.CylinderMobius
+import ReflectiveFoldObstruction.Examples.NoCollapse
+import ReflectiveFoldObstruction.Main
 
 namespace ReflectiveFoldObstruction
 

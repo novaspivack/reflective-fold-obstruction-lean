@@ -1,7 +1,7 @@
 import Lake
 open Lake DSL
 
-package «reflective-fold-obstruction» where
+package «reflective-fold-obstruction-lean» where
   leanOptions := #[⟨`autoImplicit, false⟩]
 
 /-

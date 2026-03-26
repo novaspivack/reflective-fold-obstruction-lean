@@ -1,24 +1,25 @@
-# reflective-fold-obstruction
+# reflective-fold-obstruction-lean
 
-Lean 4 + Mathlib formalization for the **reflective fold obstruction** program (outer workspace: `Reflective-Fold-Obstruction`).
+Lean 4 + Mathlib library for **Reflective Fold Obstruction** (general framework layer).
+
+**Outer workspace** (specs, EPICs, submodule wrapper): sibling repo **Reflective Fold Obstruction** — see `../specs/IN-PROCESS/README.md` when checked out as a submodule.
+
+**Relation to `representational-regress-lean`:** keep that repo as the flagship concrete artifact; see outer `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`.
 
 ## Build
 
-**Use the Mathlib binary cache** — do not compile all of Mathlib from source:
+**Use the Mathlib binary cache:**
 
 ```bash
-lake update              # resolve deps → exact mathlib revision
-lake exe cache get       # REQUIRED: download pre-built .olean blobs (GitHub source ≠ binaries)
-lake build ReflectiveFoldObstruction   # default library target; only this repo + uncached leaves
+lake update
+lake exe cache get       # REQUIRED: pre-built .olean blobs
+lake build ReflectiveFoldObstruction
 ```
 
-If `lake build` starts compiling thousands of `Mathlib.*` files, you skipped `cache get`, hit a cache miss for an untagged mathlib rev, or removed `~/.cache/mathlib/`. Fix: run `lake exe cache get` again; keep `lakefile.lean` on a **tagged** mathlib release (as pinned) so the community cache always has artifacts.
+Workspace documentation (cache, submodule layout): outer `docs/lean_mathlib_cache_workflow.md`, `docs/optional_mathlib.md`, `docs/repository_names.md`.
 
-Workspace documentation: `../docs/lean_mathlib_cache_workflow.md`, `../docs/optional_mathlib.md`.
+## Layout
 
-## Structure
+Layered module tree under `ReflectiveFoldObstruction/` (`Core`, `Reflection`, `Diagonal`, `Invariants`, `Topology`, `Reachability`, `Obstruction`, `Examples`, `Main`). Roles are specified in outer `specs/IN-PROCESS/SPEC_003_RFO_LEAN_LAYER_EPICS.md` and `specs/NOTES/PROJECT_VISION.md`.
 
-- `ReflectiveFoldObstruction/Basic.lean` — scaffold (extend as formalization grows)
-- `docs/argument-structure.md` — plain-language map (starter)
-
-See also `MANIFEST.md`, `THEOREM_INVENTORY.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, `ARTIFACT.md`.
+See `MANIFEST.md`, `THEOREM_INVENTORY.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, `ARTIFACT.md`, `docs/argument-structure.md`.

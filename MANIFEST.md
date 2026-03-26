@@ -1,40 +1,43 @@
-# reflective-fold-obstruction — manifest
+# reflective-fold-obstruction-lean — manifest
 
 **Toolchain:** `leanprover/lean4:v4.29.0-rc6`  
 **Mathlib:** `v4.29.0-rc6` (via `lakefile.lean`); use `lake exe cache get`  
+**Lake package:** `«reflective-fold-obstruction-lean»`  
 **Build:** `lake build ReflectiveFoldObstruction` (or `lake build`) from this directory  
 **Root import:** `ReflectiveFoldObstruction.lean`  
 **Formalization map:** `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`  
 **Theorem inventory:** `THEOREM_INVENTORY.md`  
-**Program spec:** `../specs/IN-PROCESS/SPEC_001_RFO_REFLECTIVE_FOLD_OBSTRUCTION_LEAN_EPIC.md`  
+**Program EPICs (outer workspace):** `../specs/IN-PROCESS/SPEC_001_RFO_REFLECTIVE_FOLD_OBSTRUCTION_LEAN_EPIC.md`  
+**Two-repo policy:** `../specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`
 
 ---
 
-## Layout
+## Layout (layered)
 
-| Area | Path | Role |
-|------|------|------|
-| Scaffold | `ReflectiveFoldObstruction/Basic.lean` | Placeholder theorems tying the project to Mathlib; extend with core definitions |
+| Layer | Paths | Role |
+|-------|--------|------|
+| Core | `ReflectiveFoldObstruction/Core/` | Foundations; slots pattern |
+| Reflection | `Reflection/` | Towers, slices |
+| Diagonal | `Diagonal/` | Lawvere-family, pressure |
+| Invariants | `Invariants/` | Sort separation, transport, boundary, connectivity, orientability-like |
+| Topology | `Topology/` | Models, separation, local 1D/2D, punctured neighborhoods, boundary, Möbius/cylinder |
+| Reachability | `Reachability/` | Internal ops, closure hulls, reachability invariants |
+| Obstruction | `Obstruction/` | Fold, reflective fold, open–compact |
+| Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
+| Assembly | `Main.lean` | Master assembly (future) |
 
-`ReflectiveFoldObstruction.lean` imports `Basic` so it participates in the default library target.
+Scaffold namespaces exist throughout; see SPEC_003 in outer `specs/IN-PROCESS/`.
 
 ---
 
 ## Proof status
 
-- **0** `sorry` / **0** custom axioms in `ReflectiveFoldObstruction/` (scaffold).
-- Claims are **fully checked** relative to Mathlib + Lean’s standard logical core for the statements in-repo.
-
----
-
-## Honest limits (strength of claim)
-
-1. **Scaffold:** Only trivial definitions (`scaffold`, `scaffold_eq_zero`) are present until the program spec adds real mathematical content.
+- **0** `sorry` in scaffold modules.  
+- **Core.Basic** currently exposes only `scaffold` / `scaffold_eq_zero` as a Mathlib smoke test.
 
 ---
 
 ## See also
 
 - `ARTIFACT.md` — citation / reproduction  
-- `../docs/submodule_workspace.md` — outer / inner git layout  
-- `../docs/lean_mathlib_cache_workflow.md` — Mathlib cache workflow  
+- `specs/README.md` — where workspace EPICs live when using the submodule layout  

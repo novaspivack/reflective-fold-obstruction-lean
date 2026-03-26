@@ -1,7 +1,9 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-25 — paired with `MANIFEST.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, and `lake build ReflectiveFoldObstruction`.  
-**Purpose:** Index of principal `def`s / `theorem`s by module.
+**Last updated:** 2026-03-25 — paired with `MANIFEST.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, `lake build ReflectiveFoldObstruction`.  
+**Program EPICs:** outer `specs/IN-PROCESS/SPEC_001_RFO_*.md`
+
+Buckets **A–F** (vision §9) tag theorem families as they land.
 
 ---
 
@@ -9,13 +11,50 @@
 
 | Module | Coverage |
 |--------|----------|
-| `Basic` | `scaffold`, `scaffold_eq_zero` (library placeholder) |
+| `Core.Basic` | `scaffold`, `scaffold_eq_zero` (temporary smoke test) |
+| All other scaffold modules | Empty namespaces — populate per `SPEC_003_RFO` |
 
 ---
 
-## Basic
+## A. Reflective generation (target)
+
+*(No entries yet.)*
+
+---
+
+## B. Diagonal pressure (target)
+
+*(No entries yet.)*
+
+---
+
+## C. Non-collapse (target)
+
+*(No entries yet.)*
+
+---
+
+## D. Invariant transport (target)
+
+*(No entries yet.)*
+
+---
+
+## E. Concrete obstruction (target)
+
+*(No entries yet.)*
+
+---
+
+## F. General fold obstruction (target)
+
+*(No entries yet.)*
+
+---
+
+## Core.Basic (scaffold)
 
 | Kind | Lean name | Notes |
 |------|-----------|-------|
-| `def` | `scaffold` | Placeholder natural number (`0`) until core theory lands |
-| `theorem` | `scaffold_eq_zero` | Trivial reflexivity proof |
+| `def` | `ReflectiveFoldObstruction.Core.scaffold` | Replace with real core definitions |
+| `theorem` | `ReflectiveFoldObstruction.Core.scaffold_eq_zero` | `rfl` |
