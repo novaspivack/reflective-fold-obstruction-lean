@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (incl. `Invariants/SortSeparation`, `Invariants/Transport`).  
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (incl. `Invariants/SortSeparation`, `Invariants/Transport`, `Invariants/BoundaryType`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -43,6 +43,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 |--------|--------|
 | `Invariants.SortSeparation` | `mapSlot`, `mapSlot_obj`, `mapSlot_mor`, `mapSlot_injective`, `mapSlot_preserves_branch_disjoint`, `tower_slots_injective`, `represent_slot_disjoint_from_obj_A`, `represent_mor_ne_obj` |
 | `Invariants.Transport` | `pullbackPred`, `pullbackPred_apply`, `transportPred`, `transportPred_apply`, `transportPred_symm_iff`, `transportPred_pullback`, `pullbackPred_transport`, `slotEquiv`, `slotEquiv_apply_obj`, `slotEquiv_apply_mor`, `mapSlot_comp`, `slotEquiv_trans` |
+| `Invariants.BoundaryType` | `LocalModelKind`, `pullbackTyping`, `pullbackTyping_apply`, `transportTyping`, `transportTyping_apply`, `transportTyping_rfl`, `transportTyping_trans`, `transportTyping_map_symm`, `transportTyping_map`, `transportTyping_eq_iff`, `ExistsBoundaryPoint`, `ExistsInteriorPoint`, `AllInterior`, `AllBoundary`, `ExistsBoundaryPoint.iff_transport`, `ExistsInteriorPoint.iff_transport`, `AllInterior.iff_transport`, `AllBoundary.iff_transport`, `not_interior_and_boundary`, `AllInterior.not_ExistsBoundaryPoint`, `ExistsBoundaryPoint.not_AllInterior`, `AllBoundary.not_ExistsInteriorPoint`, `ExistsInteriorPoint.not_AllBoundary`, `pullbackTyping_comp`, `ExistsBoundaryPoint.of_pullback`, `ExistsInteriorPoint.of_pullback`, `AllInterior.of_pullback_surjective`, `AllBoundary.of_pullback_surjective` |
 
 ---
 

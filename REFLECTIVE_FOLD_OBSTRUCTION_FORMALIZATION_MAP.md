@@ -18,7 +18,7 @@
 | `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | `not_surjective_curry_*`, `not_universal_binary_of_fixed_point_free` (compose `LawvereClosed` + `LawvereType`) |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | `mapSlot`, `mapSlot_injective`, branch disjointness; reflective `tower_slots_injective`, `represent_*` |
 | `ReflectiveFoldObstruction/Invariants/Transport.lean` | Predicate pullback/transport along `Equiv`; `slotEquiv` for `OntologicalSlot`; `mapSlot_comp` / `slotEquiv_trans` |
-| `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | Boundary typing |
+| `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | `LocalModelKind`; `transportTyping` / `pullbackTyping`; preservation under `Equiv`; interior/boundary incompatibility |
 | `ReflectiveFoldObstruction/Invariants/ConnectedBoundary.lean` | Boundary connectivity |
 | `ReflectiveFoldObstruction/Invariants/OrientabilityLike.lean` | Surrogate separation / orientability-like |
 | `ReflectiveFoldObstruction/Topology/Models.lean` | Shared topological models |
