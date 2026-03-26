@@ -33,7 +33,7 @@
 ## Proof status
 
 - **0** `sorry` in shipped modules.  
-- **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, monoid iterate recurrence (`representIter_succ`, `metaRegressArrow_succ`, `metaOver_succ`), injective iterate lemmas (explicit `hij` argument).  
+- **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, monoid laws on `End A` (`representIter_{zero,succ,add,mul}`, `metaRegressArrow_{zero,succ,add}`, `metaOver_{succ,add}`), injective iterate lemmas (explicit `hij` argument).  
 - **Core.Slots:** polymorphic `OntologicalSlot Obj Mor` + `ReflectiveSlot R` alias and reflective-slot lemmas.  
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
 - **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.

@@ -56,6 +56,19 @@ theorem representIter_succ (R : ReflectiveSystem) (n : ℕ) :
     representIter R (n + 1) = representIter R n * End.of R.represent := by
   simp [representIter, pow_succ]
 
+theorem representIter_add (R : ReflectiveSystem) (m n : ℕ) :
+    representIter R (m + n) = representIter R m * representIter R n := by
+  simp [representIter, pow_add]
+
+theorem representIter_mul (R : ReflectiveSystem) (m n : ℕ) :
+    representIter R (m * n) = representIter R m ^ n := by
+  simp [representIter, pow_mul]
+
+theorem metaRegressArrow_add (R : ReflectiveSystem) (m n : ℕ) :
+    metaRegressArrow R (m + n) = metaRegressArrow R n ≫ metaRegressArrow R m := by
+  rw [metaRegressArrow, representIter_add, End.mul_def]
+  rfl
+
 theorem metaRegressArrow_zero (R : ReflectiveSystem) : metaRegressArrow R 0 = 𝟙 R.A := by
   simp [metaRegressArrow, representIter, End.one_def]
 
@@ -66,6 +79,10 @@ theorem metaRegressArrow_succ (R : ReflectiveSystem) (n : ℕ) :
 theorem metaOver_succ (R : ReflectiveSystem) (n : ℕ) :
     metaOver R (n + 1) = Over.mk (R.represent ≫ metaRegressArrow R n) := by
   simp [metaOver, metaRegressArrow_succ]
+
+theorem metaOver_add (R : ReflectiveSystem) (m n : ℕ) :
+    metaOver R (m + n) = Over.mk (metaRegressArrow R n ≫ metaRegressArrow R m) := by
+  simp [metaOver, metaRegressArrow_add]
 
 theorem Over_mk_inj_parallel (R : ReflectiveSystem) {f g : R.A ⟶ R.A}
     (h : Over.mk f = Over.mk g) : f = g := by

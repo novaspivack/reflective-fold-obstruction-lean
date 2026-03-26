@@ -9,7 +9,7 @@
 
 | Path | Role |
 |------|------|
-| `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates + monoid recurrence on `End A`, `Over` packaging, injective lemmas (explicit `hij`) |
+| `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates + monoid `pow_succ` / `pow_add` / `pow_mul` on `End A`, `Over` packaging, injective lemmas (explicit `hij`) |
 | `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
