@@ -23,9 +23,8 @@ variable {α : Type u} {r : α → α → Prop} {P : α → Prop}
 
 /-- Forward-closed predicates hold on the entire `reachableFrom` hull of any seed satisfying `P`. -/
 theorem ForwardClosed.mem_reachableFrom {S : Set α} (hP : InternalOps.ForwardClosed r P)
-    (hS : ∀ x ∈ S, P x) ⦃y : α⦄ (hy : y ∈ ClosureHull.reachableFrom r S) : P y := by
-  rcases hy with ⟨x, hxS, hxy⟩
-  exact InternalOps.ReflTransGen.forwardClosed hP hxy (hS x hxS)
+    (hS : ∀ x ∈ S, P x) ⦃y : α⦄ (hy : y ∈ ClosureHull.reachableFrom r S) : P y :=
+  ClosureHull.mem_reachableFrom_induction r hS hP hy
 
 theorem reachableFrom_eq_of_seed_univ [Nonempty α] (h : ∀ x y : α, ReflTransGen r x y) (S : Set α)
     (hne : S.Nonempty) : ClosureHull.reachableFrom r S = Set.univ := by

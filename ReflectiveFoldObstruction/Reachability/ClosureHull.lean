@@ -11,6 +11,8 @@ import Mathlib.Data.Set.Basic
 import Mathlib.Data.Set.Insert
 import Mathlib.Logic.Relation
 
+import ReflectiveFoldObstruction.Reachability.InternalOps
+
 universe u
 
 namespace ReflectiveFoldObstruction.Reachability.ClosureHull
@@ -43,6 +45,11 @@ theorem reachableFrom_empty : reachableFrom r (∅ : Set α) = ∅ := by
 theorem reachableFrom_mono {S T : Set α} (h : S ⊆ T) : reachableFrom r S ⊆ reachableFrom r T := by
   rintro y ⟨x, hx, hxy⟩
   exact ⟨x, h hx, hxy⟩
+
+theorem reachableFrom_inter_subset (S T : Set α) :
+    reachableFrom r (S ∩ T) ⊆ reachableFrom r S ∩ reachableFrom r T := by
+  rintro y ⟨x, ⟨hxS, hxT⟩, hxy⟩
+  exact ⟨⟨x, hxS, hxy⟩, ⟨x, hxT, hxy⟩⟩
 
 theorem reachableFrom_union (S T : Set α) :
     reachableFrom r (S ∪ T) = reachableFrom r S ∪ reachableFrom r T := by
@@ -80,5 +87,15 @@ theorem mem_reachableFrom_singleton {a y : α} :
     exact hxy
   · intro hxy
     exact ⟨a, mem_singleton a, hxy⟩
+
+/--
+  Induction on the reachability hull (vision §6 / `Reachability/Invariants` pattern):
+  `Q` holds on seeds in `S` and is forward-closed for `r`, hence on all of `reachableFrom r S`.
+-/
+theorem mem_reachableFrom_induction {S : Set α} {Q : α → Prop}
+    (hseed : ∀ x ∈ S, Q x) (hstep : InternalOps.ForwardClosed r Q) ⦃y : α⦄
+    (hy : y ∈ reachableFrom r S) : Q y := by
+  rcases hy with ⟨x, hxS, hxy⟩
+  exact InternalOps.ReflTransGen.forwardClosed hstep hxy (hseed x hxS)
 
 end ReflectiveFoldObstruction.Reachability.ClosureHull

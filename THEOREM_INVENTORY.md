@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + `IterInjective` ↔ injective `metaRepresent`, empty reachability hull, **0** `sorry`).  
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + hull **induction** `mem_reachableFrom_induction`, `reachableFrom_inter_subset`, **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -49,7 +49,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 | `Invariants.ConnectedBoundary` | `RelBoundarySep`, `HasRelBoundarySep`, `IsRelBoundaryConnected`, `RelBoundarySep.boundary_nonempty`, `RelBoundarySep.image_equiv`, `HasRelBoundarySep.iff_image_equiv`, `IsRelBoundaryConnected.iff_image_equiv`, `not_HasRelBoundarySep_of_AllInterior`, `ExistsBoundaryPoint.of_boundaryFiber_HasRelBoundarySep` |
 | `Invariants.OrientabilityLike` | `ParityGauge`, `transportGauge`, `IsLocallyConstant`, `HasTwistWitness`, `IsLocallyConstant_iff_not_hasTwistWitness`, transport + const/twist `iff` lemmas |
 | `Reachability.InternalOps` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `ReflTransGen.backward_closed_of_symm` |
-| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_empty`, `reachableFrom_mono`, `reachableFrom_union`, `reachableFrom_idem`, `mem_reachableFrom_singleton` |
+| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_empty`, `reachableFrom_mono`, `reachableFrom_inter_subset`, `reachableFrom_union`, `reachableFrom_idem`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction` |
 | `Reachability.Invariants` | `ForwardClosed.mem_reachableFrom`, `reachableFrom_eq_of_seed_univ` |
 | `Invariants.HomeomorphTransport` | `transportTyping_homeomorph_apply`; `BoundaryType.*.iff_homeomorph`; `OrientabilityLike.*.iff_homeomorph`; `ConnectedBoundary.*.iff_image_homeomorph` |
 

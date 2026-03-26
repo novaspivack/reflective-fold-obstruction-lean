@@ -44,7 +44,7 @@
 - **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; fibers; global predicates + `Equiv` preservation and incompatibility lemmas.
 - **Invariants.ConnectedBoundary:** `RelBoundarySep` / `HasRelBoundarySep` / `IsRelBoundaryConnected`; equivariance under `Equiv`; link to `boundaryFiber` of a typing.
 - **Invariants.OrientabilityLike:** `ParityGauge` (`α → Bool`), `transportGauge`, local constancy vs twist witnesses.
-- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, union-preserving, **empty seed**).
+- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, **∪** / **∩**-subset, **empty** seed, **induction** on hull per vision §6).
 - **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
 - **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalRegress` defines `PackagedReflectiveHost` + unboundedness lemmas without RR import.
