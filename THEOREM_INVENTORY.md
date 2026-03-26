@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (incl. `Invariants/SortSeparation`).  
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (incl. `Invariants/SortSeparation`, `Invariants/Transport`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -42,6 +42,7 @@ Buckets **A–F** (vision §9 / SPEC_003).
 | Module | Names |
 |--------|--------|
 | `Invariants.SortSeparation` | `mapSlot`, `mapSlot_obj`, `mapSlot_mor`, `mapSlot_injective`, `mapSlot_preserves_branch_disjoint`, `tower_slots_injective`, `represent_slot_disjoint_from_obj_A`, `represent_mor_ne_obj` |
+| `Invariants.Transport` | `pullbackPred`, `pullbackPred_apply`, `transportPred`, `transportPred_apply`, `transportPred_symm_iff`, `transportPred_pullback`, `pullbackPred_transport`, `slotEquiv`, `slotEquiv_apply_obj`, `slotEquiv_apply_mor`, `mapSlot_comp`, `slotEquiv_trans` |
 
 ---
 
