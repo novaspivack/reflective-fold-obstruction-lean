@@ -13,7 +13,7 @@
 | `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
-| `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere in `Type` |
+| `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
 | `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | Monoidal closed / CCC packaging |
 | `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Diagonal pressure schema |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | Sort-separation interfaces |
@@ -46,6 +46,7 @@
 | Topic | Mathlib entry points |
 |-------|---------------------|
 | Categories / slice / `End` | `Mathlib.CategoryTheory.Category.Basic`, `Mathlib.CategoryTheory.Comma.Over.Basic`, `Mathlib.CategoryTheory.Endomorphism` |
+| Function / equality | `Mathlib.Logic.Function.Basic` (`congr_fun`) |
 | Nat | `Mathlib.Data.Nat.Basic` |
 
 (Expand this table as each layer imports Mathlib content.)

@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction`.  
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (Lawvere `Type` layer).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003).
@@ -21,7 +21,9 @@ Buckets **A–F** (vision §9 / SPEC_003).
 
 ## B. Diagonal pressure
 
-*(No entries yet — next: `Diagonal/LawvereType.lean`.)*
+| Module | Names |
+|--------|--------|
+| `Diagonal.LawvereType` | `lawvere_fixed_point_Type` (`A : Type u`, `B : Type v`), `lawvere_fixed_point_corollary_no_universal`, `lawvere_no_universal_unary_into_nat` |
 
 ---
 

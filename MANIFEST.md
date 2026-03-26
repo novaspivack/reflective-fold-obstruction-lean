@@ -26,7 +26,7 @@
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Master assembly (future) |
 
-**Progress (SPEC_004 Phase 2, 2026-03-26):** `Core/` and `Reflection/` carry real definitions and theorems (no `sorry`). Other layers remain namespace scaffolds until their EPIC slices start.
+**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, and `Diagonal/LawvereType.lean` are proof-complete (no `sorry`). Remaining `Diagonal/` modules and below are scaffolds until their EPIC slices start.
 
 ---
 
@@ -36,6 +36,7 @@
 - **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, injective iterate lemmas (explicit `hij` argument).  
 - **Core.Slots:** polymorphic `OntologicalSlot Obj Mor` + `ReflectiveSlot R` alias and reflective-slot lemmas.  
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
+- **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v` (surjective curried enumeration of `A → B` in the weak sense stated in-file), corollary for fixed-point-free `succ`, and the `Nat` packaging lemma.
 
 ---
 
