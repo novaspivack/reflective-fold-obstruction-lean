@@ -14,7 +14,7 @@
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
-| `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | Monoidal closed / CCC packaging |
+| `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | `MonoidalClosed (Type u)`: `lawvereBinary`, curry surjectivity ↔ universality, `lawvere_fixed_point_MonoidalClosedType` |
 | `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Diagonal pressure schema |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | Sort-separation interfaces |
 | `ReflectiveFoldObstruction/Invariants/Transport.lean` | Invariant transport |
@@ -47,6 +47,7 @@
 |-------|---------------------|
 | Categories / slice / `End` | `Mathlib.CategoryTheory.Category.Basic`, `Mathlib.CategoryTheory.Comma.Over.Basic`, `Mathlib.CategoryTheory.Endomorphism` |
 | Function / equality | `Mathlib.Logic.Function.Basic` (`congr_fun`) |
+| Monoidal closed (types) | `Mathlib.CategoryTheory.Monoidal.Closed.Types`, `Mathlib.CategoryTheory.Monoidal.Closed.Basic`, `Mathlib.CategoryTheory.Monoidal.Types.Basic` |
 | Nat | `Mathlib.Data.Nat.Basic` |
 
 (Expand this table as each layer imports Mathlib content.)

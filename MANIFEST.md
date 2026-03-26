@@ -26,7 +26,7 @@
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Master assembly (future) |
 
-**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, and `Diagonal/LawvereType.lean` are proof-complete (no `sorry`). Remaining `Diagonal/` modules and below are scaffolds until their EPIC slices start.
+**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, `Diagonal/LawvereType.lean`, and `Diagonal/LawvereClosed.lean` are proof-complete (no `sorry`). `Diagonal/Pressure.lean` and below remain scaffolds until next slice.
 
 ---
 
@@ -36,7 +36,8 @@
 - **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, injective iterate lemmas (explicit `hij` argument).  
 - **Core.Slots:** polymorphic `OntologicalSlot Obj Mor` + `ReflectiveSlot R` alias and reflective-slot lemmas.  
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
-- **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v` (surjective curried enumeration of `A → B` in the weak sense stated in-file), corollary for fixed-point-free `succ`, and the `Nat` packaging lemma.
+- **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.
+- **Diagonal.LawvereClosed:** `lawvereBinary`, curry/`uncurry` alignment with `LawvereType`, `lawvere_universal_iff_surjective_curry`, fixed point with surjective `MonoidalClosed.curry`.
 
 ---
 
