@@ -31,6 +31,15 @@ theorem subset_reachableFrom (S : Set α) : S ⊆ reachableFrom r S := by
   intro x hx
   exact ⟨x, hx, ReflTransGen.refl⟩
 
+@[simp]
+theorem reachableFrom_empty : reachableFrom r (∅ : Set α) = ∅ := by
+  ext y
+  constructor
+  · rintro ⟨x, hx, _⟩
+    exact absurd hx (notMem_empty x)
+  · intro hy
+    exact False.elim ((mem_empty_iff_false y).1 hy)
+
 theorem reachableFrom_mono {S T : Set α} (h : S ⊆ T) : reachableFrom r S ⊆ reachableFrom r T := by
   rintro y ⟨x, hx, hxy⟩
   exact ⟨x, h hx, hxy⟩

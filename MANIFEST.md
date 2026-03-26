@@ -33,7 +33,7 @@
 ## Proof status
 
 - **0** `sorry` in shipped modules.  
-- **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, monoid laws on `End A` (`representIter_{zero,succ,add,mul}`, `metaRegressArrow_{zero,succ,add}`, `metaOver_{succ,add}`), injective iterate lemmas (explicit `hij` argument).  
+- **Core:** `ReflectiveSystem`, `IterInjective` (iff injective `metaRepresent`), iterate / slice packaging, monoid laws on `End A` (`representIter_{zero,one,succ,add,mul}`, `metaRegressArrow_{zero,one,succ,add}`, `metaOver_{succ,add}`), injective iterate lemmas (explicit `hij` argument).  
 - **Core.Slots:** polymorphic `OntologicalSlot Obj Mor` + `ReflectiveSlot R` alias and reflective-slot lemmas.  
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
 - **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.
@@ -44,7 +44,7 @@
 - **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; fibers; global predicates + `Equiv` preservation and incompatibility lemmas.
 - **Invariants.ConnectedBoundary:** `RelBoundarySep` / `HasRelBoundarySep` / `IsRelBoundaryConnected`; equivariance under `Equiv`; link to `boundaryFiber` of a typing.
 - **Invariants.OrientabilityLike:** `ParityGauge` (`α → Bool`), `transportGauge`, local constancy vs twist witnesses.
-- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, union-preserving).
+- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, union-preserving, **empty seed**).
 - **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
 - **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalRegress` defines `PackagedReflectiveHost` + unboundedness lemmas without RR import.

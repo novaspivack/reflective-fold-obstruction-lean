@@ -52,6 +52,12 @@ alias metaRepresent := metaRegressArrow
 @[simp] theorem representIter_zero (R : ReflectiveSystem) : representIter R 0 = 1 :=
   rfl
 
+@[simp] theorem representIter_one (R : ReflectiveSystem) : representIter R 1 = End.of R.represent := by
+  simp [representIter, pow_one]
+
+theorem metaRegressArrow_one (R : ReflectiveSystem) : metaRegressArrow R 1 = R.represent := by
+  simp [metaRegressArrow]
+
 theorem representIter_succ (R : ReflectiveSystem) (n : ℕ) :
     representIter R (n + 1) = representIter R n * End.of R.represent := by
   simp [representIter, pow_succ]
@@ -106,5 +112,11 @@ theorem metaOver_injective (R : ReflectiveSystem) (hij : IterInjective R) ⦃n m
 theorem metaRepresent_injective (R : ReflectiveSystem) (hij : IterInjective R) :
     Function.Injective (metaRepresent R) := fun _ _ h =>
   by_contra fun hne => hij hne (End.ext h)
+
+/-- `IterInjective` is exactly injectivity of the level map `ℕ → (A ⟶ A)`. -/
+theorem iterInjective_iff_injective_metaRepresent (R : ReflectiveSystem) :
+    IterInjective R ↔ Function.Injective (metaRepresent R) :=
+  ⟨metaRepresent_injective R, fun hij ⦃n m : ℕ⦄ hnm =>
+    (mt fun heq : representIter R n = representIter R m => hij (congrArg End.asHom heq)) hnm⟩
 
 end ReflectiveFoldObstruction.Core
