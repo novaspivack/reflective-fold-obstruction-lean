@@ -9,10 +9,10 @@
 
 | Path | Role |
 |------|------|
-| `ReflectiveFoldObstruction/Core/Basic.lean` | Foundational objects; temporary `scaffold` / `scaffold_eq_zero` smoke test |
-| `ReflectiveFoldObstruction/Core/Slots.lean` | Generalized sort-separation / slot pattern |
-| `ReflectiveFoldObstruction/Reflection/Towers.lean` | Reflective towers, iterates |
-| `ReflectiveFoldObstruction/Reflection/Slices.lean` | Slice packaging of stages |
+| `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates, `Over` packaging, injective lemmas (explicit `hij`) |
+| `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
+| `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
+| `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere in `Type` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | Monoidal closed / CCC packaging |
 | `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Diagonal pressure schema |
@@ -45,7 +45,8 @@
 
 | Topic | Mathlib entry points |
 |-------|---------------------|
-| Nat / smoke | `Mathlib.Data.Nat.Basic` |
+| Categories / slice / `End` | `Mathlib.CategoryTheory.Category.Basic`, `Mathlib.CategoryTheory.Comma.Over.Basic`, `Mathlib.CategoryTheory.Endomorphism` |
+| Nat | `Mathlib.Data.Nat.Basic` |
 
 (Expand this table as each layer imports Mathlib content.)
 

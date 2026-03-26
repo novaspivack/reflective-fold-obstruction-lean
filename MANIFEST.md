@@ -26,14 +26,23 @@
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Master assembly (future) |
 
-Scaffold namespaces exist throughout; see SPEC_003 in outer `specs/IN-PROCESS/`.
+**Progress (SPEC_004 Phase 2, 2026-03-26):** `Core/` and `Reflection/` carry real definitions and theorems (no `sorry`). Other layers remain namespace scaffolds until their EPIC slices start.
 
 ---
 
 ## Proof status
 
-- **0** `sorry` in scaffold modules.  
-- **Core.Basic** currently exposes only `scaffold` / `scaffold_eq_zero` as a Mathlib smoke test.
+- **0** `sorry` in shipped modules.  
+- **Core:** `ReflectiveSystem`, `IterInjective`, iterate / slice packaging, injective iterate lemmas (explicit `hij` argument).  
+- **Core.Slots:** polymorphic `OntologicalSlot Obj Mor` + `ReflectiveSlot R` alias and reflective-slot lemmas.  
+- **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
+
+---
+
+## Honest limits
+
+1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as `RepresentationalRegress`).
+2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency.
 
 ---
 

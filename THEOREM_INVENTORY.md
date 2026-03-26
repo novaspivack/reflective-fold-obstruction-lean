@@ -1,60 +1,50 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-25 — paired with `MANIFEST.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, `lake build ReflectiveFoldObstruction`.  
-**Program EPICs:** outer `specs/IN-PROCESS/SPEC_001_RFO_*.md`
+**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction`.  
+**EPICs:** outer `specs/IN-PROCESS/README.md`
 
-Buckets **A–F** (vision §9) tag theorem families as they land.
-
----
-
-## Meta
-
-| Module | Coverage |
-|--------|----------|
-| `Core.Basic` | `scaffold`, `scaffold_eq_zero` (temporary smoke test) |
-| All other scaffold modules | Empty namespaces — populate per `SPEC_003_RFO` |
+Buckets **A–F** (vision §9 / SPEC_003).
 
 ---
 
-## A. Reflective generation (target)
+## A. Reflective generation
+
+| Module | Names |
+|--------|--------|
+| `Core.Basic` | `ReflectiveSystem`, `IterInjective`, `representIter`, `metaRegressArrow`, `metaOver`, `metaRepresent`, `Over_mk_inj_parallel`, `representIter_injective`, `metaRegressArrow_injective`, `metaOver_injective`, `metaRepresent_injective`, `metaRegressArrow_zero`, `representIter_zero` |
+| `Reflection.Towers` | `regress_no_termination`, `regress_iterates_unbounded`, `regress_is_infinite`, `meta_range_infinite` |
+| `Reflection.Slices` | `regress_over_injective` |
+
+*(All tower/slice lemmas take `(R : ReflectiveSystem)` and `(hij : IterInjective R)` explicitly.)*
+
+---
+
+## B. Diagonal pressure
+
+*(No entries yet — next: `Diagonal/LawvereType.lean`.)*
+
+---
+
+## C. Non-collapse
+
+| Module | Names |
+|--------|--------|
+| `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
+
+---
+
+## D. Invariant transport
 
 *(No entries yet.)*
 
 ---
 
-## B. Diagonal pressure (target)
+## E. Concrete obstruction
 
-*(No entries yet.)*
-
----
-
-## C. Non-collapse (target)
-
-*(No entries yet.)*
+*(No entries yet — flagship concrete work stays in `representational-regress-lean` per SPEC_002.)*
 
 ---
 
-## D. Invariant transport (target)
+## F. General fold obstruction
 
 *(No entries yet.)*
-
----
-
-## E. Concrete obstruction (target)
-
-*(No entries yet.)*
-
----
-
-## F. General fold obstruction (target)
-
-*(No entries yet.)*
-
----
-
-## Core.Basic (scaffold)
-
-| Kind | Lean name | Notes |
-|------|-----------|-------|
-| `def` | `ReflectiveFoldObstruction.Core.scaffold` | Replace with real core definitions |
-| `theorem` | `ReflectiveFoldObstruction.Core.scaffold_eq_zero` | `rfl` |
