@@ -26,7 +26,7 @@
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Master assembly (future) |
 
-**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, and **`Diagonal/`** (`LawvereType`, `LawvereClosed`, `Pressure`) are proof-complete (no `sorry`). `Invariants/` onward remain scaffolds until the next slice.
+**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, **`Diagonal/`**, and **`Invariants/SortSeparation.lean`** are proof-complete (no `sorry`). Remaining `Invariants/*` modules are scaffolds until the next slice.
 
 ---
 
@@ -39,6 +39,7 @@
 - **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.
 - **Diagonal.LawvereClosed:** `lawvereBinary`, curry/`uncurry` alignment with `LawvereType`, `lawvere_universal_iff_surjective_curry`, fixed point with surjective `MonoidalClosed.curry`.
 - **Diagonal.Pressure:** packaged “no surjective `curry (lawvereBinary s)`” under fixed-point-free codomain; `not_surjective_curry_into_nat` at `A : Type` (see honest limits).
+- **Invariants.SortSeparation:** functorial `mapSlot` + injectivity under injective branch maps; reflective tower / represent disjointness lemmas (invariant API for `Transport`).
 
 ---
 
