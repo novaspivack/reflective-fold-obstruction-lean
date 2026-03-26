@@ -15,6 +15,7 @@
   See `specs/NOTES/PROJECT_VISION.md` — Invariants/BoundaryType.
 -/
 
+import Mathlib.Data.Set.Basic
 import Mathlib.Logic.Equiv.Defs
 
 universe u
@@ -177,5 +178,43 @@ theorem AllBoundary.of_pullback_surjective {f : α → β} {τ : β → LocalMod
   intro b
   rcases hf b with ⟨a, rfl⟩
   exact h a
+
+section Fibers
+
+variable {α : Type u}
+
+/-- Set of points tagged as boundary. -/
+def boundaryFiber (τ : α → LocalModelKind) : Set α :=
+  { x | τ x = LocalModelKind.boundary }
+
+/-- Set of points tagged as interior. -/
+def interiorFiber (τ : α → LocalModelKind) : Set α :=
+  { x | τ x = LocalModelKind.interior }
+
+@[simp] theorem mem_boundaryFiber (τ : α → LocalModelKind) (x : α) :
+    x ∈ boundaryFiber τ ↔ τ x = LocalModelKind.boundary :=
+  Iff.rfl
+
+@[simp] theorem mem_interiorFiber (τ : α → LocalModelKind) (x : α) :
+    x ∈ interiorFiber τ ↔ τ x = LocalModelKind.interior :=
+  Iff.rfl
+
+theorem ExistsBoundaryPoint.iff_boundaryFiber_nonempty (τ : α → LocalModelKind) :
+    ExistsBoundaryPoint τ ↔ (boundaryFiber τ).Nonempty := by
+  simp [ExistsBoundaryPoint, Set.Nonempty]
+
+theorem ExistsInteriorPoint.iff_interiorFiber_nonempty (τ : α → LocalModelKind) :
+    ExistsInteriorPoint τ ↔ (interiorFiber τ).Nonempty := by
+  simp [ExistsInteriorPoint, Set.Nonempty]
+
+theorem AllInterior.iff_eq_univ_interiorFiber (τ : α → LocalModelKind) :
+    AllInterior τ ↔ interiorFiber τ = Set.univ := by
+  simp [AllInterior, interiorFiber, Set.eq_univ_iff_forall, Set.mem_setOf_eq]
+
+theorem AllBoundary.iff_eq_univ_boundaryFiber (τ : α → LocalModelKind) :
+    AllBoundary τ ↔ boundaryFiber τ = Set.univ := by
+  simp [AllBoundary, boundaryFiber, Set.eq_univ_iff_forall]
+
+end Fibers
 
 end ReflectiveFoldObstruction.Invariants.BoundaryType

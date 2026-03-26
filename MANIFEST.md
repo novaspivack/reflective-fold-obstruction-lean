@@ -24,9 +24,9 @@
 | Reachability | `Reachability/` | Internal ops, closure hulls, reachability invariants |
 | Obstruction | `Obstruction/` | Fold, reflective fold, open–compact |
 | Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
-| Assembly | `Main.lean` | Master assembly (future) |
+| Assembly | `Main.lean` | Cross-layer assembly index |
 
-**Progress (SPEC_004 Phase 2):** `Core/`, `Reflection/`, **`Diagonal/`**, **`Invariants/SortSeparation.lean`**, **`Invariants/Transport.lean`**, and **`Invariants/BoundaryType.lean`** are proof-complete (no `sorry`). Remaining `Invariants/*` modules are scaffolds until the next slice.
+**Progress:** **All modules** in `ReflectiveFoldObstruction/` are substantive (definitions + lemmas, **0** `sorry`). Flagship smooth/quotient geometry remains in `representational-regress-lean` (SPEC_002); this repo supplies abstracts, ℝⁿ model sets, and generic hull/obstruction APIs.
 
 ---
 
@@ -41,7 +41,13 @@
 - **Diagonal.Pressure:** packaged “no surjective `curry (lawvereBinary s)`” under fixed-point-free codomain; `not_surjective_curry_into_nat` at `A : Type` (see honest limits).
 - **Invariants.SortSeparation:** functorial `mapSlot` + injectivity under injective branch maps; reflective tower / represent disjointness lemmas (invariant API for `Transport`).
 - **Invariants.Transport:** `pullbackPred` / `transportPred` with inverse laws along `Equiv`; `slotEquiv` from branch equivalences + composition / transitivity lemmas.
-- **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; global predicates `AllInterior` / `ExistsBoundaryPoint` / … with `Equiv` preservation and incompatibility lemmas.
+- **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; fibers; global predicates + `Equiv` preservation and incompatibility lemmas.
+- **Invariants.ConnectedBoundary:** `RelBoundarySep` / `HasRelBoundarySep` / `IsRelBoundaryConnected`; equivariance under `Equiv`; link to `boundaryFiber` of a typing.
+- **Invariants.OrientabilityLike:** `ParityGauge` (`α → Bool`), `transportGauge`, local constancy vs twist witnesses.
+- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, union-preserving).
+- **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
+- **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
+- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity.
 
 ---
 
