@@ -46,7 +46,7 @@
 
 1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as `RepresentationalRegress`).
 2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency.
-3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) so `A` and `Nat` share the universe required by `MonoidalClosed (Type u)` for `lawvereBinary`. For arbitrary `A : Type u`, use the **function** corollaries in `LawvereType` (`lawvere_no_universal_unary_into_nat`) or `ULLift`/`LawvereClosed` extensions (not packaged here).
+3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) so `A` and `Nat` share the universe required by `MonoidalClosed (Type u)` for `lawvereBinary`. For arbitrary `A : Type u`, use the **function** corollaries in `LawvereType` (`lawvere_no_universal_unary_into_nat`) or `ULift`/`LawvereClosed` extensions (not packaged here).
 
 ---
 
