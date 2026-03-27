@@ -1,7 +1,7 @@
 /-
   Reflective **towers**: consequences of `IterInjective` for iterates of `represent`.
 
-  Mirrors `RepresentationalRegress.Regress` with explicit `hij : IterInjective R` hypotheses
+  Mirrors the RI **regress** tower API with explicit `hij : IterInjective R` hypotheses
   (`specs/IN-PROCESS/SPEC_003_RFO` — structure vs hypothesis split).
 -/
 

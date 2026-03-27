@@ -37,7 +37,7 @@
 | `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
-| `ReflectiveFoldObstruction/Examples/RepresentationalRegress.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, certificates; no `lake require` (SPEC_002) |
+| `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `riLakeRequireBlockedNote`; no `lake require representational-incompleteness-lean` (SPEC_002) |
 | `ReflectiveFoldObstruction/Examples/CylinderMobius.lean` | `parityOfHolonomy`, link to `OrientabilityLike` |
 | `ReflectiveFoldObstruction/Examples/NoCollapse.lean` | `represent_mor_ne_obj_A` |
 | `ReflectiveFoldObstruction/Main.lean` | Assembly imports + `assemblySurface` |
@@ -64,4 +64,4 @@
 ## Notes
 
 - **Theorem inventory buckets A–F** (vision §9): maintain in `THEOREM_INVENTORY.md` as formal content appears.
-- **No dependency** on `representational-regress-lean` until SPEC_004 / interface work explicitly adds `lake require`.
+- **No `lake require`** on `representational-incompleteness-lean` until SPEC_004 step 2; re-validate `Examples/RepresentationalIncompleteness` after **RI** API changes.

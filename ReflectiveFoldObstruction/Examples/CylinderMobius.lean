@@ -1,7 +1,7 @@
 /-
   **Cylinder / Möbius narrative hook** — relates tag-level data to parity gauges.
 
-  Full quotient models arrive with SPEC_004 promotion from `representational-regress-lean`;
+  Full quotient models arrive with SPEC_004 promotion from `representational-incompleteness-lean`;
   here we only combine `Topology/MobiusCylinder` with `OrientabilityLike`.
 
   See `specs/NOTES/PROJECT_VISION.md` — Examples/CylinderMobius.

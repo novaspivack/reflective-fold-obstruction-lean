@@ -5,9 +5,10 @@
   Per `specs/IN-PROCESS/SPEC_003_RFO_LEAN_LAYER_EPICS.md`, **structure** (this file)
   is separated from the **hypothesis** `IterInjective` (distinct iterate powers in
   `End A`). That generalizes the bundled `iter_injective` field of
-  `RepresentationalRegress.RepresentationalSystem` without importing that repo.
+  the bundled `iter_injective` pattern of the **RI** line (`representational-incompleteness-lean`)
+  without importing that repository.
 
-  Slice packaging and iterates follow the same mathematics as representational regress;
+  Slice packaging and iterates follow the same mathematics as the incompleteness / regress story;
   see `specs/NOTES/PROJECT_VISION.md` §3.
 -/
 

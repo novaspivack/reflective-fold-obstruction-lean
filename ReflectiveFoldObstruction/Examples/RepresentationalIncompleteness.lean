@@ -1,16 +1,17 @@
 /-
-  Bridge toward the **representational-regress** corpus without importing that repository.
+  Bridge toward **`representational-incompleteness-lean`** without importing that repository.
 
   **Governance:** `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md` — do **not** add
-  `lake require representational-regress-lean` until SPEC_004 import-timeline step 2. The RR
-  Lean repo is still finishing a full green `lake build`; keep this dependency off until both
-  governance and build health are satisfied.
+  `lake require representational-incompleteness-lean` until SPEC_004 import-timeline step 2.
+  Keep RFO **Mathlib-only** until promotion rules and stable interfaces on the RI side are met.
 
-  This file defines the **minimal portable host** our layer tree actually uses — a
-  `ReflectiveSystem` together with `IterInjective` — and records proved consequences that any
-  future RR-to-RFO port must preserve.
+  This file defines the **minimal portable host** this layer tree uses — a `ReflectiveSystem` with
+  `IterInjective` — and records consequences any future **RFO ↔ RI** port must preserve.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Examples/RepresentationalRegress.
+  (Legacy path name: this module superseded `Examples/RepresentationalRegress.lean` when the
+  flagship Lean repo was renamed to **representational-incompleteness-lean**.)
+
+  See `specs/NOTES/PROJECT_VISION.md` — Examples layer.
 -/
 
 import ReflectiveFoldObstruction.Core.Basic
@@ -18,7 +19,7 @@ import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
 
-namespace ReflectiveFoldObstruction.Examples.RepresentationalRegress
+namespace ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 
 open ReflectiveFoldObstruction
 
@@ -47,8 +48,8 @@ def diagonalCertificate (H : PackagedReflectiveHost) :
   description :=
     "Packaged reflective host: see `iterative_unbounded` / `Reflection.Towers.regress_iterates_unbounded`."
 
-/-- Human-readable blocker for automation: dependency not yet authorized. -/
-def rrLakeRequireBlockedNote : String :=
-  "SPEC_002 + SPEC_004: `lake require representational-regress-lean` remains off until promotion."
+/-- Human-readable blocker for automation: RI `lake require` not yet authorized. -/
+def riLakeRequireBlockedNote : String :=
+  "SPEC_002 + SPEC_004: `lake require representational-incompleteness-lean` remains off until promotion."
 
-end ReflectiveFoldObstruction.Examples.RepresentationalRegress
+end ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness

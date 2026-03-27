@@ -1,7 +1,7 @@
 /-
   **Open vs compact charts** — Mathlib hooks for chart-size obstructions.
 
-  Concrete “no global finite chart” arguments require the flagship geometry in RR (SPEC_002).
+  Concrete “no global finite chart” arguments require flagship geometry from **RI** (SPEC_002).
   Here we only record **finite sets are compact** in any topological space — a basic lemma
   used when extracting finite local covers from compact chart targets.
 

@@ -35,7 +35,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 |--------|--------|
 | `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
 | `Examples.NoCollapse` | `represent_mor_ne_obj_A` (alias of `SortSeparation.represent_slot_disjoint_from_obj_A`) |
-| `Examples.RepresentationalRegress` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `rrLakeRequireBlockedNote` |
+| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `riLakeRequireBlockedNote` |
 
 ---
 
@@ -69,7 +69,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 | `Obstruction.OpenCompact` | `isCompact_of_finite`, `isCompact_finset` |
 | `Examples.CylinderMobius` | `parityOfHolonomy`, `parity_reflects_twist` |
 
-*Flagship smooth/quotient models per SPEC_002 remain in `representational-regress-lean`.*
+*Flagship smooth/quotient models per SPEC_002 remain in `representational-incompleteness-lean`.*
 
 ---
 

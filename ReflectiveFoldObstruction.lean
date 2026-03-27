@@ -29,7 +29,7 @@ import ReflectiveFoldObstruction.Reachability.Invariants
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
 import ReflectiveFoldObstruction.Obstruction.OpenCompact
-import ReflectiveFoldObstruction.Examples.RepresentationalRegress
+import ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 import ReflectiveFoldObstruction.Examples.CylinderMobius
 import ReflectiveFoldObstruction.Examples.NoCollapse
 import ReflectiveFoldObstruction.Main

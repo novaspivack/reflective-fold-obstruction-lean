@@ -8,10 +8,10 @@
   Still **`Type u`** (not an abstract CCC). Matches the vocabulary in
   `Mathlib.CategoryTheory.Monoidal.Closed.Types`.
 
-  General `C` with `[MonoidalClosed C]` + global elements is future work (see RR comment
+  General `C` with `[MonoidalClosed C]` + global elements is future work (see **RI** / legacy notes
   in the original `LawvereCCCType.lean`).
 
-  **Dependency:** `ReflectiveFoldObstruction.Diagonal.LawvereType` — not `representational-regress-lean`.
+  **Dependency:** `ReflectiveFoldObstruction.Diagonal.LawvereType` — not `representational-incompleteness-lean`.
 -/
 
 import Mathlib.CategoryTheory.Monoidal.Closed.Basic

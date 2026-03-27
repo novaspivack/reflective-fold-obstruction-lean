@@ -29,10 +29,10 @@
 | Topology | `Topology/` | Models, separation, local 1D/2D, punctured neighborhoods, boundary, Möbius/cylinder |
 | Reachability | `Reachability/` | Internal ops, closure hulls, reachability invariants |
 | Obstruction | `Obstruction/` | Fold, reflective fold, open–compact |
-| Examples | `Examples/` | RR bridge, cylinder/Möbius, no-collapse |
+| Examples | `Examples/` | **RI** bridge (`RepresentationalIncompleteness`), cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Cross-layer assembly index |
 
-**Progress:** **All modules** in `ReflectiveFoldObstruction/` are substantive (definitions + lemmas, **0** `sorry`). Flagship smooth/quotient geometry remains in `representational-regress-lean` (SPEC_002); this repo supplies abstracts, ℝⁿ model sets, and generic hull/obstruction APIs.
+**Progress:** **All modules** in `ReflectiveFoldObstruction/` are substantive (definitions + lemmas, **0** `sorry`). Promoted smooth/quotient geometry and **RI**’s full corpus live in **`representational-incompleteness-lean`** (SPEC_002); RFO supplies abstracts, ℝⁿ model sets, and generic hull/obstruction APIs.
 
 ---
 
@@ -53,15 +53,15 @@
 - **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, **∪** / **iUnion** / indexed **∩**-subset, **univ**, **empty** seed, **induction** per vision §6).
 - **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
-- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalRegress` defines `PackagedReflectiveHost` + unboundedness lemmas without RR import.
+- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalIncompleteness` defines `PackagedReflectiveHost` + unboundedness lemmas without **RI** `lake require`.
 - **Invariants.HomeomorphTransport:** chart transport lemmas specializing `Equiv` invariants through `X ≃ₜ Y`.
 
 ---
 
 ## Honest limits
 
-1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as `RepresentationalRegress`).
-2. **Promoted abstraction** stops at what is in this repo; paper-tied concrete geometry remains in `representational-regress-lean` until SPEC_002 promotion / SPEC_004 dependency. *(As of early work on that repo, its `lake build` is still being stabilized; this library stays Mathlib-only until integration is ready.)*
+1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as the **RI** line).
+2. **Promoted abstraction** stops at what is in this repo; **RI**-tied concrete geometry remains in `representational-incompleteness-lean` until SPEC_002 promotion / SPEC_004 dependency. *Re-run integration checks on `Examples/RepresentationalIncompleteness` when **RI** refactors public interfaces.*
 3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) with codomain **`Nat`** (same universe). For the same `MonoidalClosed (Type u)` story with **`A : Type u`**, use **`Pressure.not_surjective_curry_into_uliftNat`** / **`not_universal_binary_into_uliftNat`** (codomain **`ULift.{u} Nat`**). For unary `A → Nat` enumeration without `MonoidalClosed`, see **`LawvereType`** (`lawvere_no_universal_unary_into_nat`).
 
 ---

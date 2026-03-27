@@ -2,7 +2,7 @@
   **Abstract fold / architecture-change obstructions** — certificate enumerations.
 
   The concrete “you cannot intern this without a fold” theorems live across `Diagonal/`,
-  `Topology/`, and (per SPEC_002) the RR flagship repo.  This module only names the
+  `Topology/`, and (per SPEC_002) the **RI** flagship (`representational-incompleteness-lean`).  This module only names the
   **obstruction kinds** future assembly lemmas will discharge.
 
   See `specs/NOTES/PROJECT_VISION.md` — Obstruction/Fold.

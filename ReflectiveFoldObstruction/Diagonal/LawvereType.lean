@@ -6,7 +6,7 @@
   `f : B → B` to have a fixed point; hence no such universal `s` when `B` has a
   fixed-point-free endomap (e.g. `Nat.succ`).
 
-  This file is **independent** of `representational-regress-lean` (`SPEC_002`).
+  This file is **independent** of `representational-incompleteness-lean` (`SPEC_002`).
 
   For **`MonoidalClosed (Type u)`** packaging (`curry` / tensor), see `LawvereClosed.lean`.
 -/
