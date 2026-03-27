@@ -21,6 +21,17 @@ variable {α : Type u} (r : α → α → Prop)
 def ForwardClosed {α : Type u} (r : α → α → Prop) (P : α → Prop) : Prop :=
   ∀ ⦃a b : α⦄, r a b → P a → P b
 
+/-- Same notion as `ForwardClosed` — preservation along **primitive** internal steps (`SPEC_005`). -/
+abbrev PreservedBy {α : Type u} (r : α → α → Prop) (I : α → Prop) : Prop :=
+  ForwardClosed r I
+
+abbrev StepPreservedBy {α : Type u} (r : α → α → Prop) (I : α → Prop) : Prop :=
+  PreservedBy r I
+
+/-- Predicate preserved along **`ReflTransGen`** — **hull** / closure preservation. -/
+def HullPreservedBy {α : Type u} (r : α → α → Prop) (I : α → Prop) : Prop :=
+  ∀ ⦃a b : α⦄, ReflTransGen r a b → I a → I b
+
 variable {P : α → Prop}
 
 /-- Forward-closed predicates survive arbitrary iterated reachability. -/
@@ -36,5 +47,40 @@ theorem ReflTransGen.backward_closed_of_symm {r : α → α → Prop} {P : α �
     P b → P a := by
   intro hb
   exact ReflTransGen.forwardClosed hP (ReflTransGen.symmetric h hab) hb
+
+variable {r r' : α → α → Prop} {P Q : α → Prop}
+
+theorem hullPreservedBy_iff_forwardClosed : HullPreservedBy r P ↔ ForwardClosed r P :=
+  ⟨fun h ⦃_ _⦄ rab => h (ReflTransGen.single rab),
+    fun h ⦃_ _⦄ hab => ReflTransGen.forwardClosed h hab⟩
+
+theorem forwardClosed_of_weaker {r r' : α → α → Prop} (hrr : ∀ ⦃x y : α⦄, r' x y → r x y)
+    (h : ForwardClosed r P) : ForwardClosed r' P := fun ⦃_ _⦄ hxy => h (hrr hxy)
+
+/-- Every predicate is forward-closed if each `r`-step is already **equality**. -/
+theorem forwardClosed_of_step_implies_eq {r : α → α → Prop} (P : α → Prop)
+    (h : ∀ ⦃x y : α⦄, r x y → x = y) : ForwardClosed r P := by
+  rintro x y hxy hPx
+  rcases h hxy with rfl
+  exact hPx
+
+theorem reflTransGen_preserves_invariant {r : α → α → Prop} {I : α → Prop} (h : ForwardClosed r I)
+    ⦃a b : α⦄ (hab : ReflTransGen r a b) : I a → I b :=
+  ReflTransGen.forwardClosed h hab
+
+theorem preserved_conj {r : α → α → Prop} (hP : ForwardClosed r P) (hQ : ForwardClosed r Q) :
+    ForwardClosed r (fun x => P x ∧ Q x) := by
+  rintro a b hab ⟨haP, haQ⟩
+  exact ⟨hP hab haP, hQ hab haQ⟩
+
+theorem PreservedBy.inter {r : α → α → Prop} (hP : ForwardClosed r P) (hQ : ForwardClosed r Q) :
+    PreservedBy r (fun x => P x ∧ Q x) :=
+  preserved_conj hP hQ
+
+theorem ReflTransGen.eq_of_eq {a b : α} (h : ReflTransGen (@Eq α) a b) : a = b := by
+  induction h using Relation.ReflTransGen.trans_induction_on with
+  | refl x => rfl
+  | single h => exact h
+  | trans _ _ ih₁ ih₂ => exact ih₁.trans ih₂
 
 end ReflectiveFoldObstruction.Reachability.InternalOps

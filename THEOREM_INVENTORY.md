@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-28 — `lake build ReflectiveFoldObstruction` + **`lake require «representational-incompleteness»`** (**RI** bridge, **0** `sorry`).  
+**Last updated:** 2026-03-29 — summit **`Obstruction/Fold`** + **`SPEC_005`–`009` tranche**; `lake build ReflectiveFoldObstruction`, **0** `sorry`.  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
@@ -35,7 +35,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 |--------|--------|
 | `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
 | `Examples.NoCollapse` | `represent_mor_ne_obj_A` (alias of `SortSeparation.represent_slot_disjoint_from_obj_A`) |
-| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `toReflectiveSystem`, `toReflectiveSystem_iterInjective`, `PackagedReflectiveHost.fromRepresentational`, `iterative_unbounded_fromRepresentational`, `iterative_unbounded_obstruction_fromRepresentational`, `diagonalCertificate_fromRepresentational`, `riLakeRequireIntegratedNote` / `riLakeRequireBlockedNote` |
+| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `toReflectiveSystem`, `toReflectiveSystem_iterInjective`, `PackagedReflectiveHost.fromRepresentational`, `iterative_unbounded_fromRepresentational`, `iterative_unbounded_obstruction_fromRepresentational`, `diagonalCertificate_fromRepresentational`, `representational_incompleteness_implies_reflective_fold_obstruction`, `riLakeRequireIntegratedNote` / `riLakeRequireBlockedNote` |
 
 ---
 
@@ -48,9 +48,10 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 | `Invariants.BoundaryType` | `LocalModelKind`, `pullbackTyping`, `transportTyping`, fiber defs (`boundaryFiber`, `interiorFiber`, `mem_*`, `iff_*_nonempty`, `iff_eq_univ_*`), global predicates + transport / incompatibility + pullback lemmas |
 | `Invariants.ConnectedBoundary` | `RelBoundarySep`, `HasRelBoundarySep`, `IsRelBoundaryConnected`, `RelBoundarySep.boundary_nonempty`, `RelBoundarySep.image_equiv`, `HasRelBoundarySep.iff_image_equiv`, `IsRelBoundaryConnected.iff_image_equiv`, `not_HasRelBoundarySep_of_AllInterior`, `ExistsBoundaryPoint.of_boundaryFiber_HasRelBoundarySep` |
 | `Invariants.OrientabilityLike` | `ParityGauge`, `transportGauge`, `IsLocallyConstant`, `HasTwistWitness`, `IsLocallyConstant_iff_not_hasTwistWitness`, transport + const/twist `iff` lemmas |
-| `Reachability.InternalOps` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `ReflTransGen.backward_closed_of_symm` |
-| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_mono`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, `reachableFrom_union`, `reachableFrom_idem`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction` |
-| `Reachability.Invariants` | `ForwardClosed.mem_reachableFrom`, `reachableFrom_eq_of_seed_univ` |
+| `Reachability.InternalOps` | `ForwardClosed`, `PreservedBy`, `StepPreservedBy`, `HullPreservedBy`, `hullPreservedBy_iff_forwardClosed`, `forwardClosed_of_weaker`, `forwardClosed_of_step_implies_eq`, `reflTransGen_preserves_invariant`, `preserved_conj`, `PreservedBy.inter`, `ReflTransGen.eq_of_eq`, `ReflTransGen.forwardClosed`, `ReflTransGen.backward_closed_of_symm` |
+| `Reachability.ClosureHull` | `reachableFrom`, `subset_reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_mono`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, `reachableFrom_union`, `reachableFrom_idem`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction`, `reachableFrom_subset_setOf`, `reachableFrom_subset_of_forwardClosed`, `not_mem_reachableFrom_of_preserved_mismatch` |
+| `Reachability.Invariants` | `ForwardClosed.mem_reachableFrom`, `preserved_mem_reachableFrom`, `reachableFrom_subset_of_preserved`, `not_mem_reachableFrom_of_preserved_mismatch`, `reachableFrom_eq_of_seed_univ` |
+| `Reachability.ReflectiveSteps` | `morAdvances`, `reflectiveSlotStep`, `IsObjReflectiveSlot`, `reflective_step_preserves_sort_separation`, `reflective_step_preserves_objBranch`, `not_IsObjReflectiveSlot_mor_represent`, `reflective_reachable_preserves_sort_separation` |
 | `Invariants.HomeomorphTransport` | `transportTyping_homeomorph_apply`; `BoundaryType.*.iff_homeomorph`; `OrientabilityLike.*.iff_homeomorph`; `ConnectedBoundary.*.iff_image_homeomorph` |
 
 ---
@@ -67,7 +68,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 | `Topology.Boundary` | `corneredUnitSquare`, `corneredUnitSquare_eq` |
 | `Topology.Hausdorff` | `prod_t2space` |
 | `Obstruction.OpenCompact` | `isCompact_of_finite`, `isCompact_finset` |
-| `Examples.CylinderMobius` | `parityOfHolonomy`, `parity_reflects_twist` |
+| `Examples.CylinderMobius` | `parityOfHolonomy`, `parity_reflects_twist`, `mobius_cylinder_fold_obstruction` |
 
 *Flagship smooth/quotient models per SPEC_002 remain in `representational-incompleteness-lean`.*
 
@@ -77,6 +78,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 
 | Module | Names |
 |--------|--------|
-| `Obstruction.Fold` | `ObstructionKind`, `ObstructionCertificate` |
-| `Obstruction.ReflectiveFold` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
+| `Obstruction.Fold` | `ObstructionKind`, `ObstructionCertificate`, `PreservedInvariantStep`, `internal_reachability_preserves_invariant`, `fold_obstruction_of_invariant_mismatch`, `not_reachable_of_preserved_and_mismatch`, `reachableFrom_hull_preserves_invariant`, `preserved_seed_mem_reachableFrom`, `not_mem_reachableFrom_of_preserved_invariant_mismatch`, `FoldObstruction`, `FoldObstruction.not_reachable`, `foldObstruction_of_preservedInvariant` |
+| `Obstruction.CanonicalInstances` | `forwardClosed_AllInterior`, `fold_obstruction_of_boundary_type_mismatch`, `forwardClosed_IsRelBoundaryConnected`, `fold_obstruction_of_connected_boundary_mismatch`, `forwardClosed_parity_false`, `fold_obstruction_of_orientability_mismatch`, `fold_obstruction_of_homeomorph_invariant_mismatch`, `isTrivialHolonomy`, `forwardClosed_isTrivialHolonomy`, `mobius_cylinder_fold_obstruction`, `fold_obstruction_of_sort_separation_mismatch` |
+| `Obstruction.ReflectiveFold` | `certificateOfIterativeUnbounded`, `iterative_unbounded`, `reflective_fold_obstruction_slot_mismatch`, `reflective_architecture_fold_obstruction` |
 | `Main` | `assemblySurface` |

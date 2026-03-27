@@ -11,17 +11,23 @@
   See `specs/NOTES/PROJECT_VISION.md` — Examples layer.
 -/
 
+import Mathlib.Logic.Relation
+
 import RepresentationalIncompleteness.Basic
 import ReflectiveFoldObstruction.Core.Basic
+import ReflectiveFoldObstruction.Core.Slots
 import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
+import ReflectiveFoldObstruction.Reachability.ReflectiveSteps
 
 universe u
 
 namespace ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 
+open Relation
 open ReflectiveFoldObstruction
+open ReflectiveFoldObstruction.Reachability.ReflectiveSteps
 
 /-- Working bundle for “architecture supports internal iteration with injective tower”. -/
 structure PackagedReflectiveHost where
@@ -89,5 +95,12 @@ def riLakeRequireIntegratedNote : String :=
 /-- Back-compat name for older greps / docs. -/
 abbrev riLakeRequireBlockedNote : String :=
   riLakeRequireIntegratedNote
+
+/-- **`SPEC_008` bridge:** any **RI** host inherits the **sort** fold obstruction on induced `ReflectiveSystem`. -/
+theorem representational_incompleteness_implies_reflective_fold_obstruction (R : RepresentationalSystem) :
+    ¬ ReflTransGen (reflectiveSlotStep (toReflectiveSystem R))
+      (Core.Slots.OntologicalSlot.obj (toReflectiveSystem R).A)
+      (Core.Slots.OntologicalSlot.mor (toReflectiveSystem R).represent) := by
+  simpa [toReflectiveSystem] using Obstruction.ReflectiveFold.reflective_fold_obstruction_slot_mismatch (toReflectiveSystem R)
 
 end ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness

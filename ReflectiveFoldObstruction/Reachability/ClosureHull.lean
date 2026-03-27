@@ -126,4 +126,16 @@ theorem mem_reachableFrom_induction {S : Set α} {Q : α → Prop}
   rcases hy with ⟨x, hxS, hxy⟩
   exact InternalOps.ReflTransGen.forwardClosed hstep hxy (hseed x hxS)
 
+/-- If the seed lies in `{x | P x}` and `P` is forward-closed, the entire hull stays inside. -/
+theorem reachableFrom_subset_setOf {S : Set α} {P : α → Prop}
+    (hseed : ∀ x ∈ S, P x) (hP : InternalOps.ForwardClosed r P) :
+    reachableFrom r S ⊆ { y | P y } := fun _y hy => mem_reachableFrom_induction r hseed hP hy
+
+alias reachableFrom_subset_of_forwardClosed := reachableFrom_subset_setOf
+
+/-- If `T` **fails** `P` but the hull preserves `P` from a `P`-seed, then `T` is unreachable. -/
+theorem not_mem_reachableFrom_of_preserved_mismatch {S : Set α} {T : α} {P : α → Prop}
+    (hP : InternalOps.ForwardClosed r P) (hseed : ∀ x ∈ S, P x) (hT : ¬ P T) :
+    T ∉ reachableFrom r S := fun hmem => hT (mem_reachableFrom_induction r hseed hP hmem)
+
 end ReflectiveFoldObstruction.Reachability.ClosureHull

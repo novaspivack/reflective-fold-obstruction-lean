@@ -27,8 +27,8 @@
 | Diagonal | `Diagonal/` | Lawvere-family, pressure |
 | Invariants | `Invariants/` | Sort separation, transport, boundary, connectivity, orientability-like |
 | Topology | `Topology/` | Models, separation, local 1D/2D, punctured neighborhoods, boundary, Möbius/cylinder |
-| Reachability | `Reachability/` | Internal ops, closure hulls, reachability invariants |
-| Obstruction | `Obstruction/` | Fold, reflective fold, open–compact |
+| Reachability | `Reachability/` | Internal ops, **reflective slot steps**, closure hulls, reachability invariants |
+| Obstruction | `Obstruction/` | **Fold (abstract summit)**, canonical instances, reflective fold, open–compact |
 | Examples | `Examples/` | **RI** bridge (`RepresentationalIncompleteness`), cylinder/Möbius, no-collapse |
 | Assembly | `Main.lean` | Cross-layer assembly index |
 
@@ -50,10 +50,12 @@
 - **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; fibers; global predicates + `Equiv` preservation and incompatibility lemmas.
 - **Invariants.ConnectedBoundary:** `RelBoundarySep` / `HasRelBoundarySep` / `IsRelBoundaryConnected`; equivariance under `Equiv`; link to `boundaryFiber` of a typing.
 - **Invariants.OrientabilityLike:** `ParityGauge` (`α → Bool`), `transportGauge`, local constancy vs twist witnesses.
-- **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, **∪** / **iUnion** / indexed **∩**-subset, **univ**, **empty** seed, **induction** per vision §6).
-- **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
+- **Reachability:** `PreservedBy` / `HullPreservedBy` (= `ForwardClosed` packaging); `ReflTransGen` / hull preservation; `reachableFrom` hull (subset-from-seed, mismatch non-membership, idempotent, **∪** / **iUnion** / indexed **∩**-subset, **univ**, **empty** seed, **induction**); **`ReflectiveSteps`** (`reflectiveSlotStep`, `morAdvances`, sort forward-closed lemmas).
+- **Obstruction.Fold (summit):** `fold_obstruction_of_invariant_mismatch`, hull-seed preservation, `FoldObstruction` witness, **certificates downstream** of theorems (metadata only).
+- **Obstruction.CanonicalInstances:** boundary typing, connectivity, parity, holonomy, **sort-separation** corollaries factoring through the summit (`SPEC_007`).
+- **Obstruction.ReflectiveFold:** `reflective_fold_obstruction_slot_mismatch`, `reflective_architecture_fold_obstruction`; still exports **`iterative_unbounded`** (tower / `IterInjective` channel).
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
-- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalIncompleteness` — `PackagedReflectiveHost`, **RI** `RepresentationalSystem` → `toReflectiveSystem` + `fromRepresentational`, unboundedness + certificates (**`lake require «representational-incompleteness»`** **on**).
+- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` holonomy parity + **`mobius_cylinder_fold_obstruction`** (generic theorem instance); `RepresentationalIncompleteness` — `PackagedReflectiveHost`, **RI** `RepresentationalSystem` → `toReflectiveSystem` + `fromRepresentational`, tower unboundedness + **`representational_incompleteness_implies_reflective_fold_obstruction`** (sort fold; **no extra RI axioms**) + certificates (**`lake require «representational-incompleteness»`** **on**).
 - **Invariants.HomeomorphTransport:** chart transport lemmas specializing `Equiv` invariants through `X ≃ₜ Y`.
 
 ---
