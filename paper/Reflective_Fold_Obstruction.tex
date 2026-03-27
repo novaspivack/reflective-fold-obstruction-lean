@@ -552,9 +552,7 @@ Generated-calculus fold (\Cref{prop:generator})
 \end{verbatim}
 
 \noindent
-The full module tree, theorem inventory, and formalization map are documented in the
-artifact's companion files (\texttt{MANIFEST.md}, \texttt{THEOREM\_INVENTORY.md},
-and the formalization map).
+The full module tree and formalization map are given in \Cref{app:modules}.
 
 % ===========================================================================
 % REFERENCES
@@ -598,5 +596,51 @@ N.~Spivack.
 \newblock Machine-checked in Lean~4/Mathlib.
 
 \end{thebibliography}
+
+% ===========================================================================
+% APPENDIX
+% ===========================================================================
+\appendix
+
+\section{Module map}\label{app:modules}
+
+\small
+\begin{center}
+\begin{tabular}{@{}p{0.45\textwidth}p{0.49\textwidth}@{}}
+\toprule
+\textbf{Module path} & \textbf{Role} \\
+\midrule
+\texttt{Core/Basic} & \texttt{ReflectiveSystem}, \texttt{IterInjective}, iterates, monoid laws \\
+\texttt{Core/Slots} & \texttt{OntologicalSlot}, sort disjointness, \texttt{ReflectiveSlot} \\
+\texttt{Core/ArchitectureObstruction} & Stable re-export names for fold pattern \\
+\midrule
+\texttt{Reachability/InternalOps} & \texttt{ForwardClosed}, \texttt{PreservedBy}, monotone \texttt{ReflTransGen}, relation extension \\
+\texttt{Reachability/ClosureHull} & \texttt{reachableFrom}, hull algebra (union, intersection, idempotence), subrelation monotonicity \\
+\texttt{Reachability/Invariants} & Hull--invariant wrappers \\
+\texttt{Reachability/ReflectiveSteps} & \texttt{reflectiveSlotStep}, sort preservation \\
+\texttt{Reachability/ReflectiveCalculus} & Rich calculus, admissible unions, sub-hull containment \\
+\texttt{Reachability/GeneratedCalculi} & \texttt{unionGen}, reflective Bool generators \\
+\texttt{Reachability/ArchitectureClasses} & \texttt{Architecture}, \texttt{FoldObstructionBundle} \\
+\midrule
+\texttt{Obstruction/Fold} & Summit: fold obstruction, hull exclusion, relation-extension persistence \\
+\texttt{Obstruction/CanonicalInstances} & Boundary, connectivity, parity, holonomy, sort corollaries \\
+\texttt{Obstruction/ReflectiveFold} & Sort mismatch flagship, tower unboundedness \\
+\texttt{Obstruction/Architecture\-Universality} & Bundled fold + hull theorems \\
+\texttt{Obstruction/OpenCompactWitness} & Discrete witness-step obstruction on $\mathbb{N}$ \\
+\midrule
+\texttt{Invariants/*} & Sort separation, transport, boundary type, connectivity, orientability-like, homeomorph transport \\
+\texttt{Topology/*} & Models, local 1D/2D, holonomy tags, holonomy phase, Hausdorff \\
+\midrule
+\texttt{Examples/Representational\-Incompleteness} & RI bridge: \texttt{toReflectiveSystem}, sort fold \\
+\texttt{Examples/CylinderMobius} & Holonomy parity instance \\
+\texttt{Examples/ObserverBridge} & Schematic RFO $\to$ OE route \\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+
+\noindent
+All modules compile with zero \texttt{sorry} under
+\texttt{lake build ReflectiveFoldObstruction}.
 
 \end{document}
