@@ -1,0 +1,568 @@
+\documentclass[11pt]{article}
+
+% ---- Packages ----
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{microtype}
+
+% ---- Theorem environments ----
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---- Macros ----
+\newcommand{\RFO}{\textsc{rfo}}
+\newcommand{\RI}{\textsc{ri}}
+\newcommand{\Lean}{\textsc{Lean\,4}}
+\newcommand{\Mathlib}{\textsc{Mathlib}}
+\newcommand{\ReflTransGen}{\operatorname{ReflTransGen}}
+\newcommand{\PreservedBy}{\operatorname{PreservedBy}}
+\newcommand{\ForwardClosed}{\operatorname{ForwardClosed}}
+\newcommand{\reachableFrom}{\operatorname{reachableFrom}}
+\newcommand{\unionGen}{\operatorname{unionGen}}
+\newcommand{\obj}{\mathsf{obj}}
+\newcommand{\mor}{\mathsf{mor}}
+\newcommand{\represent}{\mathsf{represent}}
+
+% ---- Title ----
+\title{Reflective Fold Obstruction:\\
+Internal Closure Does Not Exhaust Architectural Transition}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ===========================================================================
+% ABSTRACT
+% ===========================================================================
+\begin{abstract}
+We prove a general theorem of \emph{fold obstruction}: if a predicate~$I$ is preserved
+along the primitive steps of an internal relation~$r$, then $I$ is preserved along the
+full reflexive--transitive closure~$r^{*}$, and any target failing~$I$ is not internally
+reachable from a source satisfying~$I$.  In the hull form, when every seed in a set~$S_0$
+satisfies~$I$ and $I$ is forward-closed for~$r$, every point in the closure hull
+$\reachableFrom(r,S_0)$ satisfies~$I$; hence any $I$-violating target lies outside
+that hull.
+
+We instantiate this on the \emph{reflective slot calculus}, where sort structure (object
+vs.\ morphism) is preserved by disciplined internal reflective steps, blocking any
+internal route from the object slot to the morphism representer.  Further instances
+cover boundary-type mismatch, connected-boundary mismatch, orientability-parity
+mismatch, holonomy-tag mismatch, open--compact witness obstruction, and holonomy-phase
+dynamics.  A bridge theorem shows that every upstream \emph{representational system} in
+the sense of~\RI{} inherits the reflective fold obstruction.
+
+The entire development is machine-checked in \Lean{}/\Mathlib{} with zero \texttt{sorry}
+and zero \texttt{admit} across all shipped modules.  The artifact builds reproducibly
+with \texttt{lake build}.
+\end{abstract}
+
+% ===========================================================================
+% 1. THE PROBLEM
+% ===========================================================================
+\section{The problem: internal closure versus architectural transition}\label{sec:problem}
+
+Consider a system whose states evolve along an \emph{internal} step relation
+$r : \alpha \to \alpha \to \mathrm{Prop}$.  Reflexive--transitive closure~$r^{*}$
+captures everything the system can reach by iterating, composing, and idling along~$r$.
+A natural question is:
+
+\begin{quote}
+\emph{Does internal closure exhaust architectural transition?  That is, can every state
+reachable ``in principle'' be obtained by iterating~$r$?}
+\end{quote}
+
+This paper answers: \textbf{no}, in a precise and general sense.
+
+We prove that whenever a predicate~$I$ is preserved by each primitive~$r$-step, the
+predicate lifts to the entire closure~$r^{*}$.  Any target violating~$I$ is therefore
+\emph{not} internally reachable from a source satisfying~$I$.  We call such a blocked
+transition a \emph{fold}: a structural passage that the internal calculus cannot
+generate.
+
+\begin{quote}
+\textbf{A fold is not an iterate.}
+\end{quote}
+
+The claim is not that the unreachable target is impossible in all senses, but that any
+route generated only by~$r$ and preserving~$I$ cannot reach it.  Internal closure and
+architecture-changing transition must therefore be distinguished.
+
+% ===========================================================================
+% 2. DEFINITIONS
+% ===========================================================================
+\section{Definitions}\label{sec:defs}
+
+We work over a type~$\alpha$ in a universe~$u$.  All definitions and theorems in this
+section have exact counterparts in the \Lean{} artifact.
+
+\begin{definition}[Primitive internal relation]\label{def:relation}
+A \emph{primitive internal relation} on~$\alpha$ is a binary relation
+$r : \alpha \to \alpha \to \mathrm{Prop}$.  We make no assumptions on~$r$ (it need
+not be reflexive, transitive, or decidable).
+\end{definition}
+
+\begin{definition}[Forward closure / preserved invariant]\label{def:forwardclosed}
+A predicate $I : \alpha \to \mathrm{Prop}$ is \emph{forward-closed} for~$r$
+(equivalently, \emph{preserved by}~$r$) when
+\[
+  \ForwardClosed(r,I) \;\coloneqq\;
+  \forall\, a\, b,\;\; r(a,b) \;\Longrightarrow\; I(a) \;\Longrightarrow\; I(b).
+\]
+We write $\PreservedBy(r,I)$ as a synonym.
+\end{definition}
+
+\begin{definition}[Reflexive--transitive closure]\label{def:refltransgen}
+$\ReflTransGen(r)$ is the reflexive--transitive closure of~$r$:
+\begin{itemize}[nosep]
+  \item $\ReflTransGen(r,a,a)$ for every~$a$ \,(\emph{refl});
+  \item if $\ReflTransGen(r,a,b)$ and $r(b,c)$, then $\ReflTransGen(r,a,c)$ \,(\emph{tail}).
+\end{itemize}
+This is the standard Mathlib \texttt{Relation.ReflTransGen}.
+\end{definition}
+
+\begin{definition}[Closure hull]\label{def:hull}
+Given a seed set $S_0 \subseteq \alpha$, the \emph{closure hull} is
+\[
+  \reachableFrom(r, S_0) \;=\;
+  \bigl\{\, y \in \alpha \;\bigm|\;
+  \exists\, x \in S_0,\; \ReflTransGen(r,x,y) \,\bigr\}.
+\]
+\end{definition}
+
+% ===========================================================================
+% 3. MAIN THEOREM
+% ===========================================================================
+\section{The main theorem}\label{sec:main}
+
+\subsection*{Theorem A: primitive-to-closure preservation}
+
+\begin{theorem}[Closure preservation]\label{thm:closure-preservation}
+Let $r : \alpha \to \alpha \to \mathrm{Prop}$ and $I : \alpha \to \mathrm{Prop}$ with
+$\ForwardClosed(r,I)$.  Then for all $a,b : \alpha$,
+\[
+  \ReflTransGen(r,a,b) \;\Longrightarrow\; I(a) \;\Longrightarrow\; I(b).
+\]
+\end{theorem}
+
+\begin{proof}
+By induction on the derivation of $\ReflTransGen(r,a,b)$.  The \emph{refl} case is
+immediate.  For the \emph{tail} case, given $\ReflTransGen(r,a,b')$ and $r(b',b)$, the
+inductive hypothesis yields $I(b')$, and forward closure gives $I(b)$.
+\end{proof}
+
+\smallskip
+\noindent\textbf{Lean name:} \texttt{internal\_reachability\_preserves\_invariant}.
+
+\subsection*{Theorem B: pairwise fold obstruction}
+
+\begin{theorem}[Fold obstruction]\label{thm:fold-obstruction}
+If $\PreservedBy(r,I)$, $I(S)$, and $\lnot I(T)$, then
+\[
+  \lnot\, \ReflTransGen(r, S, T).
+\]
+\end{theorem}
+
+\begin{proof}
+Suppose for contradiction that $\ReflTransGen(r,S,T)$.
+By \Cref{thm:closure-preservation}, $I(S)$ implies $I(T)$, contradicting $\lnot I(T)$.
+\end{proof}
+
+\smallskip
+\noindent\textbf{Lean name:} \texttt{fold\_obstruction\_of\_invariant\_mismatch}.
+
+\begin{remark}\label{rem:interpretation}
+\Cref{thm:fold-obstruction} does not say that $T$ is ``impossible.''  It says that any
+path generated exclusively by~$r$ from a source satisfying~$I$ cannot reach a target
+violating~$I$.  Hence internal closure and invariant-breaking transition must be
+distinguished: the latter requires a \emph{fold}---a structural passage not in~$r^{*}$.
+\end{remark}
+
+\subsection*{Theorem C: hull exclusion}
+
+\begin{theorem}[Hull preservation]\label{thm:hull-preservation}
+If $\PreservedBy(r,I)$ and $\forall s \in S_0,\; I(s)$, then
+\[
+  \forall\, x \in \reachableFrom(r, S_0),\; I(x).
+\]
+\end{theorem}
+
+\begin{proof}
+Let $x \in \reachableFrom(r,S_0)$, so there exists $s \in S_0$ with
+$\ReflTransGen(r,s,x)$.  Since $I(s)$ holds and $I$ is forward-closed,
+\Cref{thm:closure-preservation} gives $I(x)$.
+\end{proof}
+
+\begin{corollary}[Hull exclusion]\label{cor:hull-exclusion}
+Under the hypotheses of \Cref{thm:hull-preservation}, if $\lnot I(T)$, then
+$T \notin \reachableFrom(r,S_0)$.
+\end{corollary}
+
+\smallskip
+\noindent\textbf{Lean names:}
+\texttt{reachableFrom\_hull\_preserves\_invariant},
+\texttt{not\_mem\_reachableFrom\_of\_preserved\_invariant\_mismatch}.
+
+% ===========================================================================
+% 4. REFLECTIVE INSTANTIATION
+% ===========================================================================
+\section{Reflective instantiation: sort obstruction}\label{sec:reflective}
+
+The abstract theorem is not vacuous.  We instantiate it on a canonical reflective
+architecture, demonstrating a genuine dynamical obstruction at the \emph{sort} level.
+
+\begin{definition}[Reflective system]\label{def:reflective-system}
+A \emph{reflective system} $R$ consists of a category~$\mathcal{C}$, a distinguished
+object $A \in \mathcal{C}$, and a self-representation endomorphism
+$\represent : A \to A$.
+\end{definition}
+
+\begin{definition}[Ontological slot]\label{def:slot}
+The \emph{ontological slot} type on~$R$ is the disjoint union
+\[
+  \mathrm{Slot}(R) \;=\; \obj(\mathcal{C}) \;+\; \mor(\mathrm{End}(A)),
+\]
+tagging each element as either an \emph{object tag} $\obj(c)$ for $c \in \mathcal{C}$,
+or a \emph{morphism tag} $\mor(f)$ for $f : A \to A$.  These constructors are injective
+and disjoint: $\obj(c) \neq \mor(f)$ for all $c, f$.
+\end{definition}
+
+\begin{definition}[Reflective slot step]\label{def:slotstep}
+The primitive internal relation $\mathsf{reflectiveSlotStep}(R)$ on $\mathrm{Slot}(R)$
+is defined by:
+\begin{itemize}[nosep]
+  \item $s = t$ \,(\emph{idle}); or
+  \item $s = \mor(f)$, $t = \mor(g)$, and $g = f \circ \represent$ \,(\emph{mor advance}).
+\end{itemize}
+Object slots cannot be stepped into morphism slots: the only moves from $\obj(c)$ are
+reflexive.
+\end{definition}
+
+\begin{definition}[Object-branch predicate]\label{def:isobjslot}
+$\mathrm{IsObj}(s) \coloneqq \exists\, c,\; s = \obj(c)$.
+\end{definition}
+
+\begin{lemma}[Sort preservation]\label{lem:sort-preservation}
+$\ForwardClosed(\mathsf{reflectiveSlotStep}(R),\, \mathrm{IsObj})$.
+\end{lemma}
+
+\begin{proof}
+If $s$ is an object tag $\obj(c)$ and $\mathsf{reflectiveSlotStep}(R,s,t)$, then either
+$t = s$ (idle), or $s$ would need to be a morphism tag (impossible for $\obj(c)$).
+Hence $t$ is still an object tag.
+\end{proof}
+
+\begin{lemma}\label{lem:represent-not-obj}
+$\lnot\, \mathrm{IsObj}\bigl(\mor(\represent)\bigr)$.
+\end{lemma}
+
+\begin{proof}
+If $\mor(\represent) = \obj(c)$ for some~$c$, this contradicts the constructor
+disjointness of the slot type.
+\end{proof}
+
+\begin{theorem}[Reflective fold obstruction --- sort mismatch]\label{thm:reflective-fold}
+For any reflective system~$R$,
+\[
+  \lnot\, \ReflTransGen\bigl(\mathsf{reflectiveSlotStep}(R),\;
+  \obj(A),\; \mor(\represent)\bigr).
+\]
+\end{theorem}
+
+\begin{proof}
+By \Cref{thm:fold-obstruction} with $I \coloneqq \mathrm{IsObj}$, using
+\Cref{lem:sort-preservation} (preservation), $\langle A, \mathrm{rfl}\rangle$
+(source satisfies $I$), and \Cref{lem:represent-not-obj} (target violates $I$).
+\end{proof}
+
+\smallskip
+\noindent\textbf{Lean name:}
+\texttt{ReflectiveFold.reflective\_fold\_obstruction\_slot\_mismatch}.
+
+\begin{remark}[Rich reflective calculus]\label{rem:rich-calculus}
+The obstruction survives under the \emph{rich reflective calculus}
+$\mathsf{reflectiveCalcStep}(R)$, which extends the primitive step by allowing
+mor-branch jumps $f \mapsto f \circ \represent^n$ for \emph{any} positive iterate
+$n \geq 1$.  Sort preservation holds by the same argument: object tags admit no
+morphism-branch transitions.  Under the hypothesis $\mathrm{IterInjective}(R)$
+(distinct natural-number exponents give distinct endomorphism powers), the rich
+calculus is \emph{strictly} stronger than the primitive slot step.
+
+\smallskip\noindent\textbf{Lean name:}
+\texttt{reflectiveCalc\_fold\_obstruction\_slot\_mismatch}.
+\end{remark}
+
+% ===========================================================================
+% 5. FURTHER INSTANCES
+% ===========================================================================
+\section{Further instances}\label{sec:instances}
+
+The abstract theorem applies to every forward-closed predicate on every carrier.
+The formalized library contains the following instance families, each of which is a
+one-line corollary of \Cref{thm:fold-obstruction}.
+
+\begin{enumerate}[label=(\roman*),nosep]
+  \item \textbf{Boundary-type mismatch.}
+    Carrier: chart typings $\alpha \to \mathrm{LocalModelKind}$.  Invariant:
+    $\mathrm{AllInterior}$.  Internal relation: logical equality.  Two spaces with
+    different boundary structure cannot be identified under identity-only internal
+    navigation.
+
+  \item \textbf{Connected-boundary mismatch.}
+    Carrier: sets in $\alpha$.  Invariant: $\mathrm{IsRelBoundaryConnected}$.
+    Same $r = {=}$.
+
+  \item \textbf{Orientability / parity mismatch.}
+    Carrier: points in~$\alpha$ under a parity gauge $p : \alpha \to \mathrm{Bool}$.
+    Invariant: $p(x) = \mathsf{false}$.
+
+  \item \textbf{Holonomy-tag mismatch.}
+    Tags $\mathrm{trivial}$ vs.\ $\mathrm{twistOne}$ in the holonomy-tag type.
+    Invariant: $\mathrm{isTrivialHolonomy}$.
+
+  \item \textbf{Holonomy-phase dynamic obstruction.}
+    Carrier: $\mathrm{HolonomyState}$ (a gated phase counter).  Internal relation:
+    $\mathsf{holonomyPhaseStep}$ (non-trivial dynamics, not mere equality).  Invariant:
+    $\mathrm{HolonomyTrivialBounded}$.
+
+  \item \textbf{Open--compact witness obstruction.}
+    Carrier: $\mathbb{N}$.  Internal relation: $\mathsf{openCompactWitnessStep}$ (a gated
+    successor).  Invariant: $\mathrm{WitnessedFinite}$.
+
+  \item \textbf{Sort-separation mismatch} (the reflective instantiation of
+    \Cref{sec:reflective}).
+\end{enumerate}
+
+\noindent None of these instances overshadows the abstract summit; they demonstrate that
+$\ForwardClosed(r,I)$ is a pattern that applies uniformly across disparate carriers
+and dynamical regimes.
+
+% ===========================================================================
+% 6. RELATION TO REPRESENTATIONAL INCOMPLETENESS
+% ===========================================================================
+\section{Relation to representational incompleteness}\label{sec:ri}
+
+Reflective fold obstruction (\RFO) and representational incompleteness (\RI) are
+complementary programs.
+
+\RI{} proves that no finitely-typed system can universally parametrize its own function
+space: the diagonal / Lawvere barrier blocks total self-capture.  The obstacle is a
+\emph{cardinality}-flavored impossibility (surjectivity failure of curry).
+
+\RFO{} proves that certain architectural transitions---those that would violate a
+preserved invariant---cannot be realized by internal closure.  The obstacle is a
+\emph{transport}-flavored impossibility (invariant mismatch along reachability).
+
+The two programs share reflective-system infrastructure but own different theorems.
+Every upstream \RI{} host inherits the \RFO{} sort obstruction through a proved
+bridge:
+
+\begin{theorem}[RI bridge]\label{thm:ri-bridge}
+For any $\mathrm{RepresentationalSystem}$~$R$ (in the sense of~\RI{}), the induced
+$\mathrm{ReflectiveSystem}$ satisfies
+\[
+  \lnot\, \ReflTransGen\bigl(\mathsf{reflectiveSlotStep},\;
+  \obj(A),\; \mor(\represent)\bigr).
+\]
+\end{theorem}
+
+\noindent\textbf{Lean name:}
+\texttt{representational\_incompleteness\_implies\_reflective\_fold\_obstruction}.
+
+\begin{remark}
+The bridge adds \emph{no new axioms}: it is definitional alignment plus the generic
+reflective slot theorem.  The hypothesis $\mathrm{IterInjective}$ is required only for
+the tower-unboundedness channel (a separate, complementary obstruction), not for the
+fold statement.
+\end{remark}
+
+% ===========================================================================
+% 7. ROBUSTNESS AND UNIVERSALITY
+% ===========================================================================
+\section{Robustness and universality}\label{sec:robustness}
+
+The library includes meta-stability results ensuring that the fold pattern is not
+fragile under routine extensions of the primitive relation.
+
+\subsection*{Persistence under relation extension}
+
+\begin{proposition}[Subrelation persistence]\label{prop:subrelation}
+If $r \subseteq r'$ as graphs (every $r$-edge is an $r'$-edge) and
+$\ForwardClosed(r', I)$, then $\ForwardClosed(r, I)$.  Consequently, the fold
+obstruction for~$r$ follows from preservation on a single larger relation~$r'$,
+without a second induction.
+\end{proposition}
+
+\noindent\textbf{Lean names:}
+\texttt{preserved\_under\_relation\_extension},
+\texttt{fold\_obstruction\_persists\_under\_relation\_extension}.
+
+\subsection*{Generated calculi}
+
+\begin{definition}[Union of generators]\label{def:uniongen}
+Given an indexed family $\{r_i\}_{i \in \iota}$, the \emph{generated one-step relation}
+is $\unionGen(\{r_i\})(x,y) \coloneqq \exists\, i,\; r_i(x,y)$.
+\end{definition}
+
+\begin{proposition}[Generator-wise preservation]\label{prop:generator}
+If $\ForwardClosed(r_i, I)$ for every~$i$, then $\ForwardClosed(\unionGen(\{r_i\}), I)$,
+and the fold obstruction holds for the generated calculus.
+\end{proposition}
+
+\noindent The reflective instance uses a $\mathrm{Bool}$-indexed family splitting slot
+steps from proper tower jumps, recovering the same sort obstruction at the generated
+level.
+
+\subsection*{Admissible reflective families}
+
+For any indexed family of admissible generators, each preserving sort separation, the
+union relation preserves sort separation and inherits the fold obstruction.  The
+single-step rich calculus $\mathsf{reflectiveCalcStep}$ and its $\ReflTransGen$-hull
+are shown to lie inside the canonical $\mathrm{Bool}$-union hull, so the generated
+obstruction subsumes the hand-written one.
+
+\smallskip
+\noindent\textbf{Lean names:}
+\texttt{reflective\_calc\_family\_fold\_obstruction},
+\texttt{reflTransGen\_reflectiveCalc\_sub\_unionBool}.
+
+% ===========================================================================
+% 8. SIGNIFICANCE
+% ===========================================================================
+\section{Significance}\label{sec:significance}
+
+\Cref{thm:fold-obstruction} and its hull corollary establish a clean boundary between
+what internal closure can generate and what it cannot.
+
+The theorem does not claim that every unreachable target is impossible.  It says that any
+route generated only by the chosen internal relation~$r$, from a source satisfying~$I$,
+cannot reach a target violating~$I$.  Hence \emph{internal closure is not architectural
+conversion}: the two must be treated as structurally different operations.  Passages that
+cross an invariant boundary require a \emph{fold}---a transition not generated by~$r$.
+
+The reflective instantiation (\Cref{sec:reflective}) shows this is not a vacuous or
+purely formal phenomenon: sort structure is preserved under disciplined internal
+reflective dynamics, so the object-to-representer passage is genuinely blocked.
+
+\subsection*{Novelty}
+
+We do not claim that preserved-invariant reasoning or reflexive--transitive closure are
+individually new.  The contribution is the \textbf{machine-checked unification} of:
+\begin{itemize}[nosep]
+  \item reflective architectures (categorical self-representation endomorphisms),
+  \item internal reachability (arbitrary primitive relations and their closures),
+  \item preservation-to-obstruction lifting (forward closure implies non-reachability),
+  \item hull exclusion (seed-set reasoning over closure hulls),
+  \item reflective sort obstruction (a nontrivial dynamical instance),
+  \item generated-calculus universality (union-of-primitives preservation transfer),
+  \item and bridge compatibility with upstream representational incompleteness,
+\end{itemize}
+into a single machine-checked obstruction calculus with zero proof holes.
+
+% ===========================================================================
+% 9. MACHINE-CHECKED ARTIFACT
+% ===========================================================================
+\section{Machine-checked artifact}\label{sec:artifact}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Component} & \textbf{Value} \\
+\midrule
+Proof assistant & \Lean{} \\
+Toolchain & \texttt{leanprover/lean4:v4.29.0-rc6} \\
+Library & \Mathlib{} v4.29.0-rc6 \\
+Build command & \texttt{lake build ReflectiveFoldObstruction} \\
+\texttt{sorry} count & 0 \\
+\texttt{admit} count & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Artifact theorem anchors}
+
+\Cref{tab:anchors} lists the Lean names cited in this paper, grouped by theorem role.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}p{0.38\textwidth}p{0.55\textwidth}@{}}
+\toprule
+\textbf{Role} & \textbf{Lean name} \\
+\midrule
+Closure preservation (\Cref{thm:closure-preservation})
+  & \texttt{internal\_reachability\_preserves\_invariant} \\[3pt]
+Fold obstruction (\Cref{thm:fold-obstruction})
+  & \texttt{fold\_obstruction\_of\_invariant\_mismatch} \\[3pt]
+Hull preservation (\Cref{thm:hull-preservation})
+  & \texttt{reachableFrom\_hull\_preserves\_invariant} \\[3pt]
+Hull exclusion (\Cref{cor:hull-exclusion})
+  & \texttt{not\_mem\_reachableFrom\_of\_preserved\_invariant\_mismatch} \\[3pt]
+Sort preservation (\Cref{lem:sort-preservation})
+  & \texttt{reflective\_step\_preserves\_sort\_separation} \\[3pt]
+Reflective fold (\Cref{thm:reflective-fold})
+  & \texttt{ReflectiveFold.reflective\_fold\_obstruction\_slot\_mismatch} \\[3pt]
+Rich calculus fold (\Cref{rem:rich-calculus})
+  & \texttt{reflectiveCalc\_fold\_obstruction\_slot\_mismatch} \\[3pt]
+\RI{} bridge (\Cref{thm:ri-bridge})
+  & \texttt{representational\_incompleteness\_implies\_reflective\_fold\_obstruction} \\[3pt]
+Subrelation persistence (\Cref{prop:subrelation})
+  & \texttt{preserved\_under\_relation\_extension} \\[3pt]
+Generated-calculus obstruction (\Cref{prop:generator})
+  & \texttt{generated\_calculus\_fold\_obstruction} \\[3pt]
+Admissible-family fold (\Cref{sec:robustness})
+  & \texttt{reflective\_calc\_family\_fold\_obstruction} \\[3pt]
+Calculus containment (\Cref{sec:robustness})
+  & \texttt{reflTransGen\_reflectiveCalc\_sub\_unionBool} \\
+\bottomrule
+\end{tabular}
+\caption{Machine-checked theorem anchors.}\label{tab:anchors}
+\end{table}
+
+\subsection*{Module layout (summary)}
+
+\begin{center}
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Layer} & \textbf{Primary modules} \\
+\midrule
+Core & \texttt{Core/Basic}, \texttt{Core/Slots}, \texttt{Core/ArchitectureObstruction} \\
+Reachability & \texttt{InternalOps}, \texttt{ClosureHull}, \texttt{ReflectiveSteps},
+  \texttt{ReflectiveCalculus}, \texttt{GeneratedCalculi} \\
+Obstruction & \texttt{Fold}, \texttt{CanonicalInstances}, \texttt{ReflectiveFold},
+  \texttt{ArchitectureUniversality} \\
+Invariants & \texttt{SortSeparation}, \texttt{Transport}, \texttt{BoundaryType},
+  \texttt{ConnectedBoundary}, \texttt{OrientabilityLike} \\
+Topology & \texttt{Models}, \texttt{MobiusCylinder}, \texttt{HolonomyPhase},
+  \texttt{OpenCompactWitness} \\
+Examples & \texttt{RepresentationalIncompleteness}, \texttt{CylinderMobius},
+  \texttt{ObserverBridge} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Reproduction}
+
+\begin{verbatim}
+  cd reflective-fold-obstruction-lean
+  lake update && lake exe cache get
+  lake build ReflectiveFoldObstruction
+\end{verbatim}
+
+\end{document}
