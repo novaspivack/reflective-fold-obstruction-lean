@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + hull `iUnion`/`iInter`/`univ`, **0** `sorry`).  
+**Last updated:** 2026-03-27 — `lake build ReflectiveFoldObstruction` (full tree + Pressure `not_surjective_curry_iff_not_universal_binary`, **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
@@ -25,7 +25,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 |--------|--------|
 | `Diagonal.LawvereType` | `lawvere_fixed_point_Type` (`A : Type u`, `B : Type v`), `lawvere_fixed_point_corollary_no_universal`, `lawvere_no_universal_unary_into_nat` |
 | `Diagonal.LawvereClosed` | `lawvereBinary`, `lawvereBinary_apply`, `uncurry_eq_lawvereBinary`, `curry_lawvereBinary`, `lawvere_universal_iff_surjective_curry`, `lawvere_fixed_point_MonoidalClosedType` |
-| `Diagonal.Pressure` | `uliftNatSucc`, `uliftNat_succ_ne_self`, `not_surjective_curry_of_fixed_point_free`, `not_surjective_curry_into_nat`, `not_surjective_curry_into_uliftNat`, `not_universal_binary_of_fixed_point_free`, `not_universal_binary_into_uliftNat` |
+| `Diagonal.Pressure` | `uliftNatSucc`, `uliftNat_succ_ne_self`, `not_surjective_curry_iff_not_universal_binary`, `not_surjective_curry_into_nat_iff`, `not_surjective_curry_into_uliftNat_iff`, `not_surjective_curry_of_fixed_point_free`, `not_surjective_curry_into_nat`, `not_surjective_curry_into_uliftNat`, `not_universal_binary_of_fixed_point_free`, `not_universal_binary_into_uliftNat` |
 
 ---
 

@@ -30,6 +30,22 @@ theorem uliftNat_succ_ne_self (x : ULift.{u} Nat) : uliftNatSucc x ≠ x := by
     simpa [uliftNatSucc] using congrArg ULift.down h
   exact absurd heq (Nat.succ_ne_self x.down)
 
+/-- **Curry formulation ↔ pointwise enumerator** (`LawvereClosed`), negated for pressure lemmas. -/
+theorem not_surjective_curry_iff_not_universal_binary {A B : Type u} (s : A → A → B) :
+    ¬Function.Surjective (MonoidalClosed.curry (lawvereBinary s)) ↔
+    ¬(∀ g : A → B, ∃ a : A, s a = g) :=
+  (Iff.not (lawvere_universal_iff_surjective_curry s)).symm
+
+theorem not_surjective_curry_into_nat_iff (A : Type) (s : A → A → Nat) :
+    ¬Function.Surjective (MonoidalClosed.curry (lawvereBinary s)) ↔
+    ¬(∀ g : A → Nat, ∃ a : A, s a = g) :=
+  not_surjective_curry_iff_not_universal_binary s
+
+theorem not_surjective_curry_into_uliftNat_iff {A : Type u} (s : A → A → ULift.{u} Nat) :
+    ¬Function.Surjective (MonoidalClosed.curry (lawvereBinary s)) ↔
+    ¬(∀ g : A → ULift.{u} Nat, ∃ a : A, s a = g) :=
+  not_surjective_curry_iff_not_universal_binary s
+
 /--
   If `B` admits `succ` with **no** fixed points, then `curry (lawvereBinary s)` cannot be
   surjective (`A B : Type u` — the universe needed for `MonoidalClosed (Type u)`).

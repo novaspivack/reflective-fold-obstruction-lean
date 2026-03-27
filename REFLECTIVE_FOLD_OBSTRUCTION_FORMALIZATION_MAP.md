@@ -17,7 +17,7 @@
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
 | `ReflectiveFoldObstruction/Diagonal/LawvereClosed.lean` | `MonoidalClosed (Type u)`: `lawvereBinary`, curry surjectivity ↔ universality, `lawvere_fixed_point_MonoidalClosedType` |
-| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | Fixed-point-free → non-surjective curry / non-universal binary; `Nat` and **`ULift.{u} Nat`** targets (same-universe monoidal closed line) |
+| `ReflectiveFoldObstruction/Diagonal/Pressure.lean` | `not_surjective_curry_iff_not_universal_binary` (`Iff.not`/`symm` on `LawvereClosed`); fixed-point-free → non-surjective curry / non-universal binary; `Nat` / **`ULift.{u} Nat`** |
 | `ReflectiveFoldObstruction/Invariants/SortSeparation.lean` | `mapSlot`, `mapSlot_injective`, branch disjointness; reflective `tower_slots_injective`, `represent_*` |
 | `ReflectiveFoldObstruction/Invariants/Transport.lean` | Predicate pullback/transport along `Equiv`; `slotEquiv` for `OntologicalSlot`; `mapSlot_comp` / `slotEquiv_trans` |
 | `ReflectiveFoldObstruction/Invariants/BoundaryType.lean` | `LocalModelKind`; `transportTyping` / `pullbackTyping`; preservation under `Equiv`; interior/boundary incompatibility |

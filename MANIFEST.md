@@ -44,7 +44,7 @@
 - **Reflection:** tower and slice consequences guard `IterInjective` via an explicit argument `hij` (not bundled into `ReflectiveSystem`), per SPEC_003 separation of structure vs hypothesis.
 - **Diagonal.LawvereType:** Lawvere fixed-point theorem for `A : Type u`, `B : Type v`, corollaries, `Nat` packaging.
 - **Diagonal.LawvereClosed:** `lawvereBinary`, curry/`uncurry` alignment with `LawvereType`, `lawvere_universal_iff_surjective_curry`, fixed point with surjective `MonoidalClosed.curry`.
-- **Diagonal.Pressure:** packaged “no surjective `curry (lawvereBinary s)`” under fixed-point-free codomain; `not_surjective_curry_into_nat` at `A : Type` (see honest limits).
+- **Diagonal.Pressure:** `not_surjective_curry_iff_not_universal_binary` (negated `LawvereClosed` bridge); fixed-point-free → non-surjective curry; `Nat` / `ULift Nat` packaging (see honest limits).
 - **Invariants.SortSeparation:** functorial `mapSlot` + injectivity under injective branch maps; reflective tower / represent disjointness lemmas (invariant API for `Transport`).
 - **Invariants.Transport:** `pullbackPred` / `transportPred` with inverse laws along `Equiv`; `slotEquiv` from branch equivalences + composition / transitivity lemmas.
 - **Invariants.BoundaryType:** `LocalModelKind` (interior vs boundary chart tag); `transportTyping` / `pullbackTyping`; fibers; global predicates + `Equiv` preservation and incompatibility lemmas.
