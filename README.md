@@ -4,7 +4,7 @@ Lean 4 + Mathlib library for **Reflective Fold Obstruction** — **internal reac
 
 **Outer workspace** (specs, EPICs, submodule wrapper): sibling repo **Reflective Fold Obstruction** — see `../specs/IN-PROCESS/README.md` when checked out as a submodule.
 
-**Relation to `representational-incompleteness-lean`:** **RI** flagship Lean library (diagonal / self-model summit **and** concrete development **as maintained there**); RFO stays Mathlib-only until SPEC_004 — see outer `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`. Portfolio (**RI** vs RFO vs Observer Exhaustion): outer `SPEC_001`, `MANIFEST.md` mission.
+**Relation to `representational-incompleteness-lean`:** **RI** flagship Lean library — **`lake require «representational-incompleteness»`** is **on** (see `lakefile.lean` pin; **SPEC_002** / **SPEC_004**). Portfolio (**RI** vs RFO vs Observer Exhaustion): outer `SPEC_001`, `MANIFEST.md` mission.
 
 ## Build
 

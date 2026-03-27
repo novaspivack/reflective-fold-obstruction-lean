@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-27 — `lake build ReflectiveFoldObstruction` (full tree + Pressure `not_surjective_curry_iff_not_universal_binary`, **0** `sorry`).  
+**Last updated:** 2026-03-28 — `lake build ReflectiveFoldObstruction` + **`lake require «representational-incompleteness»`** (**RI** bridge, **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
@@ -35,7 +35,7 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 |--------|--------|
 | `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
 | `Examples.NoCollapse` | `represent_mor_ne_obj_A` (alias of `SortSeparation.represent_slot_disjoint_from_obj_A`) |
-| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `riLakeRequireBlockedNote` |
+| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `toReflectiveSystem`, `toReflectiveSystem_iterInjective`, `PackagedReflectiveHost.fromRepresentational`, `iterative_unbounded_fromRepresentational`, `iterative_unbounded_obstruction_fromRepresentational`, `diagonalCertificate_fromRepresentational`, `riLakeRequireIntegratedNote` / `riLakeRequireBlockedNote` |
 
 ---
 

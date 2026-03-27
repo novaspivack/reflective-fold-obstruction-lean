@@ -53,7 +53,7 @@
 - **Reachability:** `ForwardClosed` + `ReflTransGen` preservation; `reachableFrom` hull (idempotent, **∪** / **iUnion** / indexed **∩**-subset, **univ**, **empty** seed, **induction** per vision §6).
 - **Obstruction:** `ObstructionKind` / `ObstructionCertificate`; reflective packaging `iterative_unbounded`; finite-set compactness lemmas.
 - **Topology:** Euclidean anchors (`Models`, half-line / half-plane sets, punctured line); `T₂` product hook; holonomy tags + `tagEquiv`.
-- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalIncompleteness` defines `PackagedReflectiveHost` + unboundedness lemmas without **RI** `lake require`.
+- **Examples:** `NoCollapse` aliases slot separation; `CylinderMobius` pairs holonomy tags with parity; `RepresentationalIncompleteness` — `PackagedReflectiveHost`, **RI** `RepresentationalSystem` → `toReflectiveSystem` + `fromRepresentational`, unboundedness + certificates (**`lake require «representational-incompleteness»`** **on**).
 - **Invariants.HomeomorphTransport:** chart transport lemmas specializing `Equiv` invariants through `X ≃ₜ Y`.
 
 ---
@@ -61,7 +61,7 @@
 ## Honest limits
 
 1. **IterInjective** is a **hypothesis**, not a consequence of choosing an arbitrary `represent : A ⟶ A` (same mathematical situation as the **RI** line).
-2. **Promoted abstraction** stops at what is in this repo; **RI**-tied concrete geometry remains in `representational-incompleteness-lean` until SPEC_002 promotion / SPEC_004 dependency. *Re-run integration checks on `Examples/RepresentationalIncompleteness` when **RI** refactors public interfaces.*
+2. **Lake dependency:** **`«representational-incompleteness»`** is **`require`d** (SPEC_004 step **2**). **Promoted** summit lemmas still **prefer** living in **RI**; bump `lakefile.lean` **rev** when **RI** refactors and **re-verify** `Examples/RepresentationalIncompleteness`.
 3. **`Pressure.not_surjective_curry_into_nat`** uses `A : Type` (`Type 0`) with codomain **`Nat`** (same universe). For the same `MonoidalClosed (Type u)` story with **`A : Type u`**, use **`Pressure.not_surjective_curry_into_uliftNat`** / **`not_universal_binary_into_uliftNat`** (codomain **`ULift.{u} Nat`**). For unary `A → Nat` enumeration without `MonoidalClosed`, see **`LawvereType`** (`lawvere_no_universal_unary_into_nat`).
 
 ---

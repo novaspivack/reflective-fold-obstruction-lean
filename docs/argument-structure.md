@@ -8,7 +8,7 @@
 1. **Reflection / regress / diagonal / non-collapse** — categorical and logical backbone (`Core`, `Reflection`, `Diagonal`, `Invariants`).
 2. **Topology / local obstructions** — concrete spaces and neighborhood arguments (`Topology`).
 3. **Internal reachability vs fold** — what closure can generate vs what needs an architecture-changing fold (`Reachability`, `Obstruction`).
-4. **Examples** — portable bridge to **`representational-incompleteness-lean`** (`Examples/RepresentationalIncompleteness`) per SPEC_002 (no `lake require` until SPEC_004).
+4. **Examples** — **`RepresentationalIncompleteness`**: **RI** `RepresentationalSystem` ↔ RFO `ReflectiveSystem` via **`lake require «representational-incompleteness»`** (**SPEC_004** step **2**).
 
 **Build:** always `lake exe cache get` after `lake update` (outer `docs/008_LEAN_MATHLIB_CACHE_WORKFLOW.md`).
 

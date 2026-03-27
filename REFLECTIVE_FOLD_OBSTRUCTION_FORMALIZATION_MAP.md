@@ -37,7 +37,7 @@
 | `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
-| `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `riLakeRequireBlockedNote`; no `lake require representational-incompleteness-lean` (SPEC_002) |
+| `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `toReflectiveSystem`, `fromRepresentational`, induced unboundedness + `diagonalCertificate_fromRepresentational`; **`lake require «representational-incompleteness»`** (SPEC_004) |
 | `ReflectiveFoldObstruction/Examples/CylinderMobius.lean` | `parityOfHolonomy`, link to `OrientabilityLike` |
 | `ReflectiveFoldObstruction/Examples/NoCollapse.lean` | `represent_mor_ne_obj_A` |
 | `ReflectiveFoldObstruction/Main.lean` | Assembly imports + `assemblySurface` |

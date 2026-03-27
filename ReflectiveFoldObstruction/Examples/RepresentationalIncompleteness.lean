@@ -1,23 +1,23 @@
 /-
-  Bridge toward **`representational-incompleteness-lean`** without importing that repository.
+  **RFO ↔ RI bridge** after **`SPEC_004`** import timeline **step 2**.
 
-  **Governance:** `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md` — do **not** add
-  `lake require representational-incompleteness-lean` until SPEC_004 import-timeline step 2.
-  Keep RFO **Mathlib-only** until promotion rules and stable interfaces on the RI side are met.
+  `lake require «representational-incompleteness»` is **active** (see `lakefile.lean` pin).
+  Flagship **`RepresentationalIncompleteness.RepresentationalSystem`** maps into RFO’s split
+  **`Core.ReflectiveSystem`** + **`Core.IterInjective`** so **`PackagedReflectiveHost`**
+  and obstruction certificates apply to **RI** hosts unchanged.
 
-  This file defines the **minimal portable host** this layer tree uses — a `ReflectiveSystem` with
-  `IterInjective` — and records consequences any future **RFO ↔ RI** port must preserve.
-
-  (Legacy path name: this module superseded `Examples/RepresentationalRegress.lean` when the
-  flagship Lean repo was renamed to **representational-incompleteness-lean**.)
+  Governance: `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`.
 
   See `specs/NOTES/PROJECT_VISION.md` — Examples layer.
 -/
 
+import RepresentationalIncompleteness.Basic
 import ReflectiveFoldObstruction.Core.Basic
 import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
+
+universe u
 
 namespace ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 
@@ -25,7 +25,7 @@ open ReflectiveFoldObstruction
 
 /-- Working bundle for “architecture supports internal iteration with injective tower”. -/
 structure PackagedReflectiveHost where
-  system : Core.ReflectiveSystem
+  system : Core.ReflectiveSystem.{u}
   injectiveTower : Core.IterInjective system
 
 /-- Tower ascent is unbounded for every packaged host (internal corollary of `IterInjective`). -/
@@ -48,8 +48,46 @@ def diagonalCertificate (H : PackagedReflectiveHost) :
   description :=
     "Packaged reflective host: see `iterative_unbounded` / `Reflection.Towers.regress_iterates_unbounded`."
 
-/-- Human-readable blocker for automation: RI `lake require` not yet authorized. -/
-def riLakeRequireBlockedNote : String :=
-  "SPEC_002 + SPEC_004: `lake require representational-incompleteness-lean` remains off until promotion."
+/-- View an **RI** `RepresentationalSystem` as RFO `ReflectiveSystem` (data only). -/
+def toReflectiveSystem (R : RepresentationalSystem) : Core.ReflectiveSystem where
+  C := R.C
+  categoryData := R.categoryData
+  A := R.A
+  represent := R.represent
+
+theorem toReflectiveSystem_iterInjective (R : RepresentationalSystem) :
+    Core.IterInjective (toReflectiveSystem R) := by
+  intro n m hnm
+  simpa [Core.IterInjective, toReflectiveSystem] using R.iter_injective hnm
+
+/-- Packaged RFO host induced by a flagship **RI** system. -/
+def PackagedReflectiveHost.fromRepresentational (R : RepresentationalSystem) : PackagedReflectiveHost where
+  system := toReflectiveSystem R
+  injectiveTower := toReflectiveSystem_iterInjective R
+
+/-- Tower unboundedness for any **RI** `RepresentationalSystem`. -/
+theorem iterative_unbounded_fromRepresentational (R : RepresentationalSystem) (n : ℕ) :
+    ∃ m : ℕ, n < m ∧
+      Core.metaRegressArrow (toReflectiveSystem R) m ≠ Core.metaRegressArrow (toReflectiveSystem R) n :=
+  iterative_unbounded (PackagedReflectiveHost.fromRepresentational R) n
+
+/-- Same via the obstruction packaging. -/
+theorem iterative_unbounded_obstruction_fromRepresentational (R : RepresentationalSystem) (n : ℕ) :
+    ∃ m : ℕ, n < m ∧
+      Core.metaRegressArrow (toReflectiveSystem R) m ≠ Core.metaRegressArrow (toReflectiveSystem R) n :=
+  iterative_unbounded_obstruction (PackagedReflectiveHost.fromRepresentational R) n
+
+/-- Diagonal certificate for the **RI**-induced host. -/
+def diagonalCertificate_fromRepresentational (R : RepresentationalSystem) :
+    Obstruction.Fold.ObstructionCertificate (toReflectiveSystem R).C :=
+  diagonalCertificate (PackagedReflectiveHost.fromRepresentational R)
+
+/-- Human-readable note: **`lake require`** is **on**; bump `lakefile.lean` pin with upstream. -/
+def riLakeRequireIntegratedNote : String :=
+  "SPEC_004 step 2: `«representational-incompleteness»` pinned in lakefile; bump rev when RI moves."
+
+/-- Back-compat name for older greps / docs. -/
+abbrev riLakeRequireBlockedNote : String :=
+  riLakeRequireIntegratedNote
 
 end ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
