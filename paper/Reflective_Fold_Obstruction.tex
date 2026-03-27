@@ -177,6 +177,10 @@ Given a seed set $S_0 \subseteq \alpha$, the \emph{closure hull} is
 % ===========================================================================
 \section{The main theorem}\label{sec:main}
 
+The theorem is completely general in the carrier type~$\alpha$ and primitive
+relation~$r$.  No categorical, topological, or computational assumptions are required
+beyond preservedness of the chosen invariant~$I$.
+
 \subsection*{Theorem A: primitive-to-closure preservation}
 
 \begin{theorem}[Closure preservation]\label{thm:closure-preservation}
@@ -265,8 +269,10 @@ architecture, demonstrating a genuine dynamical obstruction at the \emph{sort} l
 \begin{definition}[Reflective system]\label{def:reflective-system}
 A \emph{reflective system} $R$ consists of a category~$\mathcal{C}$, a distinguished
 object $A \in \mathcal{C}$, and a self-representation endomorphism
-$\represent : A \to A$.  This is the standard categorical formulation of a system
-equipped with a self-modeling map~\cite{lawvere1969,yanofsky2003}.
+$\represent : A \to A$.  This is the minimal categorical setting in which ``iterate the
+self-representation internally'' becomes mathematically meaningful: the endomorphism
+monoid $\mathrm{End}(A)$ supplies the iteration, and the category supplies the ambient
+structure~\cite{lawvere1969,yanofsky2003}.
 \end{definition}
 
 \begin{definition}[Ontological slot]\label{def:slot}
@@ -365,6 +371,9 @@ $\mathsf{holonomyPhaseStep}$ advances the phase under a nontrivial gating condit
 is \emph{not} mere equality.  The invariant $\mathrm{HolonomyTrivialBounded}$
 (trivial holonomy tag with bounded phase) is forward-closed for this step.  A target
 state with twist holonomy lies outside the closure hull of trivially-tagged seeds.
+Structurally, this means that a system whose holonomy phase evolves under the gated
+dynamics \emph{cannot} reach a twisted configuration from a trivial one by internal
+iteration alone: the twist requires a fold.
 \end{example}
 
 \noindent The machine-checked artifact formalizes additional instances: boundary-type,
@@ -483,8 +492,8 @@ incompleteness---into a single obstruction calculus with zero proof holes.
 Individual ingredients are standard.  What is new is the theorem-grade integration:
 a machine-checked calculus in which preserved invariants, reflexive--transitive closure,
 hull exclusion, reflective sort dynamics, generated-calculus universality, and
-representational-system bridges coexist in one artifact, so that ``iterate harder''
-is provably not a route to architectural transition.
+representational-system bridges coexist in one artifact, so that internal iteration
+alone is provably insufficient for invariant-breaking architectural transition.
 \end{keybox}
 
 % ===========================================================================
