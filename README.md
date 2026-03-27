@@ -1,10 +1,10 @@
 # reflective-fold-obstruction-lean
 
-Lean 4 + Mathlib library for **Reflective Fold Obstruction** (general framework layer).
+Lean 4 + Mathlib library for **Reflective Fold Obstruction** — **internal reachability, invariant obstruction, and fold-vs-iterate architecture** (general framework; **not** the RI universal-diagonal flagship).
 
 **Outer workspace** (specs, EPICs, submodule wrapper): sibling repo **Reflective Fold Obstruction** — see `../specs/IN-PROCESS/README.md` when checked out as a submodule.
 
-**Relation to `representational-regress-lean`:** keep that repo as the flagship concrete artifact; see outer `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`.
+**Relation to `representational-regress-lean`:** keep that repo as the **concrete geometric** flagship; see outer `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`. **Representational Incompleteness** and **Observer Exhaustion** roles: see outer `SPEC_001` portfolio section and `MANIFEST.md` mission.
 
 ## Build
 

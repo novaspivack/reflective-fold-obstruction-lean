@@ -3,6 +3,8 @@
 **Formal EPICs:** outer `specs/IN-PROCESS/SPEC_001_RFO_REFLECTIVE_FOLD_OBSTRUCTION_LEAN_EPIC.md` and follow-ons.  
 **Narrative spine:** outer `specs/NOTES/PROJECT_VISION.md` §1 (master question) and §11 (conceptual splits).
 
+**Versus Representational Incompleteness (RI):** RI’s question is what **cannot be fully represented** under universal self-modeling; **RFO’s** question is what is **not internally reachable** without an **architecture-changing fold**. Same ecosystem; different abstraction level. **Observer Exhaustion** (external) synthesizes both.
+
 1. **Reflection / regress / diagonal / non-collapse** — categorical and logical backbone (`Core`, `Reflection`, `Diagonal`, `Invariants`).
 2. **Topology / local obstructions** — concrete spaces and neighborhood arguments (`Topology`).
 3. **Internal reachability vs fold** — what closure can generate vs what needs an architecture-changing fold (`Reachability`, `Obstruction`).

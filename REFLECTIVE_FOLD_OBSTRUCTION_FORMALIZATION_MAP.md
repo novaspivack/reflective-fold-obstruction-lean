@@ -3,6 +3,8 @@
 **Purpose:** Module roles; pair with `MANIFEST.md`, `THEOREM_INVENTORY.md`, outer `specs/IN-PROCESS/SPEC_003_RFO_LEAN_LAYER_EPICS.md`.  
 **Narrative design:** `../specs/NOTES/PROJECT_VISION.md`
 
+**Program role:** This library implements the **reachability / invariant / obstruction** layer for “**a fold is not an iterate**.” It **does not** aim to host the **Representational Incompleteness** universal diagonal flagship (RI). **Observer Exhaustion** (external) synthesizes across programs without duplicating this tree.
+
 ---
 
 ## Module tree (implemented)

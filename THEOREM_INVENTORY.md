@@ -3,7 +3,7 @@
 **Last updated:** 2026-03-26 — `lake build ReflectiveFoldObstruction` (full tree + hull `iUnion`/`iInter`/`univ`, **0** `sorry`).  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
-Buckets **A–F** (vision §9 / SPEC_003).
+Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
 
 ---
 

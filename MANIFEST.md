@@ -12,6 +12,12 @@
 
 ---
 
+## Mission (non-redundancy)
+
+**RFO** proves that **iteration and internal closure do not amount to architectural transition** when an invariant preserved under internal reachability differs at the target. That is **not** the same program as **Representational Incompleteness (RI)**, which owns the flagship **universal diagonal / self-model** barrier. RFO **absorbs** diagonal and topology tools as reusable layers (`Diagonal`, `Reachability`, `Obstruction`) while keeping its **mathematical soul** the reachability / fold-obstruction schema. **Observer Exhaustion** (elsewhere) is synthesis, not a third copy of this library.
+
+---
+
 ## Layout (layered)
 
 | Layer | Paths | Role |
