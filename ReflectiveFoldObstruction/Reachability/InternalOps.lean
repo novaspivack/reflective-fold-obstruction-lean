@@ -101,4 +101,25 @@ theorem not_reflTransGen_of_superrelation {r r' : α → α → Prop}
 
 alias not_reachable_when_smaller_step_included := not_reflTransGen_of_superrelation
 
+/-!
+## Relation extension (SPEC_015)
+
+Orientation (graph inclusion as **hints**, not `⊆` on `Set (α × α)`):
+
+* **`preserved_under_relation_extension`:** hypothesis `∀ x y, r x y → r' x y` means every **primitive**
+  `r`-edge is an `r'`-edge (“`r` is a **subrelation** of `r'`”, `r` has **fewer** edges).
+  Then forward-closure on the **larger** `'r'` **restricts** to the **smaller** `r`.
+
+* Contrast `forwardClosed_of_weaker`: there the hypothesis flips — a **weaker** step relation carries
+  **fewer** obligations.
+
+Do **not** confuse these directions when chaining with `ReflTransGen.mono`.
+-/
+
+/-- If `r'` preserves `I` on one step, so does any **subrelation** `r` (`r ⊆ r'`). -/
+theorem preserved_under_relation_extension {r r' : α → α → Prop} {I : α → Prop}
+    (hsub : ∀ ⦃x y : α⦄, r x y → r' x y) (h' : ForwardClosed r' I) : ForwardClosed r I :=
+  fun ⦃_ _⦄ rab ha => h' (hsub rab) ha
+
+
 end ReflectiveFoldObstruction.Reachability.InternalOps

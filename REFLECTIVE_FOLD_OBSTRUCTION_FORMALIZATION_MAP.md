@@ -33,12 +33,15 @@
 | `ReflectiveFoldObstruction/Topology/Boundary.lean` | `corneredUnitSquare` (= product model) |
 | `ReflectiveFoldObstruction/Topology/MobiusCylinder.lean` | `HolonomyTag`, `tagEquiv` |
 | `ReflectiveFoldObstruction/Topology/HolonomyPhase.lean` | `HolonomyState`, gated phase steps, `holonomy_phase_dynamic_fold_obstruction` (`SPEC_011` B) |
-| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `reflTransGen_mono_of_subrelation`, `not_reflTransGen_of_superrelation` |
-| `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, idempotence, `∪`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction` |
+| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `reflTransGen_mono_of_subrelation`, `not_reflTransGen_of_superrelation`, `preserved_under_relation_extension` |
+| `ReflectiveFoldObstruction/Reachability/ArchitectureClasses.lean` | `Architecture`, `FoldObstructionBundle` (`SPEC_017`) |
+| `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, idempotence, `∪`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction`, `reachableFrom_subset_of_subrelation`, `hull_nonmembership_persists_under_relation_extension` |
+| `ReflectiveFoldObstruction/Reachability/GeneratedCalculi.lean` | `unionGen`, reflective Bool generators, `reflective_unionBoolGen_fold_obstruction` (`SPEC_016`) |
 | `ReflectiveFoldObstruction/Reachability/Invariants.lean` | `ForwardClosed.mem_reachableFrom`, total reachability lemma |
-| `ReflectiveFoldObstruction/Reachability/ReflectiveSteps.lean` | `reflectiveSlotStep`, sort-separation preservation (`SPEC_008`) |
-| `ReflectiveFoldObstruction/Reachability/ReflectiveCalculus.lean` | `reflectiveCalcStep` tower mor jumps, fold obstruction, strict extension (`SPEC_010`) |
-| `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
+| `ReflectiveFoldObstruction/Reachability/ReflectiveSteps.lean` | `reflectiveSlotStep`, `morAdvancesTower`, sort-separation preservation (`SPEC_008`) |
+| `ReflectiveFoldObstruction/Reachability/ReflectiveCalculus.lean` | `reflectiveCalcStep`, fold obstruction, strict extension (`SPEC_010`), admissible unions (`SPEC_018`) |
+| `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate`, relation-extension persistence (`SPEC_015`) |
+| `ReflectiveFoldObstruction/Obstruction/ArchitectureUniversality.lean` | Bundled fold + hull theorems (`SPEC_017`) |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompactWitness.lean` | Discrete witness-step obstruction on `ℕ` (`SPEC_011` A) |

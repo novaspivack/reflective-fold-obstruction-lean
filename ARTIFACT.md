@@ -32,3 +32,5 @@ From outer workspace root: `scripts/verify-lean-build.sh`.
 ## Key theorem summary
 
 See `THEOREM_INVENTORY.md` and `MANIFEST.md`. Buckets A–F in the inventory track theorem families as they land.
+
+**Phase A (robustness / universality, `SPEC_015`–`018`, 2026-03-27):** obstruction and hull facts **persist** when the primitive relation extends (`preserved_under_relation_extension`, `fold_obstruction_persists_under_relation_extension`, hull pullback `reachableFrom_subset_of_subrelation`); **union of generator families** preserves invariants and satisfies the fold pattern (`Reachability/GeneratedCalculi.lean`); **`Architecture` / `FoldObstructionBundle`** package uniform mismatch theorems (`ArchitectureUniversality` + `Core/ArchitectureObstruction`); **admissible reflective families** (`reflectiveAdmissibleUnion`) inherit the obj/mor obstruction, with `reflectiveCalcStep` covered by the standard `Bool` union (`reflectiveCalcStep_sub_admissibleBoolUnion`, `reflTransGen_reflectiveCalc_sub_unionBool`).

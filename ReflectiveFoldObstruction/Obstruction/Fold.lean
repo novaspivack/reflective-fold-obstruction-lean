@@ -88,4 +88,27 @@ abbrev foldObstruction_of_preservedInvariant {α : Type u} {r : α → α → Pr
     {S T : α} (h : PreservedBy r I) (hS : I S) (hT : ¬ I T) : FoldObstruction r I S T :=
   ⟨h, hS, hT⟩
 
+/-!
+## Persistence under relation extension (`SPEC_015`)
+
+If the **larger** primitive relation `r'` preserves `I`, so does the **subrelation** `r`
+(`r`-edges ⊆ `r'`-edges). The fold obstruction for `r` follows without a second induction.
+-/
+
+/-- Fold mismatch obstruction for a **subrelation** once preservation is known for an **extension** (`SPEC_015`). -/
+theorem fold_obstruction_persists_under_relation_extension {r r' : α → α → Prop} {I : α → Prop}
+    (hsub : ∀ ⦃x y : α⦄, r x y → r' x y) (h' : PreservedBy r' I) {S T : α} (hS : I S) (hT : ¬ I T) :
+    ¬ ReflTransGen r S T :=
+  fold_obstruction_of_invariant_mismatch (preserved_under_relation_extension hsub h') hS hT
+
+/-- Seed-hull exclusion for the **small** relation from preservation on the **large** one (`SPEC_015`). -/
+theorem hull_exclusion_persists_under_relation_extension {r r' : α → α → Prop} {I : α → Prop}
+    (hsub : ∀ ⦃x y : α⦄, r x y → r' x y) (h' : PreservedBy r' I) {S₀ : Set α} (h₀ : ∀ s ∈ S₀, I s) {T : α}
+    (hT : ¬ I T) : T ∉ reachableFrom r S₀ :=
+  hull_nonmembership_persists_under_relation_extension hsub
+    (not_mem_reachableFrom_of_preserved_invariant_mismatch h' h₀ hT)
+
+alias hull_nonmembership_persists_under_relation_extension :=
+  hull_exclusion_persists_under_relation_extension
+
 end ReflectiveFoldObstruction.Obstruction.Fold

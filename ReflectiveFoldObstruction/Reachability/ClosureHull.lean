@@ -138,4 +138,21 @@ theorem not_mem_reachableFrom_of_preserved_mismatch {S : Set α} {T : α} {P : �
     (hP : InternalOps.ForwardClosed r P) (hseed : ∀ x ∈ S, P x) (hT : ¬ P T) :
     T ∉ reachableFrom r S := fun hmem => hT (mem_reachableFrom_induction r hseed hP hmem)
 
+section SubrelationMonotone
+
+variable {r r' : α → α → Prop}
+
+/-- Larger primitive graph ⇒ larger hull (**`SPEC_015`**). Hypothesis `r x y → r' x y` = `r` subrelation of `r'`. -/
+theorem reachableFrom_subset_of_subrelation (h : ∀ ⦃x y : α⦄, r x y → r' x y) (S : Set α) :
+    reachableFrom r S ⊆ reachableFrom r' S := by
+  rintro y ⟨x, hx, hxy⟩
+  exact ⟨x, hx, InternalOps.reflTransGen_mono_of_subrelation h hxy⟩
+
+/-- Hull non-membership **pulls back** along subrelations: absent from the **large** hull ⇒ absent from the **small** hull. -/
+theorem hull_nonmembership_persists_under_relation_extension (h : ∀ ⦃x y : α⦄, r x y → r' x y) {S₀ : Set α}
+    {T : α} (hlarge : T ∉ reachableFrom r' S₀) : T ∉ reachableFrom r S₀ :=
+  fun hsmall => hlarge (reachableFrom_subset_of_subrelation h S₀ hsmall)
+
+end SubrelationMonotone
+
 end ReflectiveFoldObstruction.Reachability.ClosureHull

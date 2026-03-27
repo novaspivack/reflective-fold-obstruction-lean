@@ -27,6 +27,10 @@ variable (R : Core.ReflectiveSystem)
 def morAdvances (f g : R.A ⟶ R.A) : Prop :=
   g = f ≫ R.represent
 
+/-- Mor advancement by **`n`** composed `represent`-iterates (`n ≥ 1`) — shared by calculi (`SPEC_010` / `SPEC_016`). -/
+def morAdvancesTower (n : ℕ) (_ : 0 < n) (f g : R.A ⟶ R.A) : Prop :=
+  g = f ≫ Core.metaRegressArrow R n
+
 /-- Primitive internal step: reflexivity, or mor-branch composition with `represent`. -/
 def reflectiveSlotStep (s t : ReflectiveSlot R) : Prop :=
   s = t ∨ (∃ f g : R.A ⟶ R.A, s = OntologicalSlot.mor f ∧ t = OntologicalSlot.mor g ∧ morAdvances R f g)
