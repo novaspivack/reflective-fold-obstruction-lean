@@ -424,7 +424,7 @@ fold statement.
 % ===========================================================================
 % 7. ROBUSTNESS
 % ===========================================================================
-\section{Robustness and universality}\label{sec:robustness}
+\section{Robustness of the obstruction}\label{sec:robustness}
 
 The fold pattern is not brittle.  Three meta-stability results ensure that the
 obstruction survives routine extensions of the primitive relation.
@@ -482,18 +482,22 @@ between what internal closure can generate and what it cannot.
 \subsection*{Novelty}
 
 We do not claim that preserved-invariant reasoning or reflexive--transitive
-closure~\cite{barendregt1984,mathlib} are individually new.  The contribution is the
-\textbf{machine-checked unification} of reflective architectures, internal reachability,
-preservation-to-obstruction lifting, hull exclusion, reflective sort obstruction,
-generated-calculus universality, and bridge compatibility with upstream representational
-incompleteness---into a single obstruction calculus with zero proof holes.
+closure~\cite{barendregt1984,mathlib} are individually new.  A central novelty of this
+paper is the formal realization of the principle that \emph{a fold is not an iterate}:
+internally generated reachability, even under closure and enriched calculi, remains
+confined to invariant-preserving classes, so invariant-breaking architectural transitions
+cannot be obtained by iteration alone.  The contribution is the
+\textbf{machine-checked integration} in which this principle is proved, instantiated on
+reflective architectures, extended to generated calculi and admissible families, and
+bridged to upstream representational incompleteness---all with zero proof holes.
 
-\begin{keybox}[title={The novelty is the unification}]
-Individual ingredients are standard.  What is new is the theorem-grade integration:
-a machine-checked calculus in which preserved invariants, reflexive--transitive closure,
-hull exclusion, reflective sort dynamics, generated-calculus universality, and
-representational-system bridges coexist in one artifact, so that internal iteration
-alone is provably insufficient for invariant-breaking architectural transition.
+\begin{keybox}[title={The novelty is the formal realization}]
+Individual ingredients are standard.  What is new is a machine-checked integration in
+which preserved invariants lift from primitive steps to reflexive--transitive closure,
+yielding pairwise obstruction, hull exclusion, reflective sort obstruction,
+generated-calculus stability, and bridge compatibility in one theorem stack---so that
+internal iteration alone is provably insufficient for invariant-breaking architectural
+transition.
 \end{keybox}
 
 % ===========================================================================
