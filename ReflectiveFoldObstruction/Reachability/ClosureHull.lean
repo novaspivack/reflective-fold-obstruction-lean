@@ -9,11 +9,12 @@
 
 import Mathlib.Data.Set.Basic
 import Mathlib.Data.Set.Insert
+import Mathlib.Data.Set.Lattice
 import Mathlib.Logic.Relation
 
 import ReflectiveFoldObstruction.Reachability.InternalOps
 
-universe u
+universe u v
 
 namespace ReflectiveFoldObstruction.Reachability.ClosureHull
 
@@ -63,6 +64,33 @@ theorem reachableFrom_union (S T : Set α) :
   · rintro (⟨x, hxS, hxy⟩ | ⟨x, hxT, hxy⟩)
     · exact ⟨x, Or.inl hxS, hxy⟩
     · exact ⟨x, Or.inr hxT, hxy⟩
+
+/-- Indexed union of seeds reaches the union of the individual hulls. -/
+theorem reachableFrom_iUnion {ι : Type v} (S : ι → Set α) :
+    reachableFrom r (⋃ i, S i) = ⋃ i, reachableFrom r (S i) := by
+  ext y
+  simp only [mem_reachableFrom, mem_iUnion]
+  constructor
+  · rintro ⟨x, ⟨i, hx⟩, hxy⟩
+    exact ⟨i, x, hx, hxy⟩
+  · rintro ⟨i, x, hx, hxy⟩
+    exact ⟨x, ⟨i, hx⟩, hxy⟩
+
+/-- Hull of an intersection is contained in the intersection of hulls. -/
+theorem reachableFrom_iInter_subset {ι : Type v} (S : ι → Set α) :
+    reachableFrom r (⋂ i, S i) ⊆ ⋂ i, reachableFrom r (S i) := by
+  intro y hy
+  simp only [mem_iInter]
+  intro i
+  rcases hy with ⟨x, hx, hxy⟩
+  simp only [mem_iInter] at hx
+  exact ⟨x, hx i, hxy⟩
+
+@[simp]
+theorem reachableFrom_univ : reachableFrom r (univ : Set α) = univ := by
+  ext y
+  simp only [mem_univ, iff_true, mem_reachableFrom]
+  exact ⟨y, trivial, ReflTransGen.refl⟩
 
 /-- Saturation is idempotent: reaching twice does not enlarge the hull. -/
 theorem reachableFrom_idem (S : Set α) :

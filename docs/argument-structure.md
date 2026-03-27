@@ -17,7 +17,7 @@
 No `lake require` on RR until SPEC_004 “Import strategy” step 2. Useful parallel work:
 
 - **Core / Reflection:** monoid laws on `End A`, `IterInjective` ↔ injective `metaRepresent` (`Core/Basic`).
-- **Reachability:** hull lemmas matching vision §6 — `mem_reachableFrom_induction` (same schema as `ForwardClosed.mem_reachableFrom`), `reachableFrom_union` / `reachableFrom_inter_subset`, empty seed.
+- **Reachability:** hull lemmas matching vision §6 — `mem_reachableFrom_induction`, **finite** `∪`/`∩`, **indexed** `iUnion`/`iInter` subset, `univ`, empty seed.
 - **Diagonal:** keep **`ULift Nat`** pressure lemmas (`Diagonal/Pressure`) as the universe-polymorphic companion to `Nat` at `Type`.
 - **Integration:** when RR `lake build` is green, align `Examples/RepresentationalRegress` / `PackagedReflectiveHost` with flagship types; run outer `scripts/verify-lean-build.sh`.
 - **Tracking:** inner `MANIFEST.md` honest-limits + `THEOREM_INVENTORY.md` buckets **A–F**; EPIC status in outer `specs/IN-PROCESS/`.
