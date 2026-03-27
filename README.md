@@ -16,7 +16,7 @@ lake exe cache get       # REQUIRED: pre-built .olean blobs
 lake build ReflectiveFoldObstruction
 ```
 
-Workspace documentation (cache, submodule layout): outer `docs/lean_mathlib_cache_workflow.md`, `docs/optional_mathlib.md`, `docs/repository_names.md`.
+Workspace documentation (cache, submodule layout): outer `docs/008_LEAN_MATHLIB_CACHE_WORKFLOW.md`, `docs/009_OPTIONAL_MATHLIB.md`, `docs/007_REPOSITORY_NAMES.md`.
 
 ## Layout
 

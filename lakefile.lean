@@ -8,7 +8,7 @@ package «reflective-fold-obstruction-lean» where
   Mathlib is a **dependency** of this project. Do **not** compile all of Mathlib from
   source locally: after `lake update`, run **`lake exe cache get`** to download
   pre-built `.olean` bundles into `~/.cache/mathlib/`, then `lake build` only
-  compiles this repo’s files. See `../docs/lean_mathlib_cache_workflow.md`.
+  compiles this repo’s files. See `../docs/008_LEAN_MATHLIB_CACHE_WORKFLOW.md`.
 -/
 
 require mathlib from git

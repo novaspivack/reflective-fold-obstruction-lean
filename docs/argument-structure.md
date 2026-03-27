@@ -10,7 +10,7 @@
 3. **Internal reachability vs fold** — what closure can generate vs what needs an architecture-changing fold (`Reachability`, `Obstruction`).
 4. **Examples** — portable bridge to **`representational-incompleteness-lean`** (`Examples/RepresentationalIncompleteness`) per SPEC_002 (no `lake require` until SPEC_004).
 
-**Build:** always `lake exe cache get` after `lake update` (outer `docs/lean_mathlib_cache_workflow.md`).
+**Build:** always `lake exe cache get` after `lake update` (outer `docs/008_LEAN_MATHLIB_CACHE_WORKFLOW.md`).
 
 ---
 
