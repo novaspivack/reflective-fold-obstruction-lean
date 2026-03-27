@@ -83,4 +83,22 @@ theorem ReflTransGen.eq_of_eq {a b : α} (h : ReflTransGen (@Eq α) a b) : a = b
   | single h => exact h
   | trans _ _ ih₁ ih₂ => exact ih₁.trans ih₂
 
+/-- **Monotone reachability:** if every `r`-edge is an `r'`-edge, `r⋆ ⊆ r'⋆`.
+
+Orientation: **`r` smaller / subrelation** → hypothesis `∀ x y, r x y → r' x y`. -/
+theorem reflTransGen_mono_of_subrelation {r r' : α → α → Prop}
+    (h : ∀ ⦃x y : α⦄, r x y → r' x y) ⦃a b : α⦄ (hab : ReflTransGen r a b) :
+    ReflTransGen r' a b :=
+  ReflTransGen.mono (fun _ _ hxy => h hxy) hab
+
+/-- Contrapositive: not reachable in the **super**-relation ⇒ not reachable in the **sub**.
+
+Hypothesis `∀ x y, r x y → r' x y` says **`r ⊆ r'` as graphs** (`r'` allows at least every `r`-edge). -/
+theorem not_reflTransGen_of_superrelation {r r' : α → α → Prop}
+    (h : ∀ ⦃x y : α⦄, r x y → r' x y) ⦃a b : α⦄ (hab' : ¬ ReflTransGen r' a b) :
+    ¬ ReflTransGen r a b :=
+  fun hab => hab' (reflTransGen_mono_of_subrelation h hab)
+
+alias not_reachable_when_smaller_step_included := not_reflTransGen_of_superrelation
+
 end ReflectiveFoldObstruction.Reachability.InternalOps

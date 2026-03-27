@@ -5,6 +5,7 @@
 
 import ReflectiveFoldObstruction.Core.Basic
 import ReflectiveFoldObstruction.Core.Slots
+import ReflectiveFoldObstruction.Core.ArchitectureObstruction
 import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Reflection.Slices
 import ReflectiveFoldObstruction.Diagonal.LawvereType
@@ -23,17 +24,21 @@ import ReflectiveFoldObstruction.Topology.LocalModels2D
 import ReflectiveFoldObstruction.Topology.PuncturedNeighborhoods
 import ReflectiveFoldObstruction.Topology.Boundary
 import ReflectiveFoldObstruction.Topology.MobiusCylinder
+import ReflectiveFoldObstruction.Topology.HolonomyPhase
 import ReflectiveFoldObstruction.Reachability.InternalOps
 import ReflectiveFoldObstruction.Reachability.ClosureHull
 import ReflectiveFoldObstruction.Reachability.Invariants
 import ReflectiveFoldObstruction.Reachability.ReflectiveSteps
+import ReflectiveFoldObstruction.Reachability.ReflectiveCalculus
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.CanonicalInstances
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
 import ReflectiveFoldObstruction.Obstruction.OpenCompact
+import ReflectiveFoldObstruction.Obstruction.OpenCompactWitness
 import ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 import ReflectiveFoldObstruction.Examples.CylinderMobius
 import ReflectiveFoldObstruction.Examples.NoCollapse
+import ReflectiveFoldObstruction.Examples.ObserverBridge
 import ReflectiveFoldObstruction.Main
 
 namespace ReflectiveFoldObstruction

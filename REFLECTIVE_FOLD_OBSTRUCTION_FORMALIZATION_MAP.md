@@ -13,6 +13,7 @@
 |------|------|
 | `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates + monoid `pow_succ` / `pow_add` / `pow_mul` on `End A`, `Over` packaging, injective lemmas (explicit `hij`) |
 | `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
+| `ReflectiveFoldObstruction/Core/ArchitectureObstruction.lean` | `architecture_*` stable names re-exporting `Obstruction.Fold` (`SPEC_012`) |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
@@ -31,15 +32,20 @@
 | `ReflectiveFoldObstruction/Topology/PuncturedNeighborhoods.lean` | `puncturedReals` |
 | `ReflectiveFoldObstruction/Topology/Boundary.lean` | `corneredUnitSquare` (= product model) |
 | `ReflectiveFoldObstruction/Topology/MobiusCylinder.lean` | `HolonomyTag`, `tagEquiv` |
-| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed` |
+| `ReflectiveFoldObstruction/Topology/HolonomyPhase.lean` | `HolonomyState`, gated phase steps, `holonomy_phase_dynamic_fold_obstruction` (`SPEC_011` B) |
+| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `reflTransGen_mono_of_subrelation`, `not_reflTransGen_of_superrelation` |
 | `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, idempotence, `∪`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction` |
 | `ReflectiveFoldObstruction/Reachability/Invariants.lean` | `ForwardClosed.mem_reachableFrom`, total reachability lemma |
+| `ReflectiveFoldObstruction/Reachability/ReflectiveSteps.lean` | `reflectiveSlotStep`, sort-separation preservation (`SPEC_008`) |
+| `ReflectiveFoldObstruction/Reachability/ReflectiveCalculus.lean` | `reflectiveCalcStep` tower mor jumps, fold obstruction, strict extension (`SPEC_010`) |
 | `ReflectiveFoldObstruction/Obstruction/Fold.lean` | `ObstructionKind`, `ObstructionCertificate` |
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
+| `ReflectiveFoldObstruction/Obstruction/OpenCompactWitness.lean` | Discrete witness-step obstruction on `ℕ` (`SPEC_011` A) |
 | `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `toReflectiveSystem`, `fromRepresentational`, induced unboundedness + `diagonalCertificate_fromRepresentational`; **`lake require «representational-incompleteness»`** (SPEC_004) |
 | `ReflectiveFoldObstruction/Examples/CylinderMobius.lean` | `parityOfHolonomy`, link to `OrientabilityLike` |
 | `ReflectiveFoldObstruction/Examples/NoCollapse.lean` | `represent_mor_ne_obj_A` |
+| `ReflectiveFoldObstruction/Examples/ObserverBridge.lean` | Schematic **RFO → OE** route blocked by mismatch (`SPEC_013`) |
 | `ReflectiveFoldObstruction/Main.lean` | Assembly imports + `assemblySurface` |
 
 ---
