@@ -2,7 +2,7 @@
   Categorical **reflective system**: a category, a distinguished object `A`, and a
   self-representation endomorphism `represent`.
 
-  Per `specs/IN-PROCESS/SPEC_003_RFO_LEAN_LAYER_EPICS.md`, **structure** (this file)
+  Per `specs/COMPLETE/SPEC_003_RFO_LEAN_LAYER_EPICS.md`, **structure** (this file)
   is separated from the **hypothesis** `IterInjective` (distinct iterate powers in
   `End A`). That generalizes the bundled `iter_injective` field of
   the bundled `iter_injective` pattern of the **RI** line (`representational-incompleteness-lean`)
