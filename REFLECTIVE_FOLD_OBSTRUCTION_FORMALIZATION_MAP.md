@@ -23,7 +23,8 @@
 | `ReflectiveFoldObstruction/SemanticType/HullTags.lean` | `tagsOnHull`, seed monotonicity |
 | `ReflectiveFoldObstruction/SemanticType/ConjPair.lean` | `conjPairTyping`, `typeGap_of_coord` |
 | `ReflectiveFoldObstruction/SemanticType/ArchitectureBridge.lean` | `BipartitionDyn`, `fold_bundle_typeGap`, `BipartitionDyn.ofFoldBundle` |
-| `ReflectiveFoldObstruction/SemanticType/Simulation.lean` | `TypedPrimitiveSimulation`, `pullbackAlongSimulation`, `typeGap_simulation_pullback` |
+| `ReflectiveFoldObstruction/SemanticType/Simulation.lean` | `TypedPrimitiveSimulation`, `TypedPrimitiveSimulationSection`, `pullbackAlongSimulation`, `typeReachable_pullback_iff_of_section`, `SemanticTypeObstruction_pullback_iff_of_section`, `typeGap_simulation_pullback` |
+| `ReflectiveFoldObstruction/SemanticType/ComplementaryReach.lean` | `complementaryTagReach`, `typeGap_of_complementary_tags`, `SemanticTypeObstruction_of_complementary_tags` |
 | `ReflectiveFoldObstruction/SemanticType/Antichain.lean` | `PairwiseTypeGap`, `pairwiseTypeGap_depthLabels` |
 | `ReflectiveFoldObstruction/SemanticType/ComputabilityNote.lean` | Rice / index-theorem scope string |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |

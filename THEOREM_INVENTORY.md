@@ -49,10 +49,11 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 | `SemanticType.Instances.AdjudicationType` | `AdjudicationClass`, `AdjudicationDynamics`, `toTyping`, `adjudicationType_typePreserved`, `adjudicationType_obstruction`, `adjudication_total_to_nonTotal_typeGap`, `adjudication_semantic_obstruction`, `adjudication_type_ne` |
 | `SemanticType.Instances.RIDiagonal` | `RISemanticTag`, `IsMorReflectiveSlot`, `riSemanticTyping`, `reflective_step_preserves_morCarrier`, `RI_carrier_typeGap`, `RI_semantic_type_mismatch`, `RI_slot_fold_obstruction` |
 | `SemanticType` (core lemmas) | `Typing.withPrimitiveStep`, `not_reflTransGen_of_typeGap`, `typeReachable_mono_primitive`, `typeGap_antitone_primitive` |
-| `SemanticType.HullTags` | `tagsOnHull`, `mem_tagsOnHull_iff`, `tagsOnHull_mono_seed`, `tag_mem_hull_of_seed_instantiates` |
+| `SemanticType.HullTags` | `tagsOnHull`, `mem_tagsOnHull_iff`, `tagsOnHull_mono_seed`, `tag_mem_hull_of_seed_instantiates`, `false_tag_not_mem_tagsOnHull_of_preserved_seed` |
 | `SemanticType.ConjPair` | `conjPairTyping`, `typeReachable_conj_pair`, `typeGap_of_coord`, `SemanticTypeObstruction_conj_pair` |
 | `SemanticType.ArchitectureBridge` | `BipartitionDyn`, `BipartitionDyn.toTyping`, `typeGap_bipartition_tt_ff`, `SemanticTypeObstruction_bipartition`, `BipartitionDyn.ofFoldBundle`, `fold_bundle_typeGap`, `not_reflTransGen_of_inv_mismatch` |
-| `SemanticType.Simulation` | `TypedPrimitiveSimulation`, `pullbackAlongSimulation`, `typeReachable_simulation_forward`, `typeGap_simulation_pullback`, `SemanticTypeObstruction_simulation_pullback` |
+| `SemanticType.Simulation` | `TypedPrimitiveSimulation`, `TypedPrimitiveSimulationSection`, `pullbackAlongSimulation`, `reflTransGen_section_lift`, `typeReachable_simulation_forward`, `typeReachable_simulation_section_backward`, `typeReachable_pullback_iff_of_section`, `SemanticTypeObstruction_pullback_iff_of_section`, `typeGap_simulation_pullback`, `SemanticTypeObstruction_simulation_pullback` |
+| `SemanticType.ComplementaryReach` | `complementaryTagReach`, `typeGap_of_complementary_tags`, `SemanticTypeObstruction_of_complementary_tags` |
 | `SemanticType.Antichain` | `PairwiseTypeGap`, `pairwiseTypeGap_depthLabels`, `typeGap_depthLabels_ne` |
 | `SemanticType.ComputabilityNote` | `computabilityComparisonNote` (scope / Rice contrast, narrative string) |
 | `Reachability.InternalOps` | **`reflTransGen_map`** (homomorphic image of `ReflTransGen`) |

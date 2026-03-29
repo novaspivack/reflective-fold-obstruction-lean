@@ -543,8 +543,14 @@ grows and \texttt{typeGap} shrinks when one enlarges the step relation while pre
 \emph{tags-on-hull} for seeds; \emph{pair-tag} conjunction obstruction; a \emph{bipartition}
 bridge to \texttt{FoldObstructionBundle} when both $P$ and $\neg P$ are forward-closed;
 \emph{typed simulations} pulling back tags, so specification-level gaps inherit to simulating
-systems; an infinite \emph{pairwise antichain} of depth labels; and an explicit scope note
-contrasting Rice--index phenomena with this dynamical formulation.
+systems; a \emph{section} witness (\texttt{TypedPrimitiveSimulationSection}) giving backward
+step-lifting, hence an \texttt{iff} for \texttt{typeReachable} on pullbacks --- the formal
+``simulation vs.\ realisation'' split at the typing layer; \emph{complementary-tag} gaps from
+forward-closure of a predicate $P$ alone (without global $\neg P$ preservation); and
+\emph{seed-local hull} facts (\texttt{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed})
+excluding a $\neg P$-tag from the reachable hull from $P$-seeds; an infinite \emph{pairwise antichain}
+of depth labels; and an explicit scope note contrasting Rice--index phenomena with this dynamical
+formulation.
 
 \medskip
 \noindent
@@ -613,7 +619,10 @@ Semantic-type non-totality (\Cref{sec:semantic-type})
 RI semantic mismatch (\Cref{sec:semantic-type})
   & \leanref{RI\_semantic\_type\_mismatch} \\[3pt]
 Relation map / simulation (\Cref{sec:semantic-type})
-  & \leanref{reflTransGen\_map}, \leanref{typeGap\_simulation\_pullback} \\
+  & \leanref{reflTransGen\_map}, \leanref{typeGap\_simulation\_pullback},
+    \leanref{typeReachable\_pullback\_iff\_of\_section},
+    \leanref{typeGap\_of\_complementary\_tags},
+    \leanref{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed} \\
 \bottomrule
 \end{tabular}
 \caption{Principal machine-checked theorem anchors.}\label{tab:anchors}

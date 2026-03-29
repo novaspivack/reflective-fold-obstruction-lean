@@ -13,6 +13,9 @@ namespace ReflectiveFoldObstruction.SemanticType
 
 def computabilityComparisonNote : String :=
   "RFO semantic-type obstruction is dynamical (PreservedBy + ReflTransGen on states), not " ++
-  "a Rice / index-set statement about r.e. degrees of program codes."
+  "a Rice / index-set statement about r.e. degrees of program codes.  Forward typed simulation " ++
+  "projects reachability; a section with backward step-lifting (`TypedPrimitiveSimulationSection`) " ++
+  "is the formal witness that the codomain dynamics is realised (not merely simulated) in the " ++
+  "domain, yielding an iff on `typeReachable` for the pullback."
 
 end ReflectiveFoldObstruction.SemanticType

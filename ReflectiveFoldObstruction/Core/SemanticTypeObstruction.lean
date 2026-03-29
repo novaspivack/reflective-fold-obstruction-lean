@@ -14,5 +14,6 @@ import ReflectiveFoldObstruction.SemanticType.HullTags
 import ReflectiveFoldObstruction.SemanticType.ConjPair
 import ReflectiveFoldObstruction.SemanticType.ArchitectureBridge
 import ReflectiveFoldObstruction.SemanticType.Simulation
+import ReflectiveFoldObstruction.SemanticType.ComplementaryReach
 import ReflectiveFoldObstruction.SemanticType.Antichain
 import ReflectiveFoldObstruction.SemanticType.ComputabilityNote

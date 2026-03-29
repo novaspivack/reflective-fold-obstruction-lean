@@ -7,6 +7,7 @@
 import Mathlib.Data.Set.Defs
 
 import ReflectiveFoldObstruction.Reachability.ClosureHull
+import ReflectiveFoldObstruction.Reachability.InternalOps
 import ReflectiveFoldObstruction.SemanticType.Core
 
 universe u v
@@ -15,6 +16,7 @@ namespace ReflectiveFoldObstruction.SemanticType
 
 open Set
 open Reachability.ClosureHull
+open Reachability.InternalOps
 
 variable {System : Type u}
 
@@ -35,5 +37,20 @@ theorem tagsOnHull_mono_seed {T : Typing System} {S₀ S₁ : Set System} (h : S
 theorem tag_mem_hull_of_seed_instantiates {T : Typing System} {S₀ : Set System} {τ : T.Tag}
     ⦃s : System⦄ (hs : s ∈ S₀) (ht : T.InstantiatesType s τ) : τ ∈ tagsOnHull T S₀ :=
   ⟨s, subset_reachableFrom T.primitiveStep S₀ hs, ht⟩
+
+/--
+If `τ_false` classifies `¬ P`, seeds lie in `P`, and `P` is forward-closed along primitive steps,
+then **`τ_false` never appears on the hull** from `S₀` --- a *seed-local* obstruction without any
+global `¬ P` preservation hypothesis.
+-/
+theorem false_tag_not_mem_tagsOnHull_of_preserved_seed {T : Typing System} {S₀ : Set System}
+    {τ_false : T.Tag} {P : System → Prop}
+    (hfalse : ∀ s, T.InstantiatesType s τ_false ↔ ¬ P s)
+    (hseed : ∀ x ∈ S₀, P x)
+    (hP : ForwardClosed T.primitiveStep P) :
+    τ_false ∉ tagsOnHull T S₀ := by
+  rintro ⟨x, hx, htx⟩
+  have hnPx : ¬ P x := (hfalse x).1 htx
+  exact hnPx (mem_reachableFrom_induction T.primitiveStep hseed hP hx)
 
 end ReflectiveFoldObstruction.SemanticType
