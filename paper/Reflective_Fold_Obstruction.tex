@@ -501,7 +501,53 @@ transition.
 \end{keybox}
 
 % ===========================================================================
-% 9. MACHINE-CHECKED ARTIFACT
+% 9. SEMANTIC TYPE OBSTRUCTION (SPEC\_020)
+% ===========================================================================
+\section{Semantic type obstruction}\label{sec:semantic-type}
+
+Classical computability fixes a system's \emph{computational} ceiling: under standard
+notions of algorithm, a Turing-complete model can compute every partial recursive function
+and no others.  A separate dimension is left open: what \emph{semantic types} can a system
+\emph{instantiate}---modes of self-relation, self-modeling, or adjudication---as matters
+of architectural \emph{being}, not merely of what it can \emph{simulate}?
+
+\medskip
+\noindent
+\textbf{Semantic typing.}
+Fix a carrier of \emph{systems}, a discrete set of \emph{tags} (semantic types), a binary
+\emph{primitive step} relation, and a predicate stating when a system \emph{instantiates}
+a tag.  If every primitive step preserves each tag's extension, then any reflexive--transitive
+internal route from a system instantiating tag~$T$ stays inside that tag's invariant class.
+Thus two tags separated by an invariant mismatch are not connected by internal iteration;
+this is the same hull mechanism as \Cref{thm:fold-obstruction}, lifted to a preorder on tags.
+
+\medskip
+\noindent
+\textbf{Non-triviality.}
+The \emph{type reachability} preorder on tags is not total: concrete witnesses exhibit
+pairs $(T,T')$ with no connecting internal chain.  One canonical family uses
+\emph{self-modeling depth} labels on~$\mathbb{N}$ with identity dynamics: depth is
+preserved, so tag~\texttt{depth(0)} cannot reach \texttt{depth(1)}.  A second family
+abstracts \emph{adjudication class} (total-effective vs.\ weaker behaviour): kind is
+preserved along steps, so the total tag cannot reach the non-total tag without a fold.
+A third instance reframes the reflective \emph{sort} gap: the object-branch tag cannot
+reach the morphism-carrier tag under \texttt{reflectiveSlotStep}, so the diagonal witness
+\texttt{mor(represent)} is unreachable from the parametric object branch---in parallel
+with the RI bridge.
+
+\medskip
+\noindent
+\textbf{Lean.}
+The development lives under \texttt{ReflectiveFoldObstruction/SemanticType/} (core bundle,
+three named instances, non-triviality) with stable import surface
+\texttt{Core/SemanticTypeObstruction}.  Anchors:
+\texttt{semanticType\_preorder\_nontrivial},
+\texttt{selfModelDepth\_obstruction},
+\texttt{adjudication\_semantic\_obstruction},
+\texttt{RI\_semantic\_type\_mismatch}.
+
+% ===========================================================================
+% 10. MACHINE-CHECKED ARTIFACT
 % ===========================================================================
 \section{Machine-checked artifact}\label{sec:artifact}
 
@@ -550,7 +596,11 @@ Rich calculus fold (\Cref{rem:rich-calculus})
 Subrelation persistence (\Cref{prop:subrelation})
   & \leanref{preserved\_under\_relation\_extension} \\[3pt]
 Generated-calculus fold (\Cref{prop:generator})
-  & \leanref{generated\_calculus\_fold\_obstruction} \\
+  & \leanref{generated\_calculus\_fold\_obstruction} \\[3pt]
+Semantic-type non-totality (\Cref{sec:semantic-type})
+  & \leanref{semanticType\_preorder\_nontrivial} \\[3pt]
+RI semantic mismatch (\Cref{sec:semantic-type})
+  & \leanref{RI\_semantic\_type\_mismatch} \\
 \bottomrule
 \end{tabular}
 \caption{Principal machine-checked theorem anchors.}\label{tab:anchors}
@@ -626,6 +676,9 @@ N.~Spivack.
 \texttt{Core/Basic} & \texttt{ReflectiveSystem}, \texttt{IterInjective}, iterates, monoid laws \\
 \texttt{Core/Slots} & \texttt{OntologicalSlot}, sort disjointness, \texttt{ReflectiveSlot} \\
 \texttt{Core/ArchitectureObstruction} & Stable re-export names for fold pattern \\
+%
+\texttt{Core/SemanticTypeObstruction} & \texttt{SPEC\_020}: semantic typing + three instances \\
+\texttt{SemanticType/*} & Core bundle, depth / adjudication / RI diagonal, non-triviality \\
 \midrule
 \texttt{Reachability/InternalOps} & \texttt{ForwardClosed}, \texttt{PreservedBy}, monotone \texttt{ReflTransGen}, relation extension \\
 \texttt{Reachability/ClosureHull} & \texttt{reachableFrom}, hull algebra (union, intersection, idempotence), subrelation monotonicity \\

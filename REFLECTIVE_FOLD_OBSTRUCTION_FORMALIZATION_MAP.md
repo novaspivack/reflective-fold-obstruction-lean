@@ -14,6 +14,12 @@
 | `ReflectiveFoldObstruction/Core/Basic.lean` | `ReflectiveSystem`, `IterInjective`, iterates + monoid `pow_succ` / `pow_add` / `pow_mul` on `End A`, `Over` packaging, injective lemmas (explicit `hij`) |
 | `ReflectiveFoldObstruction/Core/Slots.lean` | Polymorphic `OntologicalSlot Obj Mor`, `ReflectiveSlot R`, non-collapse / tower slot lemmas |
 | `ReflectiveFoldObstruction/Core/ArchitectureObstruction.lean` | `architecture_*` stable names re-exporting `Obstruction.Fold` (`SPEC_012`) |
+| `ReflectiveFoldObstruction/Core/SemanticTypeObstruction.lean` | Import hub for **`SPEC_020`** semantic typing |
+| `ReflectiveFoldObstruction/SemanticType/Core.lean` | `Typing`, `typeReachable`, `typeGap`, `SemanticTypeObstruction` |
+| `ReflectiveFoldObstruction/SemanticType/NonTriviality.lean` | `depthLabelTyping`, `semanticType_preorder_nontrivial`, `SemanticTypeClass` |
+| `ReflectiveFoldObstruction/SemanticType/Instances/SelfModelDepth.lean` | `SelfModelDepthDynamics`, `selfModelDepth_obstruction`, fold via `SPEC_005` |
+| `ReflectiveFoldObstruction/SemanticType/Instances/AdjudicationType.lean` | `AdjudicationDynamics`, `adjudication_semantic_obstruction` |
+| `ReflectiveFoldObstruction/SemanticType/Instances/RIDiagonal.lean` | `riSemanticTyping`, `RI_semantic_type_mismatch`, `RI_slot_fold_obstruction` |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
@@ -45,7 +51,7 @@
 | `ReflectiveFoldObstruction/Obstruction/ReflectiveFold.lean` | `certificateOfIterativeUnbounded`, `iterative_unbounded` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompact.lean` | `Finset` / finite-set `IsCompact` |
 | `ReflectiveFoldObstruction/Obstruction/OpenCompactWitness.lean` | Discrete witness-step obstruction on `ℕ` (`SPEC_011` A) |
-| `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `toReflectiveSystem`, `fromRepresentational`, induced unboundedness + `diagonalCertificate_fromRepresentational`; **`lake require «representational-incompleteness»`** (SPEC_004) |
+| `ReflectiveFoldObstruction/Examples/RepresentationalIncompleteness.lean` | `PackagedReflectiveHost`, `iterative_unbounded*`, `toReflectiveSystem`, `fromRepresentational`, induced unboundedness + `diagonalCertificate_fromRepresentational`; `RI_semantic_type_mismatch_fromRepresentational` (`SPEC_020`); **`lake require «representational-incompleteness»`** (SPEC_004) |
 | `ReflectiveFoldObstruction/Examples/CylinderMobius.lean` | `parityOfHolonomy`, link to `OrientabilityLike` |
 | `ReflectiveFoldObstruction/Examples/NoCollapse.lean` | `represent_mor_ne_obj_A` |
 | `ReflectiveFoldObstruction/Examples/ObserverBridge.lean` | Schematic **RFO → OE** route blocked by mismatch (`SPEC_013`) |

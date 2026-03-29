@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-27 — Phase A **`SPEC_015`–`018`** (relation persistence, generated calculi, architecture universality, reflective admissible families); `lake build ReflectiveFoldObstruction`, **0** `sorry`.  
+**Last updated:** 2026-03-29 — **`SPEC_020_H3T`** semantic type obstruction (core bundle + three instances + non-triviality); `lake build ReflectiveFoldObstruction`, **0** `sorry`.  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
@@ -35,7 +35,20 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 |--------|--------|
 | `Core.Slots` | `OntologicalSlot`, `obj_ne_mor`, `obj_injective`, `mor_injective`, `reflectiveSlot_obj_ne_mor`, `reflectiveSlot_tower_preserves_mor`, `reflectiveSlot_no_mor_is_obj`, `reflectiveSlot_represent_mor_ne_obj_A` |
 | `Examples.NoCollapse` | `represent_mor_ne_obj_A` (alias of `SortSeparation.represent_slot_disjoint_from_obj_A`) |
-| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `toReflectiveSystem`, `toReflectiveSystem_iterInjective`, `PackagedReflectiveHost.fromRepresentational`, `iterative_unbounded_fromRepresentational`, `iterative_unbounded_obstruction_fromRepresentational`, `diagonalCertificate_fromRepresentational`, `representational_incompleteness_implies_reflective_fold_obstruction`, `riLakeRequireIntegratedNote` / `riLakeRequireBlockedNote` |
+| `Examples.RepresentationalIncompleteness` | `PackagedReflectiveHost`, `iterative_unbounded`, `iterative_unbounded_obstruction`, `diagonalCertificate`, `toReflectiveSystem`, `toReflectiveSystem_iterInjective`, `PackagedReflectiveHost.fromRepresentational`, `iterative_unbounded_fromRepresentational`, `iterative_unbounded_obstruction_fromRepresentational`, `diagonalCertificate_fromRepresentational`, `representational_incompleteness_implies_reflective_fold_obstruction`, `RI_semantic_type_mismatch_fromRepresentational`, `riLakeRequireIntegratedNote` / `riLakeRequireBlockedNote` |
+
+---
+
+## C2. Semantic type obstruction (`SPEC_020`)
+
+| Module | Names |
+|--------|--------|
+| `SemanticType.Core` | `Typing`, `typeReachable`, `typeGap`, `SemanticTypeObstruction` |
+| `SemanticType.NonTriviality` | `SemanticTypeClass`, `depthLabelTyping`, `depth_zero_one_typeGap`, `semanticType_preorder_nontrivial` |
+| `SemanticType.Instances.SelfModelDepth` | `SelfModelDepthDynamics`, `toTyping`, `selfModelDepth_typePreserved`, `selfModelDepth_obstruction`, `selfModelDepth_typeGap`, `selfModelDepth_semantic_obstruction` |
+| `SemanticType.Instances.AdjudicationType` | `AdjudicationClass`, `AdjudicationDynamics`, `toTyping`, `adjudicationType_typePreserved`, `adjudicationType_obstruction`, `adjudication_total_to_nonTotal_typeGap`, `adjudication_semantic_obstruction`, `adjudication_type_ne` |
+| `SemanticType.Instances.RIDiagonal` | `RISemanticTag`, `IsMorReflectiveSlot`, `riSemanticTyping`, `reflective_step_preserves_morCarrier`, `RI_carrier_typeGap`, `RI_semantic_type_mismatch`, `RI_slot_fold_obstruction` |
+| `Core.SemanticTypeObstruction` | Import hub for all of the above |
 
 ---
 

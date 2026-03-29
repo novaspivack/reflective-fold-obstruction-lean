@@ -20,6 +20,7 @@ import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Obstruction.Fold
 import ReflectiveFoldObstruction.Obstruction.ReflectiveFold
 import ReflectiveFoldObstruction.Reachability.ReflectiveSteps
+import ReflectiveFoldObstruction.SemanticType.Instances.RIDiagonal
 
 universe u
 
@@ -28,6 +29,7 @@ namespace ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness
 open Relation
 open ReflectiveFoldObstruction
 open ReflectiveFoldObstruction.Reachability.ReflectiveSteps
+open ReflectiveFoldObstruction.SemanticType
 
 /-- Working bundle for “architecture supports internal iteration with injective tower”. -/
 structure PackagedReflectiveHost where
@@ -102,5 +104,13 @@ theorem representational_incompleteness_implies_reflective_fold_obstruction (R :
       (Core.Slots.OntologicalSlot.obj (toReflectiveSystem R).A)
       (Core.Slots.OntologicalSlot.mor (toReflectiveSystem R).represent) := by
   simpa [toReflectiveSystem] using Obstruction.ReflectiveFold.reflective_fold_obstruction_slot_mismatch (toReflectiveSystem R)
+
+/-- **`SPEC_020`:** RI hosts induce the semantic typing obstruction on slots (parametric vs mor-carrier). -/
+theorem RI_semantic_type_mismatch_fromRepresentational (R : RepresentationalSystem) :
+    SemanticTypeObstruction
+      (Instances.RIDiagonal.riSemanticTyping (toReflectiveSystem R))
+      Instances.RIDiagonal.RISemanticTag.parametricSelf
+      Instances.RIDiagonal.RISemanticTag.morCarrier :=
+  Instances.RIDiagonal.RI_semantic_type_mismatch (toReflectiveSystem R)
 
 end ReflectiveFoldObstruction.Examples.RepresentationalIncompleteness

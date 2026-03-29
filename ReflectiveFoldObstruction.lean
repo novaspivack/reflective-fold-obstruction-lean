@@ -6,6 +6,7 @@
 import ReflectiveFoldObstruction.Core.Basic
 import ReflectiveFoldObstruction.Core.Slots
 import ReflectiveFoldObstruction.Core.ArchitectureObstruction
+import ReflectiveFoldObstruction.Core.SemanticTypeObstruction
 import ReflectiveFoldObstruction.Reflection.Towers
 import ReflectiveFoldObstruction.Reflection.Slices
 import ReflectiveFoldObstruction.Diagonal.LawvereType
