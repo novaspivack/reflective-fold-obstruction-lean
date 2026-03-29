@@ -152,6 +152,15 @@ blocks \emph{simulating} deeper behaviour externally.  \Cref{sec:semantic-type} 
 split precise at the level of machine-checked \emph{type reachability} and simulation,
 and \Cref{sec:conclusion} summarizes the stakes.
 
+\begin{keybox}[title={Computational vs.\ architectural ceilings}]
+\textbf{Do not conflate them.}  Turing-completeness settles how much a standard model can
+\emph{compute externally}; fold obstruction settles how far a fixed system can move
+\emph{inside its own} primitive dynamics while preserving chosen invariants.  The
+semantic-type layer (\Cref{sec:semantic-type}) proves the second can bound \emph{kinds of
+being} (tags) even when the first is maximal---\textbf{instantiation along $r$ is not
+simulation in general}.
+\end{keybox}
+
 % ===========================================================================
 % 2. DEFINITIONS
 % ===========================================================================
@@ -426,6 +435,15 @@ layer: tags, instantiation, and type reachability.  It answers a question orthog
 \RI's diagonal barrier---how internal dynamics bounds \emph{architectural kinds}---while
 still machine-checkable without importing a full Rice-style index-set formalization.
 
+\begin{keybox}[title={Diagonal pressure vs.\ dynamical hull vs.\ semantic types}]
+\textbf{\RI{}}: no universal self-parametrization of the function space (Lawvere/diagonal).
+\textbf{\RFO{}}: preserved invariants close internal hulls (fold, not iterate).
+\textbf{Semantic types (\Cref{sec:semantic-type})}: the same hull story at the tag layer,
+including provable \textbf{limits on Turing-complete hosts} that are not the halting
+or Rice plotlines.  Keep the flavours separate: they reinforce each other, but none
+reduces to the others.
+\end{keybox}
+
 The two programs share reflective-system infrastructure but own different theorems.
 Every upstream \RI{} host inherits the \RFO{} sort obstruction through a proved
 bridge:
@@ -565,6 +583,16 @@ the target tag externally.  What is proved is not a replacement for Rice or the 
 problem, but a \emph{different} impossibility template: \textbf{invariant preservation
 along $r$ closes the hull}, at the state level and then at the tag level.
 
+\begin{keybox}[title={Turing-complete $\neq$ semantic-type complete}]
+\textbf{Orthogonal limits.}  A host may run every partial recursive function in the usual
+sense and still be \emph{permanently type-bounded}: its primitive step can preserve
+predicates that make some tag pairs unreachable by any internal chain.  \textbf{Simulation
+does not repair the gap}: the host may encode a counterfactual machine that
+``would'' change type, without itself \emph{instantiating} that transition natively.  What is
+machine-checked is dynamical obstruction---\textbf{hulls closed by preserved
+invariants}---not a substitute for Rice or the halting problem.
+\end{keybox}
+
 \subsection*{Semantic typing}
 
 Fix a carrier of \emph{systems}, a discrete set of \emph{tags} (semantic types), a binary
@@ -573,6 +601,14 @@ a tag.  If every primitive step preserves each tag's extension, then any reflexi
 internal route from a system instantiating tag~$T$ stays inside that tag's invariant class.
 Thus two tags separated by an invariant mismatch are not connected by internal iteration;
 this is the same hull mechanism as \Cref{thm:fold-obstruction}, lifted to a preorder on tags.
+
+\begin{keybox}[title={Tags inherit the fold boundary}]
+Semantic tagging is not a separate metaphysics: it is \Cref{thm:fold-obstruction} with
+predicates indexed by tags.  \textbf{Preserved tag extensions} mean that every internal
+route stays inside the invariant class of each tag it touches; \textbf{type gaps} are
+mappings incompatible with that preservation.  The move from states to tags packages the
+same obstruction for comparing \emph{architectural kinds}.
+\end{keybox}
 
 \subsection*{Non-triviality}
 
@@ -586,6 +622,15 @@ cannot reach the non-total tag without a fold.  A third instance reframes the re
 \emph{sort} gap: the object-branch tag cannot reach the morphism-carrier tag under
 \texttt{reflectiveSlotStep}, so the diagonal witness \texttt{mor(represent)} is unreachable
 from the parametric object branch---in parallel with the RI bridge (\Cref{sec:ri}).
+
+\begin{keybox}[title={The type preorder is provably nontrivial}]
+\textbf{Not all tags are comparable by internal iteration.}  The artifact gives concrete
+witness families: self-modeling \emph{depth} on $\mathbb{N}$ (identity dynamics), abstract
+\emph{adjudication class} under preserved kind, and the reflective \emph{sort} gap
+(object branch vs.\ morphism carrier) aligned with the RI bridge.  Together they nail
+down that \textbf{semantic-type reachability is genuinely nontrivial as a preorder}, not a
+vacuous afterthought to Turing completeness.
+\end{keybox}
 
 \subsection*{Simulation, pullback, and realization}
 
@@ -610,6 +655,19 @@ Thus ``realizing'' the foreign dynamics inside the host's step relation is a str
 stronger claim than forward simulation, and the library states the strengthening in
 provable \texttt{iff} form rather than by axiom.
 
+\begin{keybox}[title={Simulation vs.\ realization (machine-checked split)}]
+\textbf{Forward half is free.}  Typed primitive simulations always \emph{project} type
+reachability to the codomain; type gaps on the specification \emph{pull back} to any
+simulating dynamics.
+\textbf{The converse costs structure.}  Without backward step-lifting, the host may
+simulate without realizing every codomain trajectory.  A section $\sigma$ with
+$\pi\circ\sigma=\mathrm{id}$ that lifts each primitive step backward
+(\texttt{TypedPrimitiveSimulationSection}) is the minimal repair: then \textbf{type
+reachability matches the pullback iff it matches the model}, and the same for packaged
+obstruction (\texttt{typeReachable\_pullback\_iff\_of\_section}).  \textbf{Realization =
+bidirectional agreement}, not ``bigger state space.''
+\end{keybox}
+
 \subsection*{Complementary tags and seed-local hulls (weaker hypotheses)}
 
 Many applications single out one invariant $P$ whose forward-closure is cheap, without
@@ -622,6 +680,16 @@ $\neg P$ never appears on the primitive hull from $P$-seeds under the same one-s
 hypothesis.  These lemmas are obstruction-theoretic footnotes to the master hull theorem,
 but they match how practitioners reason about reachable components from real initial
 conditions.
+
+\begin{keybox}[title={One-sided preservation is often enough}]
+Many arguments fix a predicate $P$ whose forward-closure is cheap, without assuming a full
+bipartite discipline in which $\neg P$ is also step-closed.  \textbf{Complementary-tag gaps}
+(\texttt{typeGap\_of\_complementary\_tags}) need only that $P$ be preserved along primitive
+steps, with two tags classifying $P$ and $\neg P$.  \textbf{Seed-local hull exclusion}
+(\texttt{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed}) shows a $\neg P$-tag never
+appears on the hull from $P$-seeds under the same hypothesis.  These lemmas target the
+\emph{reachable component from realistic initial conditions}, not a global state space.
+\end{keybox}
 
 \subsection*{Further corollaries and scope}
 
@@ -753,6 +821,17 @@ universality}.  Iteration along a disciplined dynamics respects invariants; cros
 invariant boundary is a fold, not an iterate---whether the invariant is sort structure,
 holonomy data, boundary connectivity, semantic adjudication class, or the instantiation
 of a finer semantic tag.
+
+\begin{keybox}[title={Closing moral}]
+\textbf{Internal closure is not architectural universality.}  Iteration along a chosen
+primitive dynamics respects preserved invariants; crossing an invariant boundary is a
+\emph{fold}.  Classical computability fixes the \emph{computational} ceiling; this
+development fixes a complementary \emph{semantic-dynamical} ceiling---including a proved
+distinction between what can be \emph{simulated forward} and what is \emph{realized} with
+backward-lifting structure.  \textbf{Three orthogonal stories} work together: \RFO{} folds,
+\RI{} diagonal pressure, and semantic-type obstruction along~$r$---each machine-checked,
+each with its own impossibility flavour.
+\end{keybox}
 
 % ===========================================================================
 % REFERENCES
