@@ -90,6 +90,17 @@ shows that every upstream \emph{representational system} inherits the reflective
 obstruction.  Additional dynamic instances---including holonomy-phase and open--compact
 witness obstructions with nontrivial step relations---are formalized in the artifact.
 
+\emph{Semantic type obstruction} lifts the same hull mechanism to a preorder on
+\emph{tags}: provably, \textbf{Turing-completeness does not imply semantic-type
+completeness}.  A system may be maximally powerful in the standard computational sense and
+yet be permanently bounded in which architectural modes (\emph{types of being}) it can
+\emph{instantiate} along its \emph{own} primitive dynamics---distinct from what it can
+\emph{simulate}.  We prove that \emph{typed simulations} pull specification-level type gaps
+back to simulating systems, while a stricter \emph{realization} witness (a section with
+backward step-lifting) is exactly the extra structure needed for a machine-checked
+\emph{bidirectional} agreement of type reachability between a model and a pulled-back
+typing.
+
 The entire development is machine-checked in \Lean{}/\Mathlib{} with zero \texttt{sorry}
 and zero \texttt{admit} across all shipped modules.
 \end{abstract}
@@ -128,6 +139,18 @@ operations.
 \noindent The claim is not that the unreachable target is impossible in all senses, but
 that any route generated only by~$r$ and preserving~$I$ cannot reach it.  Internal
 closure and architecture-changing transition must therefore be distinguished.
+
+\medskip
+\noindent
+\textbf{A second orthogonal ceiling (preview).}
+Classical computability answers how much a Turing-complete model can \emph{compute};
+this paper's fold machinery answers how far a fixed architecture can move \emph{within
+itself} under a chosen primitive dynamics.  These are independent: internal iteration may
+preserve invariants that cap \emph{semantic types}---modes of self-relation or
+adjudication the system \emph{instantiates}---even when no computability-theoretic barrier
+blocks \emph{simulating} deeper behaviour externally.  \Cref{sec:semantic-type} makes this
+split precise at the level of machine-checked \emph{type reachability} and simulation,
+and \Cref{sec:conclusion} summarizes the stakes.
 
 % ===========================================================================
 % 2. DEFINITIONS
@@ -398,6 +421,11 @@ obstacle is a \emph{cardinality}-flavored impossibility (surjectivity failure of
 preserved invariant---cannot be realized by internal closure.  The obstacle is a
 \emph{transport}-flavored impossibility (invariant mismatch along reachability).
 
+Atop that dynamical core, \Cref{sec:semantic-type} packages a \emph{semantic typing}
+layer: tags, instantiation, and type reachability.  It answers a question orthogonal to
+\RI's diagonal barrier---how internal dynamics bounds \emph{architectural kinds}---while
+still machine-checkable without importing a full Rice-style index-set formalization.
+
 The two programs share reflective-system infrastructure but own different theorems.
 Every upstream \RI{} host inherits the \RFO{} sort obstruction through a proved
 bridge:
@@ -477,6 +505,15 @@ between what internal closure can generate and what it cannot.
   \item \textbf{The artifact proves this is a machine-checked obstruction calculus, not
     an informal schema.}  The entire development, from abstract definitions through
     concrete instances, compiles with zero proof holes.
+
+  \item \textbf{Semantic types vs.\ Turing completeness (\Cref{sec:semantic-type}).}
+    The library proves that the preorder of \emph{semantic-type reachability} is
+    genuinely nontrivial and that \emph{internal} type gaps persist regardless of how
+    much ``raw computation'' the host could in principle support: simulation of a deeper
+    configuration is not instantiation of its type along the host's primitive step.
+    Typed simulations preserve forward reachability and pull \emph{obstructions} back;
+    a proved \emph{section} criterion identifies when this becomes an \emph{iff}---the
+    formal edge between mere simulation and \emph{realization} at the typing layer.
 \end{enumerate}
 
 \subsection*{Novelty}
@@ -497,7 +534,11 @@ which preserved invariants lift from primitive steps to reflexive--transitive cl
 yielding pairwise obstruction, hull exclusion, reflective sort obstruction,
 generated-calculus stability, and bridge compatibility in one theorem stack---so that
 internal iteration alone is provably insufficient for invariant-breaking architectural
-transition.
+transition.  The same stack now includes a \emph{semantic-type} layer with explicit
+theorems on pullbacks, simulation, complementary-tag gaps under one-sided preservation,
+and seed-local hull exclusion---articulating limits on Turing-complete hosts that are not
+the classical halting/Rice storyline, but dynamical obstruction at the level of what a
+system \emph{is} under its own transition relation.
 \end{keybox}
 
 % ===========================================================================
@@ -505,15 +546,27 @@ transition.
 % ===========================================================================
 \section{Semantic type obstruction}\label{sec:semantic-type}
 
+\subsection*{Turing completeness and an orthogonal semantic ceiling}
+
 Classical computability fixes a system's \emph{computational} ceiling: under standard
 notions of algorithm, a Turing-complete model can compute every partial recursive function
-and no others.  A separate dimension is left open: what \emph{semantic types} can a system
-\emph{instantiate}---modes of self-relation, self-modeling, or adjudication---as matters
-of architectural \emph{being}, not merely of what it can \emph{simulate}?
+and no others.  That theorem classifies \emph{external} functional behaviour over standard
+presentations of algorithms.  It does \emph{not} classify what \emph{semantic types} a
+system can \emph{instantiate}---modes of self-relation, self-modeling, or adjudication---as
+matters of architectural \emph{being} along its \emph{own} internal transition relation.
 
 \medskip
-\noindent
-\textbf{Semantic typing.}
+The machine-checked layer below shows these dimensions are \textbf{orthogonal}.  A host may
+be Turing-complete (hence able to simulate rich counterfactual dynamics) while its
+primitive calculus preserves predicates that make certain tag pairs \emph{internally}
+unreachable forever: no sequence of admissible internal steps joins a source tag to a
+target tag, even though the host could \emph{simulate} a machine that appears to realize
+the target tag externally.  What is proved is not a replacement for Rice or the halting
+problem, but a \emph{different} impossibility template: \textbf{invariant preservation
+along $r$ closes the hull}, at the state level and then at the tag level.
+
+\subsection*{Semantic typing}
+
 Fix a carrier of \emph{systems}, a discrete set of \emph{tags} (semantic types), a binary
 \emph{primitive step} relation, and a predicate stating when a system \emph{instantiates}
 a tag.  If every primitive step preserves each tag's extension, then any reflexive--transitive
@@ -521,47 +574,78 @@ internal route from a system instantiating tag~$T$ stays inside that tag's invar
 Thus two tags separated by an invariant mismatch are not connected by internal iteration;
 this is the same hull mechanism as \Cref{thm:fold-obstruction}, lifted to a preorder on tags.
 
-\medskip
-\noindent
-\textbf{Non-triviality.}
+\subsection*{Non-triviality}
+
 The \emph{type reachability} preorder on tags is not total: concrete witnesses exhibit
 pairs $(T,T')$ with no connecting internal chain.  One canonical family uses
 \emph{self-modeling depth} labels on~$\mathbb{N}$ with identity dynamics: depth is
-preserved, so tag~\texttt{depth(0)} cannot reach \texttt{depth(1)}.  A second family
-abstracts \emph{adjudication class} (total-effective vs.\ weaker behaviour): kind is
-preserved along steps, so the total tag cannot reach the non-total tag without a fold.
-A third instance reframes the reflective \emph{sort} gap: the object-branch tag cannot
-reach the morphism-carrier tag under \texttt{reflectiveSlotStep}, so the diagonal witness
-\texttt{mor(represent)} is unreachable from the parametric object branch---in parallel
-with the RI bridge.
+preserved, so tag~\texttt{depth(0)} cannot reach \texttt{depth(1)}---a crisp toy model of
+``type-bounded'' introspection.  A second family abstracts \emph{adjudication class}
+(total-effective vs.\ weaker behaviour): kind is preserved along steps, so the total tag
+cannot reach the non-total tag without a fold.  A third instance reframes the reflective
+\emph{sort} gap: the object-branch tag cannot reach the morphism-carrier tag under
+\texttt{reflectiveSlotStep}, so the diagonal witness \texttt{mor(represent)} is unreachable
+from the parametric object branch---in parallel with the RI bridge (\Cref{sec:ri}).
+
+\subsection*{Simulation, pullback, and realization}
+
+To compare architectures, the library formalizes \emph{typed primitive simulations}: a map
+$\pi$ from a domain state space to states of a fixed typing, carrying the domain's primitive
+relation into the typing's primitive steps.  Pulling tags back along $\pi$ yields a typing
+on the domain (\texttt{pullbackAlongSimulation}).  \textbf{Forward simulation} is always
+available: type reachability in the pullback implies type reachability in the codomain
+(via a homomorphism lift of \texttt{ReflTransGen}).
 
 \medskip
 \noindent
-\textbf{Corollary layer.}
-The library also packages: \emph{primitive extension} monotonicity---\texttt{typeReachable}
-grows and \texttt{typeGap} shrinks when one enlarges the step relation while preserving tags;
-\emph{tags-on-hull} for seeds; \emph{pair-tag} conjunction obstruction; a \emph{bipartition}
-bridge to \texttt{FoldObstructionBundle} when both $P$ and $\neg P$ are forward-closed;
-\emph{typed simulations} pulling back tags, so specification-level gaps inherit to simulating
-systems; a \emph{section} witness (\texttt{TypedPrimitiveSimulationSection}) giving backward
-step-lifting, hence an \texttt{iff} for \texttt{typeReachable} on pullbacks --- the formal
-``simulation vs.\ realisation'' split at the typing layer; \emph{complementary-tag} gaps from
-forward-closure of a predicate $P$ alone (without global $\neg P$ preservation); and
-\emph{seed-local hull} facts (\texttt{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed})
-excluding a $\neg P$-tag from the reachable hull from $P$-seeds; an infinite \emph{pairwise antichain}
-of depth labels; and an explicit scope note contrasting Rice--index phenomena with this dynamical
-formulation.
+\textbf{The converse is conditional---and this is the formal simulation/realization split.}
+In general one cannot expect backward reachability in the pullback from the codomain alone:
+simulation need not exhibit all trajectories of the simulated system in the host's native
+dynamics.  The artifact isolates a minimal witness that repairs the gap: a \emph{section}
+$\sigma$ with $\pi \circ \sigma = \mathrm{id}$ that \emph{lifts every primitive step backward}
+(\texttt{TypedPrimitiveSimulationSection}).  Under exactly this data, \textbf{type
+reachability is equivalent} between the codomain typing and the pullback, and the same
+holds for packaged \texttt{SemanticTypeObstruction} (\texttt{typeReachable\_pullback\_iff\_of\_section}).
+Thus ``realizing'' the foreign dynamics inside the host's step relation is a strictly
+stronger claim than forward simulation, and the library states the strengthening in
+provable \texttt{iff} form rather than by axiom.
 
-\medskip
-\noindent
-\textbf{Lean.}
-The development lives under \texttt{ReflectiveFoldObstruction/SemanticType/} (core bundle,
-three named instances, non-triviality) with stable import surface
-\texttt{Core/SemanticTypeObstruction}.  Anchors:
+\subsection*{Complementary tags and seed-local hulls (weaker hypotheses)}
+
+Many applications single out one invariant $P$ whose forward-closure is cheap, without
+assuming a fully bipartite typing where $\neg P$ is also step-closed.  Two results capture
+this cleanly: \textbf{complementary-tag gaps} (\texttt{typeGap\_of\_complementary\_tags})
+propagate from two tags that classify $P$ and $\neg P$ respectively, requiring only that
+$P$ itself be forward-closed along primitive steps; and \textbf{seed-local hull exclusion}
+(\texttt{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed}) shows that a tag for
+$\neg P$ never appears on the primitive hull from $P$-seeds under the same one-sided
+hypothesis.  These lemmas are obstruction-theoretic footnotes to the master hull theorem,
+but they match how practitioners reason about reachable components from real initial
+conditions.
+
+\subsection*{Further corollaries and scope}
+
+The library also includes: \emph{primitive extension} monotonicity; \emph{tags-on-hull}
+from seeds; \emph{pair-tag} conjunction obstruction; a \emph{bipartition} bridge to
+\texttt{FoldObstructionBundle} when both $P$ and $\neg P$ are forward-closed; an infinite
+\emph{pairwise antichain} of depth labels; and an explicit computability \emph{scope note}
+contrasting Rice-style index phenomena with this \emph{dynamical} formulation (no
+smuggled formalization of r.e.\ degrees is required to use the typing theorems).
+
+\subsection*{Lean anchors}
+
+The development lives under \texttt{ReflectiveFoldObstruction/SemanticType/} with stable
+import surface \texttt{Core/SemanticTypeObstruction}.  Core names include
 \texttt{semanticType\_preorder\_nontrivial},
 \texttt{selfModelDepth\_obstruction},
 \texttt{adjudication\_semantic\_obstruction},
-\texttt{RI\_semantic\_type\_mismatch}.
+\texttt{RI\_semantic\_type\_mismatch}; simulation/realization:
+\texttt{typeGap\_simulation\_pullback},
+\texttt{typeReachable\_pullback\_iff\_of\_section},
+\texttt{SemanticTypeObstruction\_pullback\_iff\_of\_section}; complementary/hull:
+\texttt{typeGap\_of\_complementary\_tags},
+\texttt{false\_tag\_not\_mem\_tagsOnHull\_of\_preserved\_seed}.
+See \Cref{tab:anchors}.
 
 % ===========================================================================
 % 10. MACHINE-CHECKED ARTIFACT
@@ -640,6 +724,37 @@ Relation map / simulation (\Cref{sec:semantic-type})
 The full module tree and formalization map are given in \Cref{app:modules}.
 
 % ===========================================================================
+% 11. CONCLUSION
+% ===========================================================================
+\section{Conclusion}\label{sec:conclusion}
+
+This paper's core contribution is a general, machine-checked \emph{fold obstruction}:
+preserved invariants propagate along reflexive--transitive closure, so any target that
+violates the invariant lies outside internal reachability from compliant sources.  The
+principle is instantiated on reflective sort dynamics, extended to rich calculi and
+generator unions, and bridged to representational incompleteness without new axioms.
+
+\medskip
+The \emph{semantic type} layer (\Cref{sec:semantic-type}) pushes the same idea to tags
+and makes vivid a limit that is easy to conflate with classical computability but is
+logically distinct: \textbf{Turing-completeness does not entail semantic-type
+completeness}.  A system may compute everything a textbook universal machine computes,
+while its native step relation preserves architectural predicates that \emph{permanently}
+exclude certain semantic kinds from the internally reachable class.  Simulation can mask
+this from outside observers; what the formalization rewards is careful separation between
+\emph{what can be forward-simulated} and \emph{what is realized along the host's own
+primitive transitions}---with a proved \texttt{iff} characterizing the latter in terms of
+backward-lifting sections.
+
+\medskip
+Together, the development supports a unified moral for reflective architectures and their
+machine-checked obstructions: \textbf{internal closure is not architectural
+universality}.  Iteration along a disciplined dynamics respects invariants; crossing an
+invariant boundary is a fold, not an iterate---whether the invariant is sort structure,
+holonomy data, boundary connectivity, semantic adjudication class, or the instantiation
+of a finer semantic tag.
+
+% ===========================================================================
 % REFERENCES
 % ===========================================================================
 \begin{thebibliography}{99}
@@ -699,8 +814,8 @@ N.~Spivack.
 \texttt{Core/Slots} & \texttt{OntologicalSlot}, sort disjointness, \texttt{ReflectiveSlot} \\
 \texttt{Core/ArchitectureObstruction} & Stable re-export names for fold pattern \\
 %
-\texttt{Core/SemanticTypeObstruction} & \texttt{SPEC\_020}: semantic typing + three instances \\
-\texttt{SemanticType/*} & Core bundle, depth / adjudication / RI diagonal, non-triviality; hull tags, pair tags, bipartition bridge, simulation pullback, antichain, computability note \\
+\texttt{Core/SemanticTypeObstruction} & \texttt{SPEC\_020}: semantic typing + three instances + corollaries \\
+\texttt{SemanticType/*} & Core bundle; depth / adjudication / RI diagonal; hull tags (seed-local exclusion); pair tags; bipartition bridge; simulation pullback + section (\emph{realization}) \texttt{iff} on reachability; complementary tags; antichain; computability scope note \\
 \midrule
 \texttt{Reachability/InternalOps} & \texttt{ForwardClosed}, \texttt{PreservedBy}, monotone \texttt{ReflTransGen}, relation extension \\
 \texttt{Reachability/ClosureHull} & \texttt{reachableFrom}, hull algebra (union, intersection, idempotence), subrelation monotonicity \\
