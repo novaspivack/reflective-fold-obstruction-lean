@@ -20,6 +20,12 @@
 | `ReflectiveFoldObstruction/SemanticType/Instances/SelfModelDepth.lean` | `SelfModelDepthDynamics`, `selfModelDepth_obstruction`, fold via `SPEC_005` |
 | `ReflectiveFoldObstruction/SemanticType/Instances/AdjudicationType.lean` | `AdjudicationDynamics`, `adjudication_semantic_obstruction` |
 | `ReflectiveFoldObstruction/SemanticType/Instances/RIDiagonal.lean` | `riSemanticTyping`, `RI_semantic_type_mismatch`, `RI_slot_fold_obstruction` |
+| `ReflectiveFoldObstruction/SemanticType/HullTags.lean` | `tagsOnHull`, seed monotonicity |
+| `ReflectiveFoldObstruction/SemanticType/ConjPair.lean` | `conjPairTyping`, `typeGap_of_coord` |
+| `ReflectiveFoldObstruction/SemanticType/ArchitectureBridge.lean` | `BipartitionDyn`, `fold_bundle_typeGap`, `BipartitionDyn.ofFoldBundle` |
+| `ReflectiveFoldObstruction/SemanticType/Simulation.lean` | `TypedPrimitiveSimulation`, `pullbackAlongSimulation`, `typeGap_simulation_pullback` |
+| `ReflectiveFoldObstruction/SemanticType/Antichain.lean` | `PairwiseTypeGap`, `pairwiseTypeGap_depthLabels` |
+| `ReflectiveFoldObstruction/SemanticType/ComputabilityNote.lean` | Rice / index-theorem scope string |
 | `ReflectiveFoldObstruction/Reflection/Towers.lean` | `regress_*` / unboundedness under `IterInjective` |
 | `ReflectiveFoldObstruction/Reflection/Slices.lean` | `regress_over_injective` |
 | `ReflectiveFoldObstruction/Diagonal/LawvereType.lean` | Lawvere fixed point + corollaries in `Type` (`universe u v`) |
@@ -39,7 +45,7 @@
 | `ReflectiveFoldObstruction/Topology/Boundary.lean` | `corneredUnitSquare` (= product model) |
 | `ReflectiveFoldObstruction/Topology/MobiusCylinder.lean` | `HolonomyTag`, `tagEquiv` |
 | `ReflectiveFoldObstruction/Topology/HolonomyPhase.lean` | `HolonomyState`, gated phase steps, `holonomy_phase_dynamic_fold_obstruction` (`SPEC_011` B) |
-| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `reflTransGen_mono_of_subrelation`, `not_reflTransGen_of_superrelation`, `preserved_under_relation_extension` |
+| `ReflectiveFoldObstruction/Reachability/InternalOps.lean` | `ForwardClosed`, `ReflTransGen.forwardClosed`, `reflTransGen_mono_of_subrelation`, `not_reflTransGen_of_superrelation`, `reflTransGen_map`, `preserved_under_relation_extension` |
 | `ReflectiveFoldObstruction/Reachability/ArchitectureClasses.lean` | `Architecture`, `FoldObstructionBundle` (`SPEC_017`) |
 | `ReflectiveFoldObstruction/Reachability/ClosureHull.lean` | `reachableFrom`, `reachableFrom_empty`, `reachableFrom_univ`, `reachableFrom_inter_subset`, `reachableFrom_iUnion`, `reachableFrom_iInter_subset`, idempotence, `∪`, `mem_reachableFrom_singleton`, `mem_reachableFrom_induction`, `reachableFrom_subset_of_subrelation`, `hull_nonmembership_persists_under_relation_extension` |
 | `ReflectiveFoldObstruction/Reachability/GeneratedCalculi.lean` | `unionGen`, reflective Bool generators, `reflective_unionBoolGen_fold_obstruction` (`SPEC_016`) |

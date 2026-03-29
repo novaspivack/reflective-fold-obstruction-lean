@@ -1,6 +1,6 @@
 # Reflective Fold Obstruction — theorem inventory (Lean names)
 
-**Last updated:** 2026-03-29 — **`SPEC_020_H3T`** semantic type obstruction (core bundle + three instances + non-triviality); `lake build ReflectiveFoldObstruction`, **0** `sorry`.  
+**Last updated:** 2026-03-29 — **`SPEC_020_H3T`** semantic type obstruction + **corollary API** (extension monotonicity, hull tags, pair obstruction, bipartition / architecture bridge, simulation pullback, depth antichain, computability note); `lake build ReflectiveFoldObstruction`, **0** `sorry`.  
 **EPICs:** outer `specs/IN-PROCESS/README.md`
 
 Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift is buckets **D–F** especially (`Reachability`, `Obstruction`, invariant transport) — the **internal-reachability** story — alongside **A–C** as shared reflective/diagnostic machinery, **not** as a replacement for the **Representational Incompleteness** flagship (see outer `SPEC_001` / `PROJECT_VISION` opening).
@@ -48,6 +48,14 @@ Buckets **A–F** (vision §9 / SPEC_003). **Portfolio:** RFO’s distinct lift 
 | `SemanticType.Instances.SelfModelDepth` | `SelfModelDepthDynamics`, `toTyping`, `selfModelDepth_typePreserved`, `selfModelDepth_obstruction`, `selfModelDepth_typeGap`, `selfModelDepth_semantic_obstruction` |
 | `SemanticType.Instances.AdjudicationType` | `AdjudicationClass`, `AdjudicationDynamics`, `toTyping`, `adjudicationType_typePreserved`, `adjudicationType_obstruction`, `adjudication_total_to_nonTotal_typeGap`, `adjudication_semantic_obstruction`, `adjudication_type_ne` |
 | `SemanticType.Instances.RIDiagonal` | `RISemanticTag`, `IsMorReflectiveSlot`, `riSemanticTyping`, `reflective_step_preserves_morCarrier`, `RI_carrier_typeGap`, `RI_semantic_type_mismatch`, `RI_slot_fold_obstruction` |
+| `SemanticType` (core lemmas) | `Typing.withPrimitiveStep`, `not_reflTransGen_of_typeGap`, `typeReachable_mono_primitive`, `typeGap_antitone_primitive` |
+| `SemanticType.HullTags` | `tagsOnHull`, `mem_tagsOnHull_iff`, `tagsOnHull_mono_seed`, `tag_mem_hull_of_seed_instantiates` |
+| `SemanticType.ConjPair` | `conjPairTyping`, `typeReachable_conj_pair`, `typeGap_of_coord`, `SemanticTypeObstruction_conj_pair` |
+| `SemanticType.ArchitectureBridge` | `BipartitionDyn`, `BipartitionDyn.toTyping`, `typeGap_bipartition_tt_ff`, `SemanticTypeObstruction_bipartition`, `BipartitionDyn.ofFoldBundle`, `fold_bundle_typeGap`, `not_reflTransGen_of_inv_mismatch` |
+| `SemanticType.Simulation` | `TypedPrimitiveSimulation`, `pullbackAlongSimulation`, `typeReachable_simulation_forward`, `typeGap_simulation_pullback`, `SemanticTypeObstruction_simulation_pullback` |
+| `SemanticType.Antichain` | `PairwiseTypeGap`, `pairwiseTypeGap_depthLabels`, `typeGap_depthLabels_ne` |
+| `SemanticType.ComputabilityNote` | `computabilityComparisonNote` (scope / Rice contrast, narrative string) |
+| `Reachability.InternalOps` | **`reflTransGen_map`** (homomorphic image of `ReflTransGen`) |
 | `Core.SemanticTypeObstruction` | Import hub for all of the above |
 
 ---

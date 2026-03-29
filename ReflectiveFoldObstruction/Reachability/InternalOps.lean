@@ -101,6 +101,14 @@ theorem not_reflTransGen_of_superrelation {r r' : α → α → Prop}
 
 alias not_reachable_when_smaller_step_included := not_reflTransGen_of_superrelation
 
+/-- **Homomorphic image** of reachability: a relation homomorphism lifts `r⋆` to `r'⋆`. -/
+theorem reflTransGen_map {β : Type u} {r : α → α → Prop} {r' : β → β → Prop} (f : α → β)
+    (h : ∀ ⦃x y : α⦄, r x y → r' (f x) (f y)) ⦃a b : α⦄
+    (hab : ReflTransGen r a b) : ReflTransGen r' (f a) (f b) := by
+  induction hab with
+  | refl => exact ReflTransGen.refl
+  | tail _ hbc ih => exact ReflTransGen.tail ih (h hbc)
+
 /-!
 ## Relation extension (SPEC_015)
 
