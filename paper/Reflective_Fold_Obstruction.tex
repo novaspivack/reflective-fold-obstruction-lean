@@ -4,6 +4,10 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\-\do\.\do\_\do\/}
+\makeatother
 \usepackage{cleveref}
 \usepackage{booktabs}
 \usepackage{enumitem}
@@ -112,9 +116,11 @@ and zero \texttt{admit} across all shipped modules.
 
 \noindent\textbf{MSC 2020:} 03F40, 03B70, 68T27
 
-\noindent\textbf{Code/Data availability:}
-\url{https://github.com/novaspivack/reflective-fold-obstruction-lean}
-(reflective-fold-obstruction development; \texttt{lake build}; see repository \texttt{README} and \texttt{lakefile.lean}.)
+\noindent\textbf{Code/Data availability:}\newline
+\begingroup\raggedright
+\url{https://github.com/novaspivack/reflective-fold-obstruction-lean}\linebreak
+(reflective-fold-obstruction development; \path{lake build}; see repository \path{README} and \path{lakefile.lean}.)
+\par\endgroup
 
 \section{Premises, disagreement coordinates, and trust boundary}\label{sec:premises-rfo-flagship}
 \begin{keybox}[title=Where disagreement can (and cannot) live]
