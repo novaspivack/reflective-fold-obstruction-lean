@@ -75,6 +75,7 @@ Independent Researcher}
 % ABSTRACT
 % ===========================================================================
 \begin{abstract}
+\raggedright
 We prove a general theorem of \emph{fold obstruction}: if a predicate~$I$ is preserved
 along the primitive steps of an internal relation~$r$, then $I$ is preserved along the
 full reflexive--transitive closure~$r^{*}$, and any target failing~$I$ is not internally
@@ -103,7 +104,32 @@ typing.
 
 The entire development is machine-checked in \Lean{}/\Mathlib{} with zero \texttt{sorry}
 and zero \texttt{admit} across all shipped modules.
+
+\textbf{Trust boundary:} Fold and hull theorems are internal to the Lean relation calculus formalized here; mapping to physical or institutional ``architectures'' is an external modeling task.
 \end{abstract}
+
+\noindent\textbf{Keywords:} reflective fold, internal closure, invariant hull, Lean~4, semantic types
+
+\noindent\textbf{MSC 2020:} 03F40, 03B70, 68T27
+
+\noindent\textbf{Code/Data availability:}
+\url{https://github.com/novaspivack/reflective-fold-obstruction-lean}
+(reflective-fold-obstruction development; \texttt{lake build}; see repository \texttt{README} and \texttt{lakefile.lean}.)
+
+\section{Premises, disagreement coordinates, and trust boundary}\label{sec:premises-rfo-flagship}
+\begin{keybox}[title=Where disagreement can (and cannot) live]
+\textbf{Formal spine.}
+Obstruction lemmas are tied to \texttt{ReflTransGen} reachability and named preservation predicates in the artifact.
+
+\medskip
+\textbf{Premise coordinates (for external readers).}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{Primitive-step choice.} Conclusions depend on the declared step relation~$r$ and its reflexive--transitive closure; changing~$r$ changes the hull.
+  \emph{Logical effect:} Industrial workflow graphs are not automatically isomorphic to the formal~$r$ without a verified functor bridge.
+\item \textbf{Semantic-type strand.} Turing-completeness claims concern standard computability predicates alongside tag preorders formalized in Lean; they do not subsume informal philosophy of mind without translation.
+  \emph{Logical effect:} Accepting the computational lemma leaves metaphysical packaging optional.
+\end{itemize}
+\end{keybox}
 
 % ===========================================================================
 % 1. THE PROBLEM
