@@ -1,28 +1,32 @@
 # reflective-fold-obstruction-lean
 
-Lean 4 + Mathlib library for **Reflective Fold Obstruction** — **internal reachability, invariant obstruction, and fold-vs-iterate architecture** (general framework; **not** the RI universal-diagonal flagship).
+Lean 4 + Mathlib library for **Reflective Fold Obstruction** — internal reachability, invariant obstruction, and fold-vs-iterate architecture.
 
-**Outer workspace** (specs, EPICs, submodule wrapper): sibling repo **Reflective Fold Obstruction** — see `../specs/IN-PROCESS/README.md` when checked out as a submodule.
+**This is not the RI (Representational Incompleteness) universal-diagonal flagship.** RFO addresses a complementary question: if a predicate is preserved under primitive steps of an internal relation, can the internal reflexive-transitive closure reach any state falsifying that predicate? The answer is no — and the gap between what can be iterated and what can be folded is structurally precise.
 
-**Relation to `representational-incompleteness-lean`:** **RI** flagship Lean library — **`lake require «representational-incompleteness»`** is **on** (see `lakefile.lean` pin; **SPEC_002** / **SPEC_004**). Portfolio (**RI** vs RFO vs Observer Exhaustion): outer `SPEC_001`, `MANIFEST.md` mission.
+## What it proves
+
+- **Hull theorem:** Forward-closed predicates confine the entire reachable hull from seeds satisfying that predicate. Any target falsifying the predicate is not internally reachable — this is a fold barrier.
+- **Semantic type obstruction:** Turing-completeness does not imply semantic-type completeness. A system can be Turing-complete and still be permanently type-bounded in its native primitive dynamics.
+- **Simulation vs realization:** Forward simulation always projects type reachability; the converse requires a section with backward step-lifting. Without that section, a Turing-complete system can simulate a richer-type system without instantiating it.
 
 ## Build
 
-**Use the Mathlib binary cache:**
-
 ```bash
 lake update
-lake exe cache get       # REQUIRED: pre-built .olean blobs
+lake exe cache get       # pre-built Mathlib .olean blobs (strongly recommended)
 lake build ReflectiveFoldObstruction
 ```
 
-Workspace documentation (cache, submodule layout): outer `docs/008_LEAN_MATHLIB_CACHE_WORKFLOW.md`, `docs/009_OPTIONAL_MATHLIB.md`, `docs/007_REPOSITORY_NAMES.md`.
-
 ## Layout
 
-Layered module tree under `ReflectiveFoldObstruction/` (`Core`, `Reflection`, `Diagonal`, `Invariants`, `Topology`, `Reachability`, `Obstruction`, `Examples`, `Main`). Roles are specified in outer `specs/COMPLETE/SPEC_003_RFO_LEAN_LAYER_EPICS.md` and `specs/NOTES/PROJECT_VISION.md`. Shipped modules aim for **no** `sorry`; diagonal **pressure** includes a **`ULift Nat`** track aligned with universe-polymorphic `MonoidalClosed (Type u)`.
+Layered module tree under `ReflectiveFoldObstruction/`: `Core`, `Reflection`, `Diagonal`, `Invariants`, `Topology`, `Reachability`, `Obstruction`, `Examples`, `Main`. Zero sorry on shipped proof targets.
 
-See `MANIFEST.md`, `THEOREM_INVENTORY.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`, `ARTIFACT.md`, `docs/argument-structure.md`.
+## Documentation
+
+See [MANIFEST.md](MANIFEST.md), [THEOREM_INVENTORY.md](THEOREM_INVENTORY.md), [REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md](REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md), and [ARTIFACT.md](ARTIFACT.md).
+
+The companion paper is published on Zenodo — see [novaspivack.com/research](https://www.novaspivack.com/research).
 <!-- NOVA_ZPO_ZENODO_SOFTWARE_BEGIN -->
 **Archival software (Zenodo):** https://doi.org/10.5281/zenodo.19429256
 <!-- NOVA_ZPO_ZENODO_SOFTWARE_END -->
