@@ -5,7 +5,7 @@
   narratively: a trivial tag pairs with constant parity gauges in toy models, whereas a
   twist tag pairs with nontrivial parity witnesses when charts are globalized.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/MobiusCylinder.
+  Module context: Topology/MobiusCylinder.
 -/
 
 import Mathlib.Logic.Equiv.Defs

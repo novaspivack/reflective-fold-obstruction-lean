@@ -13,7 +13,7 @@
   | Obstruction | Certificates + reflective packaging |
   | Topology / Examples | Euclidean anchors + bridges |
 
-  See `specs/NOTES/PROJECT_VISION.md` — Main.
+  Module context: Main.
 -/
 
 import ReflectiveFoldObstruction.Obstruction.Fold

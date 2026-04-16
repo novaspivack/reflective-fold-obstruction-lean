@@ -5,7 +5,7 @@
   (equality).  This is the **`SPEC_008`** hook for “internal reachability” on reflective
   hosts without importing **RI** generically here.
 
-  See `specs/IN-PROCESS/SPEC_008_T9U_RFO_REFLECTIVE_HOST_REACHABILITY_AND_RI_BRIDGE.md`.
+  
 -/
 
 import Mathlib.CategoryTheory.Category.Basic

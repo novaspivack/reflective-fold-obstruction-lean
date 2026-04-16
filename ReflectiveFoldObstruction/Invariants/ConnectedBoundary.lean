@@ -11,7 +11,7 @@
   - **Equiv-invariance:** images under an equivalence preserve and reflect separation.
   - **Connectivity predicate:** `IsRelBoundaryConnected B := ¬ HasRelBoundarySep B`.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/ConnectedBoundary.
+  Module context: Invariants/ConnectedBoundary.
 -/
 
 import Mathlib.Data.Set.Image

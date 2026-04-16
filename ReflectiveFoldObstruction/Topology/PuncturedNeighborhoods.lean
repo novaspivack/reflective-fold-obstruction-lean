@@ -4,7 +4,7 @@
   Full “`\(\pi_1 \neq 1\)” or simple-connectivity obstructions need paths and fundamental groups;
   this file only pins the **carrier sets** used in neighborhood arguments.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/PuncturedNeighborhoods.
+  Module context: Topology/PuncturedNeighborhoods.
 -/
 
 import Mathlib.Data.Real.Basic

@@ -4,7 +4,7 @@
   The natural graph closure is `Relation.ReflTransGen`, i.e. reflexive transitive reachability
   along a relation `r : α → α → Prop` (“one internal step” from the vision).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Reachability/InternalOps.
+  Module context: Reachability/InternalOps.
 -/
 
 import Mathlib.Logic.Relation

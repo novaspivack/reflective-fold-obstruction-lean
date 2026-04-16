@@ -4,7 +4,7 @@
   This is the thin set-theoretic hull used before importing heavier `Topology` convergence
   notions.  Idempotence mirrors “saturation = closure” for reflexive transitive closure.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Reachability/ClosureHull.
+  Module context: Reachability/ClosureHull.
 -/
 
 import Mathlib.Data.Set.Basic

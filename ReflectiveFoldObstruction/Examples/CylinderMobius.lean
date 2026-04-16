@@ -4,7 +4,7 @@
   **Flagship (`SPEC_009`):** `mobius_cylinder_fold_obstruction` is an instantiation of the abstract
   **`Obstruction/Fold`** summit (holonomy tag mismatch + equality internal reachability).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Examples/CylinderMobius.
+  Module context: Examples/CylinderMobius.
 -/
 
 import Mathlib.Logic.Relation

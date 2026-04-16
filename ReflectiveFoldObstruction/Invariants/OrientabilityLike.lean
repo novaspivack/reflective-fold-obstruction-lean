@@ -8,7 +8,7 @@
 
   For cylinder vs Möbius flagship geometry, see `Topology/MobiusCylinder.lean`.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/OrientabilityLike.
+  Module context: Invariants/OrientabilityLike.
 -/
 
 import Mathlib.Logic.Equiv.Defs

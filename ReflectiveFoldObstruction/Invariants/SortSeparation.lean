@@ -5,7 +5,7 @@
   preserves **injectivity** when both branch maps are injective (“closure does not
   collapse” at the level of sort witnesses).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/SortSeparation.
+  Module context: Invariants/SortSeparation.
 -/
 
 import ReflectiveFoldObstruction.Core.Basic

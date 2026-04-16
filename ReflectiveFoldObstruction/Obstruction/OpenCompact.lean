@@ -5,7 +5,7 @@
   Here we only record **finite sets are compact** in any topological space — a basic lemma
   used when extracting finite local covers from compact chart targets.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Obstruction/OpenCompact.
+  Module context: Obstruction/OpenCompact.
 -/
 
 import Mathlib.Data.Fintype.Defs

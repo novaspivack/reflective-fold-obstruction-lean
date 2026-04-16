@@ -3,9 +3,9 @@
 
   Instantiating `Obj := R.C` and `Mor := (R.A ⟶ R.A)` recovers the **RI**-line
   `OntologicalSlot` pattern without depending on `representational-incompleteness-lean`
-  (`specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`).
+  
 
-  See `specs/NOTES/PROJECT_VISION.md` — Core/Slots.
+  Module context: Core/Slots.
 -/
 
 import ReflectiveFoldObstruction.Core.Basic

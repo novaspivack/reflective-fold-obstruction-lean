@@ -4,7 +4,7 @@
   These are *sets in ℝⁿ*, not yet manifold-with-boundary instances (that stays in Topology/Boundary
   glue + mathlib smooth scaffolding).  Flagship twist geometry refers to these shapes by name.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/Models.
+  Module context: Topology/Models.
 -/
 
 import Mathlib.Data.Real.Basic

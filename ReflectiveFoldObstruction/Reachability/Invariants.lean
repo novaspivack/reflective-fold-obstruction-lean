@@ -7,7 +7,7 @@
   **`SPEC_005` / `SPEC_006`:** stable aliases for obstruction consumers (`preserved_mem_reachableFrom`,
   subset / mismatch lemmas).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Reachability/Invariants.
+  Module context: Reachability/Invariants.
 -/
 
 import Mathlib.Data.Set.Basic

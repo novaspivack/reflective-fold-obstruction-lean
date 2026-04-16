@@ -1,7 +1,7 @@
 /-
   **Two-dimensional local models** — closed half-plane vs full plane subsets of \(\mathbb{R}^2\).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/LocalModels2D.
+  Module context: Topology/LocalModels2D.
 -/
 
 import Mathlib.Data.Real.Basic

@@ -4,7 +4,7 @@
   Cells such as `Models.closedUnitSquare` serve as concrete stratified domains for half-plane
   charts and edge identifications (delegate isomorphisms to `Mathlib` homeomorphisms later).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/Boundary.
+  Module context: Topology/Boundary.
 -/
 
 import ReflectiveFoldObstruction.Topology.Models

@@ -7,7 +7,7 @@
   (SPEC prose refers to this data as a `SemanticType`; `Typing` avoids the `SemanticType.SemanticType`
   name duplicate in Lean.)
 
-  See `specs/IN-PROCESS/SPEC_020_H3T_RFO_SEMANTIC_TYPE_OBSTRUCTION.md`.
+  
 -/
 
 import Mathlib.Logic.Relation

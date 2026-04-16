@@ -6,7 +6,7 @@
   topology: every `X ≃ₜ Y` induces the same set-theoretic images and typing transports as the
   underlying equivalence.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/Transport (“homeomorphism” bullet).
+  Module context: Invariants/Transport (“homeomorphism” bullet).
 -/
 
 import Mathlib.Topology.Homeomorph.Defs

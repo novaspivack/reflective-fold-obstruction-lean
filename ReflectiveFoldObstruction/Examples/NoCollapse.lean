@@ -4,7 +4,7 @@
   Concrete **RI** instantiations stay in `representational-incompleteness-lean` per SPEC_002; this module proves nothing
   new — it anchors documentation that *all* `ReflectiveSystem` hosts inherit the same lemmas.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Examples/NoCollapse.
+  Module context: Examples/NoCollapse.
 -/
 
 import ReflectiveFoldObstruction.Core.Basic

@@ -3,7 +3,7 @@
 
   Used when disjoint separating neighborhoods in chart targets must be lifted through products.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/Hausdorff.
+  Module context: Topology/Hausdorff.
 -/
 
 import Mathlib.Topology.Constructions

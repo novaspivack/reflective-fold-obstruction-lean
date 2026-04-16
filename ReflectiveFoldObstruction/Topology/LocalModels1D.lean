@@ -3,7 +3,7 @@
 
   Compare `Invariants/BoundaryType` tags with these concrete sets when building chart lemmas.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Topology/LocalModels1D.
+  Module context: Topology/LocalModels1D.
 -/
 
 import Mathlib.Data.Real.Basic

@@ -6,9 +6,9 @@
   **`Core.ReflectiveSystem`** + **`Core.IterInjective`** so **`PackagedReflectiveHost`**
   and obstruction certificates apply to **RI** hosts unchanged.
 
-  Governance: `specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`.
+  
 
-  See `specs/NOTES/PROJECT_VISION.md` — Examples layer.
+  Module context: Examples layer.
 -/
 
 import Mathlib.Logic.Relation

@@ -2,14 +2,14 @@
   Categorical **reflective system**: a category, a distinguished object `A`, and a
   self-representation endomorphism `represent`.
 
-  Per `specs/COMPLETE/SPEC_003_RFO_LEAN_LAYER_EPICS.md`, **structure** (this file)
+  **Structure** (this file)
   is separated from the **hypothesis** `IterInjective` (distinct iterate powers in
   `End A`). That generalizes the bundled `iter_injective` field of
   the bundled `iter_injective` pattern of the **RI** line (`representational-incompleteness-lean`)
   without importing that repository.
 
   Slice packaging and iterates follow the same mathematics as the incompleteness / regress story;
-  see `specs/NOTES/PROJECT_VISION.md` §3.
+  
 -/
 
 import Mathlib.CategoryTheory.Category.Basic

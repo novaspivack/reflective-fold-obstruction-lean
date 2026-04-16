@@ -2,7 +2,7 @@
   Reflective **towers**: consequences of `IterInjective` for iterates of `represent`.
 
   Mirrors the RI **regress** tower API with explicit `hij : IterInjective R` hypotheses
-  (`specs/COMPLETE/SPEC_003_RFO` — structure vs hypothesis split).
+   (structure vs hypothesis split).
 -/
 
 import Mathlib.Data.Nat.Basic

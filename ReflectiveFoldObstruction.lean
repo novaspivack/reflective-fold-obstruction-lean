@@ -1,6 +1,6 @@
 /-
   Reflective Fold Obstruction — root import graph.
-  Module roles: `specs/NOTES/PROJECT_VISION.md`, `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md`.
+  Module roles: see `REFLECTIVE_FOLD_OBSTRUCTION_FORMALIZATION_MAP.md` (and README).
 -/
 
 import ReflectiveFoldObstruction.Core.Basic

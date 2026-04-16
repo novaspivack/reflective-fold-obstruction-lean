@@ -5,7 +5,7 @@
     obstruction** when source and target fall on opposite sides of an invariant.
   - **Certificates:** lightweight metadata for tracing only (`ObstructionKind`, `ObstructionCertificate`).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Obstruction/Fold.
+  Module context: Obstruction/Fold.
 -/
 
 import Mathlib.Logic.Relation

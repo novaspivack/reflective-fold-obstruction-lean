@@ -9,7 +9,7 @@
   **Generated / admissible families (`SPEC_016` / `SPEC_018`):** see `unionGen` packaging in
   `Reachability/GeneratedCalculi.lean` and **`reflectiveAdmissibleUnion`** below.
 
-  See `specs/IN-PROCESS/SPEC_010_Q8R_RFO_RICH_REFLECTIVE_INTERNAL_CALCULI.md`.
+  
 -/
 
 import Mathlib.CategoryTheory.Category.Basic

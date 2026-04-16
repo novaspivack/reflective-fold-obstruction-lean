@@ -4,7 +4,7 @@
   - **Summit reuse:** sort / slot mismatch along `Reachability/ReflectiveSteps.reflectiveSlotStep`.
   - **Iterative channel:** still records **unbounded tower** facts under `IterInjective` (certificates optional).
 
-  See `specs/NOTES/PROJECT_VISION.md` — Obstruction/ReflectiveFold.
+  Module context: Obstruction/ReflectiveFold.
 -/
 
 import Mathlib.Logic.Relation

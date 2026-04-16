@@ -7,7 +7,7 @@
 
   **Homeomorphs:** use `Homeomorph.toEquiv` (Mathlib) and reuse `Equiv` lemmas — no parallel API here.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/Transport.
+  Module context: Invariants/Transport.
 -/
 
 import Mathlib.Logic.Equiv.Defs

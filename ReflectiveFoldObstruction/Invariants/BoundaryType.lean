@@ -12,7 +12,7 @@
 
   Homeomorphisms: compose `Homeomorph.toEquiv` with these definitions.
 
-  See `specs/NOTES/PROJECT_VISION.md` — Invariants/BoundaryType.
+  Module context: Invariants/BoundaryType.
 -/
 
 import Mathlib.Data.Set.Basic
