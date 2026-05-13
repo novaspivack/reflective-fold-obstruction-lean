@@ -1,7 +1,7 @@
 # reflective-fold-obstruction-lean — artifact documentation
 
-**Lean:** `leanprover/lean4:v4.29.0-rc6`  
-**Mathlib:** `v4.29.0-rc6` — use **`lake exe cache get`** after `lake update`  
+**Lean:** `leanprover/lean4:v4.29.1`  
+**Mathlib:** `v4.29.1` — use **`lake exe cache get`** after `lake update`  
 **Build:** `lake build ReflectiveFoldObstruction` from this directory  
 **Lake deps:** Mathlib + **`«representational-incompleteness»`** (`lakefile.lean`, `lake-manifest.json`)  
 **Program / governance (outer):** `../specs/IN-PROCESS/SPEC_001_RFO_REFLECTIVE_FOLD_OBSTRUCTION_LEAN_EPIC.md`, `../specs/IN-PROCESS/SPEC_002_RFO_TWO_REPOSITORY_GOVERNANCE.md`; **Lean layer authority:** `../specs/COMPLETE/SPEC_003_RFO_LEAN_LAYER_EPICS.md`

@@ -1,7 +1,7 @@
 # reflective-fold-obstruction-lean — manifest
 
-**Toolchain:** `leanprover/lean4:v4.29.0-rc6`  
-**Mathlib:** `v4.29.0-rc6` (via `lakefile.lean`); use `lake exe cache get`  
+**Toolchain:** `leanprover/lean4:v4.29.1`  
+**Mathlib:** `v4.29.1` (via `lakefile.lean`); use `lake exe cache get`  
 **Lake package:** `«reflective-fold-obstruction-lean»`  
 **Build:** `lake build ReflectiveFoldObstruction` (or `lake build`) from this directory  
 **Root import:** `ReflectiveFoldObstruction.lean`  
